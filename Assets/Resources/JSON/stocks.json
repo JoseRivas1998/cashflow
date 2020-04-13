@@ -1,0 +1,33 @@
+{
+  "stocks": [
+    {
+      "symbol": "OK4U",
+      "title": "OK4U Drug Co.",
+      "priceMin": 5,
+      "priceMax": 30,
+      "isStock": true
+    },
+    {
+      "symbol": "MYT4U",
+      "title": "MYT4U Electronics Co.",
+      "priceMin": 10,
+      "priceMax": 30,
+      "isStock": true
+    },
+    {
+      "symbol": "GRO4US",
+      "title": "GRO4US Fund",
+      "priceMin": 20,
+      "priceMax": 30,
+      "isStock": false
+    },
+    {
+      "symbol": "ON2U",
+      "title": "ON2U Entertainment Co.",
+      "priceMin": 10,
+      "priceMax": 30,
+      "isStock": true
+    }
+
+  ]
+}

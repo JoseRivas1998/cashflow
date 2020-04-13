@@ -1,0 +1,104 @@
+{
+  "stocks": [
+    {
+      "symbol": "ON2U",
+      "price": 5,
+      "flavor": "Newest theme park is a huge flop, reports record loses. Share prices hits all-time low."
+    },
+    {
+      "symbol": "ON2U",
+      "price": 30,
+      "flavor": "Strong demand for company's library of old movies leads to good share price."
+    },
+    {
+      "symbol": "ON2U",
+      "price": 20,
+      "flavor": "New director of movie acquisitions brings revived prospects for share price."
+    },
+    {
+      "symbol": "ON2U",
+      "price": 40,
+      "flavor": "Box office hit by children's division causes record share price."
+    },
+    {
+      "symbol": "ON2U",
+      "price": 10,
+      "flavor": "Movie buyer fired after third mega-flop! Shares sink. Chairman's bonus cancelled."
+    },
+    {
+      "symbol": "GRO4US",
+      "price": 5,
+      "flavor": "Weak earnings report leads to weak price of mutual fund."
+    },
+    {
+      "symbol": "GRO4US",
+      "price": 40,
+      "flavor": "Powerhouse market drives fund's price up to record high."
+    },
+    {
+      "symbol": "GRO4US",
+      "price": 20,
+      "flavor": "Lower interest rates drive market and fund to strong showing."
+    },
+    {
+      "symbol": "GRO4US",
+      "price": 30,
+      "flavor": "Brilliant, young fund manager. Everyone believes he has the Midas touch."
+    },
+    {
+      "symbol": "GRO4US",
+      "price": 10,
+      "flavor": "Weak showing in job growth causes lack of consumer confidence. Shares fall with public opinion."
+    },
+    {
+      "symbol": "MYT4U",
+      "price": 10,
+      "flavor": "New product flops and tough losses are reported! Share price drops."
+    },
+    {
+      "symbol": "MYT4U",
+      "price": 40,
+      "flavor": "Booming market leads to record share price of this electronics seller!"
+    },
+    {
+      "symbol": "MYT4U",
+      "price": 20,
+      "flavor": "Weak market leads to sagging share price for this electornics seller."
+    },
+    {
+      "symbol": "MYT4U",
+      "price": 30,
+      "flavor": "Low interest rates lead to favorable share price for this electronics seller."
+    },
+    {
+      "symbol": "MYT4U",
+      "price": 5,
+      "flavor": "Record interest rates lead to substandard share price for this electronics seller."
+    },
+    {
+      "symbol": "OK4U",
+      "price": 30,
+      "flavor": "Low inflation leads to high share price for this longtime pharmaceutical company."
+    },
+    {
+      "symbol": "OK4U",
+      "price": 10,
+      "flavor": "Research and development delays cause low share price for this longtime pharmaceutical company."
+    },
+    {
+      "symbol": "OK4U",
+      "price": 5,
+      "flavor": "Interest rates cripple share price of this longitme pharmaceutical company."
+    },
+    {
+      "symbol": "OK4U",
+      "price": 40,
+      "flavor": "Booming market raises share price of this longtime pharmaceutical company."
+    },
+    {
+      "symbol": "OK4U",
+      "price": 20,
+      "flavor": "Inflation worries cause poor share price for this longtime pharmaceutical comapany."
+    }
+  ] 
+}
