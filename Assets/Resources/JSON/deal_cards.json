@@ -100,5 +100,139 @@
       "price": 20,
       "flavor": "Inflation worries cause poor share price for this longtime pharmaceutical comapany."
     }
-  ] 
+  ],
+  "homes": [
+    {
+      "smallDeal": true,
+      "type": "Condo",
+      "title": "Condo for Sale - 2BR/1BA",
+      "flavorText": "Excellent 2/1 Condo with many extras. Owner wants to relocate for dream job FAST! She's moving up - you can too! No Cash Flow, but a great possible capital gains opportunity.",
+      "cost": 40000,
+      "mortgage": 39000,
+      "downPayment": 1000,
+      "cashFlow": 0,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "House for Sale - 2BR/1BA",
+      "flavorText": "2/1 house in an older area offered by the Highway Department. The market has crashed and the city MUST sell. No Cash Flow but a possible capital gains opportunity.",
+      "cost": 30000,
+      "mortgage": 29000,
+      "downPayment": 1000,
+      "cashFlow": 0,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "Condo",
+      "title": "Condo for Sale - 2BR/1BA",
+      "flavorText": "Older 2/1 condo offered by young couple who want to move up to a 3/2 house due to growing family. Available soon.",
+      "cost": 55000,
+      "mortgage": 50000,
+      "downPayment": 5000,
+      "cashFlow": 160,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "House for Sale - 2BR/1BA",
+      "flavorText": "Nice 2/1 house available in a depressed market due to layoffs. Would make a good investment property for the right buyer.",
+      "cost": 50000,
+      "mortgage": 46000,
+      "downPayment": 4000,
+      "cashFlow": 200,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "House for Sale - 2BR/1BA",
+      "flavorText": "Not livedin for six months, this bank-foreclosed house just reduced. Loan includes estimated repair costs.",
+      "cost": 50000,
+      "mortgage": 48000,
+      "downPayment": 2000,
+      "cashFlow": 200,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "Condo",
+      "title": "Condo for Sale - 2BR/1BA",
+      "flavorText": "Bank forclosure! 2/1 condo in a desirable neighborhood close to jobs and stores. Make offer favorable financing by bank.",
+      "cost": 40000,
+      "mortgage": 35000,
+      "downPayment": 5000,
+      "cashFlow": 220,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "You Find a Great Deal!",
+      "flavorText": "Comapny bought transferred-manager's 2/1 house. No current tenant, it has been on the market six months and it has just been reduced. Take out a loan if you must, but BUY THIS!",
+      "cost": 45000,
+      "mortgage": 43000,
+      "downPayment": 2000,
+      "cashFlow": 250,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "You Find a Great Deal!",
+      "flavorText": "Older 2/1 house, repossessed by government agency. Ready to go with government financing and a tenant. Take out a loan if you must, but BUY THIS!",
+      "cost": 35000,
+      "mortgage": 33000,
+      "downPayment": 2000,
+      "cashFlow": 220,
+      "bed": 2, 
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "Condo",
+      "title": "Condo for Sale",
+      "flavorText": "Parents selling 2/1 condo used by their child in college town. Lots of demand for rentals in this area.",
+      "cost": 40000,
+      "mortgage": 36000,
+      "downPayment": 4000,
+      "cashFlow": 140,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "House for Sale - 2BR/1BA",
+      "flavorText": "Nice 2/1 rental house suddenly available due to estate closing. Well-maintained older property with existing tenant.",
+      "cost": 65000,
+      "mortgage": 60000,
+      "downPayment": 5000,
+      "cashFlow": 160,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "smallDeal": true,
+      "type": "House",
+      "title": "House for Sale - 2BR/1BA",
+      "flavorText": "Low down payment to pick up this 2/1 house. Owner/seller unexpectedly moving out of town. Right person will do well.",
+      "cost": 50000,
+      "mortgage": 47000,
+      "downPayment": 3000,
+      "cashFlow": 100,
+      "bed": 2,
+      "bath": 1 
+    }
+  ]
 }

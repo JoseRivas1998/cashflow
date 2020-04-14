@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class DealCard
@@ -17,9 +18,25 @@ public class DealCard
     }
 
     [System.Serializable]
+    private struct HomeCardJSON
+    {
+        public bool smallDeal;
+        public string type;
+        public string title;
+        public string flavorText;
+        public int cost;
+        public int mortgage;
+        public int downPayment;
+        public int cashFlow;
+        public int bed;
+        public int bath;
+    }
+
+    [System.Serializable]
     private struct DealCardsJSON
     {
         public StockCardJSON[] stocks;
+        public HomeCardJSON[] homes;
     }
 
     private static DealCard[] LoadStockCards(DealCardsJSON dealCards)
@@ -34,6 +51,18 @@ public class DealCard
         return stockCards;
     }
 
+    private static HomeCard[] LoadHomeCards(DealCardsJSON dealCards)
+    {
+        HomeCard[] homeCards = new HomeCard[dealCards.homes.Length];
+        for (int i = 0; i < homeCards.Length; i++)
+        {
+            HomeCardJSON card = dealCards.homes[i];
+            RealEstateType propertyType = (RealEstateType)Enum.Parse(typeof(RealEstateType), card.type, true);
+            homeCards[i] = new HomeCard(card.smallDeal, propertyType, card.title, card.flavorText, card.cost, card.mortgage, card.downPayment, card.cashFlow, card.bed, card.bath);
+        }
+        return homeCards;
+    }
+
     public static List<DealCard> SmallDeals()
     {
         var dealCardsFile = Resources.Load("JSON/deal_cards");
@@ -42,6 +71,14 @@ public class DealCard
         List<DealCard> smallDeals = new List<DealCard>();
         smallDeals.AddRange(LoadStockCards(dealCards));
 
+        HomeCard[] homeCards = LoadHomeCards(dealCards);
+        foreach (HomeCard homeCard in homeCards)
+        {
+            if(homeCard.smallDeal)
+            {
+                smallDeals.Add(homeCard);
+            }
+        }
 
         return smallDeals;
     }
