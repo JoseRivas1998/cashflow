@@ -572,6 +572,120 @@
       "downPayment": 18000,
       "cashFlow": 900,
       "units": 2
+    },
+    {
+      "type": "Apartment",
+      "title": "Apartment House for Sale",
+      "flavorText": "Owner is retiring and this older 24-unity property is fully rented with great cash flow. Great location near a community college.",
+      "cost": 550000,
+      "mortgage": 500000,
+      "downPayment": 50000,
+      "cashFlow": 2400,
+      "units": 24
+    },
+    {
+      "type": "Apartment",
+      "title": "Apartment House for Sale",
+      "flavorText": "Two buildings totaling 24 units for sale. Owner managed with on-site assistant. Retirement prompts sale. Big Opportunity.",
+      "cost": 575000,
+      "mortgage": 500000,
+      "downPayment": 75000,
+      "cashFlow": 3600,
+      "units": 24
+    },
+    {
+      "type": "Apartment",
+      "title": "Apartment House for Sale",
+      "flavorText": "60-unit complex available from pension fund that foreclosed on builder/owner. On-site management in place.",
+      "cost": 1200000,
+      "mortgage": 1000000,
+      "downPayment": 200000,
+      "cashFlow": 11000,
+      "units": 60
+    },
+    {
+      "type": "Apartment",
+      "title": "Apartment House for Sale",
+      "flavorText": "12-unit apartment house offered by out-of-state heirs of handyman/owner. Highly desirable location with a long waiting list for apartment units at this property.",
+      "cost": 350000,
+      "mortgage": 300000,
+      "downPayment": 50000,
+      "cashFlow": 3000,
+      "units": 12
+    }
+  ],
+  "businesses": [
+    {
+      "title": "Linmited Partner Wanted",
+      "flavorText": "Sandwich shop is doubling the number of locations. Owner needs an investor to get started.",
+      "cost": 30000,
+      "mortgage": 0,
+      "downPayment": 30000,
+      "cashFlow": 1700
+    },
+    {
+      "title": "Limited Partner Wanted",
+      "flavorText": "Successful doctor expanding office and clinic. Needs partner to fund equity portion of construction costs.",
+      "cost": 25000,
+      "mortgage": 0,
+      "downPayment": 25000,
+      "cashFlow": 1300
+    },
+    {
+      "title": "Pizza Franchise for Sale",
+      "flavorText": "Healthy pizza company franchise. Trend in high-end fast food is booming. High traffic location next to college campus.",
+      "cost": 500000,
+      "mortgage": 400000,
+      "downPayment": 100000,
+      "cashFlow": 5000
+    },
+    {
+      "title": "Car Wash for Sale",
+      "flavorText": "Family car wash in a prime location is for sale. Family feud forces sale as the want out ASAP.",
+      "cost": 350000,
+      "mortgage": 300000,
+      "downPayment": 50000,
+      "cashFlow": 2500
+    },
+    {
+      "title": "Limited Partner Wanted",
+      "flavorText": "Auto Dealer wants to expand into leasing 2 and 3 year old cars. Needs capital as car maker's finance company is not interested.",
+      "cost": 30000,
+      "mortgage": 0,
+      "downPayment": 30000,
+      "cashFlow": 1500
+    },
+    {
+      "title": "Limited Partner Wanted",
+      "flavorText": "Successful pizza chain expanding into production of forzen pizzas for grocery stores. Owener needs capital for equipment.",
+      "cost": 20000,
+      "mortgage": 0,
+      "downPayment": 20000,
+      "cashFlow": 1200
+    },
+    {
+      "title": "Automated Business for Sale",
+      "flavorText": "Vintage arcade with 30 pinball machines and loyal clientale. Owner has become overextended and is desperate to liquidate.",
+      "cost": 180000,
+      "mortgage": 160000,
+      "downPayment": 20000,
+      "cashFlow": 1600
+    },
+    {
+      "title": "Automated Business for Sale",
+      "flavorText": "Personal bankruptcy forces sale of busy, successful laundromat on busy highway. Growth in local area is expected to skyrocket.",
+      "cost": 150000,
+      "mortgage": 120000,
+      "downPayment": 30000,
+      "cashFlow": 2500
+    },
+    {
+      "title": "Automated Business",
+      "flavorText": "Successful 4-bay, coin-operated car wash near busy intersection. Seller is moving to retirement community out of state.",
+      "cost": 125000,
+      "mortgage": 100000,
+      "downPayment": 25000,
+      "cashFlow": 1800
     }
   ]
 }

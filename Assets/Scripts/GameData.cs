@@ -30,7 +30,7 @@ public class GameData : Singleton<GameData>
         {
             return professions;
         }
-        var professionsJSON = Resources.Load("JSON/professions");
+        var professionsJSON = Resources.Load<TextAsset>("JSON/professions");
         professions = Professions.CreateFromJSON(professionsJSON.ToString());
         professionsLoaded = true;
         return professions;
@@ -42,7 +42,7 @@ public class GameData : Singleton<GameData>
         {
             return stocks;
         }
-        var stocksJSON = Resources.Load("JSON/stocks");
+        var stocksJSON = Resources.Load<TextAsset>("JSON/stocks");
         stocks = Stocks.CreateFromJSON(stocksJSON.ToString());
         stocksLoaded = true;
         return stocks;

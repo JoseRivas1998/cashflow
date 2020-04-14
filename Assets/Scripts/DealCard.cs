@@ -75,6 +75,17 @@ public class DealCard
     }
 
     [System.Serializable]
+    private struct BusinessCardJSON
+    {
+        public string title;
+        public string flavorText;
+        public int cost;
+        public int mortgage;
+        public int downPayment;
+        public int cashFlow;
+    }
+
+    [System.Serializable]
     private struct DealCardsJSON
     {
         public StockCardJSON[] stocks;
@@ -82,6 +93,7 @@ public class DealCard
         public GoldCardJSON[] gold;
         public GambleCardJSON[] gamble;
         public MultiCardJSON[] multi;
+        public BusinessCardJSON[] businesses;
     }
 
     private static DealCard[] LoadStockCards(DealCardsJSON dealCards)
@@ -132,8 +144,8 @@ public class DealCard
 
     public static List<DealCard> SmallDeals()
     {
-        var dealCardsFile = Resources.Load("JSON/deal_cards");
-        DealCardsJSON dealCards = JsonUtility.FromJson<DealCardsJSON>(dealCardsFile.ToString());
+        var dealCardsFile = Resources.Load<TextAsset>("JSON/deal_cards");
+        DealCardsJSON dealCards = JsonUtility.FromJson<DealCardsJSON>(dealCardsFile.text);
         
         List<DealCard> smallDeals = new List<DealCard>();
         smallDeals.AddRange(LoadStockCards(dealCards));
@@ -165,9 +177,20 @@ public class DealCard
         return multiCards;
     }
 
+    private static RealEstateCard[] LoadBusinesses(DealCardsJSON dealCards)
+    {
+        RealEstateCard[] businessCards = new RealEstateCard[dealCards.businesses.Length];
+        for (int i = 0; i < businessCards.Length; i++)
+        {
+            BusinessCardJSON card = dealCards.businesses[i];
+            businessCards[i] = new RealEstateCard(false, RealEstateType.Business, card.title, card.flavorText, card.cost, card.mortgage, card.downPayment, card.cashFlow);
+        }
+        return businessCards;
+    }
+
     public static List<DealCard> BigDeals()
     {
-        var dealCardsFile = Resources.Load("JSON/deal_cards");
+        var dealCardsFile = Resources.Load<TextAsset>("JSON/deal_cards");
         DealCardsJSON dealCards = JsonUtility.FromJson<DealCardsJSON>(dealCardsFile.ToString());
 
         List<DealCard> bigDeals = new List<DealCard>();
@@ -182,6 +205,7 @@ public class DealCard
         }
 
         bigDeals.AddRange(LoadMultiCards(dealCards));
+        bigDeals.AddRange(LoadBusinesses(dealCards));
 
         return bigDeals;
 
