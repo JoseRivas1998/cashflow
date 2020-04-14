@@ -13,6 +13,12 @@ public class GameDataTester : MonoBehaviour
         {
             Debug.Log(card);
         }
+        Debug.Log("================================");
+        List<DealCard> bigDeals = DealCard.BigDeals();
+        foreach (DealCard card in bigDeals)
+        {
+            Debug.Log(card);
+        }
     }
 
     // Update is called once per frame

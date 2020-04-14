@@ -139,6 +139,26 @@ public class DealCard
         return smallDeals;
     }
 
+    public static List<DealCard> BigDeals()
+    {
+        var dealCardsFile = Resources.Load("JSON/deal_cards");
+        DealCardsJSON dealCards = JsonUtility.FromJson<DealCardsJSON>(dealCardsFile.ToString());
+
+        List<DealCard> bigDeals = new List<DealCard>();
+
+        HomeCard[] homeCards = LoadHomeCards(dealCards);
+        foreach (HomeCard homeCard in homeCards)
+        {
+            if(!homeCard.smallDeal)
+            {
+                bigDeals.Add(homeCard);
+            }
+        }
+
+        return bigDeals;
+
+    }
+
     public override string ToString()
     {
         return (smallDeal ? "Small" : "Big") + " Deal: " + type +

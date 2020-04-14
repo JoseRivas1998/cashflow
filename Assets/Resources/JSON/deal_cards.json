@@ -233,6 +233,102 @@
       "cashFlow": 100,
       "bed": 2,
       "bath": 1
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Divorce leads to sale of this 3/2 house in an area full of owner-occupied homes. It has been on the market for five months.",
+      "cost": 350000,
+      "mortgage": 330000,
+      "downPayment": 20000,
+      "cashFlow": 1000,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Skilled tradesman kept this 3/2 house in excellent condition, so it commands top-dollar rent in older neighborhood.",
+      "cost": 325000,
+      "mortgage": 307000,
+      "downPayment": 18000,
+      "cashFlow": 900,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Businessman needs cash to save his business and is liquidating this 3/2 house. It is currently occupied by a happy tenant.",
+      "cost": 225000,
+      "mortgage": 211000,
+      "downPayment": 14000,
+      "cashFlow": 750,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Split level 3/2 house on out-of-way golf course offered by heirs of owner. Golf membership is included.",
+      "cost": 275000,
+      "mortgage": 260000,
+      "downPayment": 15000,
+      "cashFlow": 800,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Nice 3/2 house with inground pool and all nice appliances available in upper-middle-class area. Good schools.",
+      "cost": 300000,
+      "mortgage": 280000,
+      "downPayment": 20000,
+      "cashFlow": 1000,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "3/2 house in a rough neighborhood. Positive cash flow even though rents are weak.",
+      "cost": 300000,
+      "mortgage": 288000,
+      "downPayment": 12000,
+      "cashFlow": 800,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "Downsized manager cannot afford payments on new salary and must sell this 3/2 house. The surrounding area is in transition.",
+      "cost": 270000,
+      "mortgage": 255000,
+      "downPayment": 15000,
+      "cashFlow": 800,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "smallDeal": false,
+      "type": "House",
+      "title": "House for Sale - 3Br/2Ba",
+      "flavorText": "3/2 house near the airport. Low cost and lots of cash flow potential, if you can stand the noise.",
+      "cost": 275000,
+      "mortgage": 259000,
+      "downPayment": 16000,
+      "cashFlow": 750,
+      "bed": 3,
+      "bath": 2
     }
   ],
   "gold": [
