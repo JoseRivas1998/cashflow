@@ -195,7 +195,7 @@
       "mortgage": 33000,
       "downPayment": 2000,
       "cashFlow": 220,
-      "bed": 2, 
+      "bed": 2,
       "bath": 1
     },
     {
@@ -232,7 +232,21 @@
       "downPayment": 3000,
       "cashFlow": 100,
       "bed": 2,
-      "bath": 1 
+      "bath": 1
+    }
+  ],
+  "gold": [
+    {
+      "title": "Coin Collector Liquidates",
+      "flavorText": "A coin collector needs cash quick to shore up a tax issue. Will sell you five (5) gold coiins, well below going rate.",
+      "coins":5,
+      "cost": 1000
+    },
+    {
+      "title": "Friend Needs Cash Quick",
+      "flavorText": "A friend has urgent need for money. Will sell you ten (10) gold coins, well below going rate.",
+      "coins": 10,
+      "cost": 3000
     }
   ]
 }

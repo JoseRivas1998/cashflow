@@ -5,5 +5,6 @@ using UnityEngine;
 public enum DealType
 {
     Stock,
-    RealEstate
+    RealEstate,
+    Gold
 }

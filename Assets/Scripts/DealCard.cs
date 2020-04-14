@@ -33,10 +33,20 @@ public class DealCard
     }
 
     [System.Serializable]
+    private struct GoldCardJSON
+    {
+        public string title;
+        public string flavorText;
+        public int coins;
+        public int cost;
+    }
+
+    [System.Serializable]
     private struct DealCardsJSON
     {
         public StockCardJSON[] stocks;
         public HomeCardJSON[] homes;
+        public GoldCardJSON[] gold;
     }
 
     private static DealCard[] LoadStockCards(DealCardsJSON dealCards)
@@ -63,6 +73,16 @@ public class DealCard
         return homeCards;
     }
 
+    private static GoldCard[] LoadGoldCards(DealCardsJSON dealCards)
+    {
+        GoldCard[] goldCards = new GoldCard[dealCards.gold.Length];
+        for (int i = 0; i < goldCards.Length; i++)
+        {
+            GoldCardJSON card = dealCards.gold[i];
+            goldCards[i] = new GoldCard(card.title, card.flavorText, card.coins, card.cost);
+        }
+        return goldCards;
+    }
     public static List<DealCard> SmallDeals()
     {
         var dealCardsFile = Resources.Load("JSON/deal_cards");
@@ -79,6 +99,8 @@ public class DealCard
                 smallDeals.Add(homeCard);
             }
         }
+
+        smallDeals.AddRange(LoadGoldCards(dealCards));
 
         return smallDeals;
     }
