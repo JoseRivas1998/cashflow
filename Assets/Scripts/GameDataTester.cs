@@ -19,6 +19,12 @@ public class GameDataTester : MonoBehaviour
         {
             Debug.Log(card);
         }
+        Debug.Log("================================");
+        List<DoodadCard> doodads = DoodadCard.LoadDoodadCards();
+        foreach (DoodadCard card in doodads)
+        {
+            Debug.Log(card);
+        }
     }
 
     // Update is called once per frame

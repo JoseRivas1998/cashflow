@@ -1,0 +1,214 @@
+{
+  "doodads": [
+    {
+      "title": "Cappuccino Machine",
+      "cost": 300,
+      "child": false
+    },
+    {
+      "title": "First Car for Child",
+      "cost": 5000,
+      "child": true
+    },
+    {
+      "title": "Get Newest Phone",
+      "cost": 300,
+      "child": false
+    },
+    {
+      "title": "Food Processor",
+      "cost": 200,
+      "child": false
+    },
+    {
+      "title": "Jet Ski",
+      "cost": 3000,
+      "child": false
+    },
+    {
+      "title": "Family Vacation",
+      "cost": 2500,
+      "child": false
+    },
+    {
+      "title": "High School Reunion",
+      "cost": 500,
+      "child": false
+    },
+    {
+      "title": "Take a Trip to Wine Country",
+      "cost": 1000,
+      "child": false
+    },
+    {
+      "title": "Go to Casino",
+      "cost": 800,
+      "child": false
+    },
+    {
+      "title": "New Gold Clubs",
+      "cost": 800,
+      "child": false
+    },
+    {
+      "title": "New Sound System",
+      "cost": 1500,
+      "child": false
+    },
+    {
+      "title": "New Tennis Racket",
+      "cost": 200,
+      "child": false
+    },
+    {
+      "title": "New Car Stereo",
+      "cost": 700,
+      "child": false
+    },
+    {
+      "title": "New Gym Clothes",
+      "cost": 300,
+      "child": false
+    },
+    {
+      "title": "New Clothes",
+      "cost": 1000,
+      "child": false
+    },
+    {
+      "title": "Private Tutoring for your Child",
+      "cost": 500,
+      "child": true
+    },
+    {
+      "title": "Date Night: Dinner, Concert & Dessert",
+      "cost": 500,
+      "child": false
+    },
+    {
+      "title": "Golf Club Membership",
+      "cost": 2000,
+      "child": false
+    },
+    {
+      "title": "Pay for Lunch with Friends",
+      "cost": 200,
+      "child": false
+    },
+    {
+      "title": "Next-Gen Game Console",
+      "cost": 600,
+      "child": false
+    },
+    {
+      "title": "New Computer",
+      "cost": 1800,
+      "child": false
+    },
+    {
+      "title": "Big Screen TV",
+      "cost": 2500,
+      "child": false
+    },
+    {
+      "title": "Build a Home Gym",
+      "cost": 3000,
+      "child": false
+    },
+    {
+      "title": "Concert Tickets",
+      "cost": 200,
+      "child": false
+    },
+    {
+      "title": "New Rims for your Car",
+      "cost": 2000,
+      "child": false
+    },
+    {
+      "title": "Visit the Dentist",
+      "cost": 700,
+      "child": false
+    },
+    {
+      "title": "Repaint your House",
+      "cost": 600,
+      "child": false
+    },
+    {
+      "title": "Child Needs Braces",
+      "cost": 4000,
+      "child": true
+    },
+    {
+      "title": "Birthday Party for your Child",
+      "cost": 500,
+      "child": true
+    },
+    {
+      "title": "New Tailored Suit",
+      "cost": 1000,
+      "child": false
+    },
+    {
+      "title": "Remodel Kitchen",
+      "cost": 7500,
+      "child": false
+    },
+    {
+      "title": "New Bowling Ball",
+      "cost": 100,
+      "child": false
+    },
+    {
+      "title": "Replace Car Air Conditioner",
+      "cost": 700,
+      "child": false
+    },
+    {
+      "title": "New Watch",
+      "cost": 200,
+      "child": false
+    },
+    {
+      "title": "Fishing Boat",
+      "cost": 5000,
+      "child": false
+    },
+    {
+      "title": "Season Tickets",
+      "cost": 1500,
+      "child": false
+    },
+    {
+      "title": "Costume Jewlery",
+      "cost": 400,
+      "child": false
+    },
+    {
+      "title": "New Tires",
+      "cost": 600,
+      "child": false
+    },
+    {
+      "title": "New Easy Chair",
+      "cost": 500,
+      "child": false
+    },
+    {
+      "title": "Buy Local Artist's Painting",
+      "cost": 800,
+      "child": false
+    },
+    {
+      "title": "Help Pay for Child's Wedding",
+      "cost": 2000,
+      "child": true
+    },
+    {
+      "title": "New Sunglasses",
+      "cost": 200,
+      "child": false
+    }
+  ]
+}
