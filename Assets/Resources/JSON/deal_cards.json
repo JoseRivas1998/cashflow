@@ -421,5 +421,157 @@
       "cost": 500,
       "mlm": true
     }
+  ],
+  "multi": [
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "4-plex in recovering neighborhood. Fully rented, repairs kept up. Needs your down payment and patience.",
+      "cost": 300000,
+      "mortgage": 280000,
+      "downPayment": 20000,
+      "cashFlow": 1100,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "4-plex for sale in rehabilitating neighborhood. Owner being forced out by income tax liens.",
+      "cost": 370000,
+      "mortgage": 360000,
+      "downPayment": 10000,
+      "cashFlow": 900,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "Older 4-plex available - forced sale. Out-of-state, financioally distressed owner years behind on taxes. Some records available.",
+      "cost": 280000,
+      "mortgage": 264000,
+      "downPayment": 16000,
+      "cashFlow": 1000,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "Nice, well-maintained 4-plex in good neighborhood. Stable tenants, positive cash flow, minor repairs.",
+      "cost": 225000,
+      "mortgage": 210000,
+      "downPayment": 15000,
+      "cashFlow": 700,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "4-plex for sale by owner, moving to another state. Full records, fully rented, low occupant turnover in good neighborhood.",
+      "cost": 340000,
+      "mortgage": 308000,
+      "downPayment": 32000,
+      "cashFlow": 1400,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "4-Plex for Sale",
+      "flavorText": "4-plex next to new highway for sale. Owner/occupant moving to quieter area. Priced for quick sale.",
+      "cost": 290000,
+      "mortgage": 275000,
+      "downPayment": 15000,
+      "cashFlow": 800,
+      "units": 4
+    },
+    {
+      "type": "Plex",
+      "title": "8-Plex for Sale",
+      "flavorText": "Reinvesting owner offers 8-plex for sale at reasonable price. Financing already in place. All it needs is your down payment.",
+      "cost": 320000,
+      "mortgage": 280000,
+      "downPayment": 40000,
+      "cashFlow": 1700,
+      "units": 8
+    },
+    {
+      "type": "Plex",
+      "title": "8-Plex for Sale",
+      "flavorText": "Owner's legal troubles lead to forced sale of this 8-plex. Jump on this deal before someone else does.",
+      "cost": 250000,
+      "mortgage": 210000,
+      "downPayment": 40000,
+      "cashFlow": 2000,
+      "units": 8
+    },
+    {
+      "type": "Plex",
+      "title": "8-Plex for Sale",
+      "flavorText": "Professional person urgently needs cash to save partnership. 8-plex is being sold to raise capital. Great opportunity for the right person.",
+      "cost": 360000,
+      "mortgage": 328000,
+      "downPayment": 32000,
+      "cashFlow": 1800,
+      "units": 8
+    },
+    {
+      "type": "Plex",
+      "title": "8-Plex for Sale",
+      "flavorText": "Owner offers his 8-plex at the current, appraised value. It has all the amenities renters look for. Fully rented at market rent with excellent records.",
+      "cost": 240000,
+      "mortgage": 200000,
+      "downPayment": 40000,
+      "cashFlow": 1800,
+      "units": 8
+    },
+    {
+      "type": "Plex",
+      "title": "Duplex for Sale",
+      "flavorText": "Owner is moving out of this duplex due to growing family. Tenant in other unit remains and new tenant waiting to move into this well-maintained property.",
+      "cost": 250000,
+      "mortgage": 234000,
+      "downPayment": 16000,
+      "cashFlow": 900,
+      "units": 2
+    },
+    {
+      "type": "Plex",
+      "title": "Duplex for Sale",
+      "flavorText": "Tenants in place at this investment duplex! Owner has income tax problems and needs to sell quickly.",
+      "cost": 245000,
+      "mortgage": 233000,
+      "downPayment": 12000,
+      "cashFlow": 800,
+      "units": 2
+    },
+    {
+      "type": "Plex",
+      "title": "Duplex for Sale",
+      "flavorText": "Duplex owner must sell to pay hospital bills. Two tenants are in place at this well-maintained property and it is a good investment opportunity.",
+      "cost": 260000,
+      "mortgage": 248000,
+      "downPayment": 12000,
+      "cashFlow": 600,
+      "units": 2
+    },
+    {
+      "type": "Plex",
+      "title": "Duplex for Sale",
+      "flavorText": "Well-maintained duplex in desirable area available due to transfer of owner. Excellent investment opportunity for the right buyer.",
+      "cost": 260000,
+      "mortgage": 250000,
+      "downPayment": 10000,
+      "cashFlow": 1100,
+      "units": 2
+    },
+    {
+      "type": "Plex",
+      "title": "Duplex for Sale",
+      "flavorText": "This duplex is the best in the neighborhood! Proud owner retiring to another state to be near her grandchildren.",
+      "cost": 170000,
+      "mortgage": 152000,
+      "downPayment": 18000,
+      "cashFlow": 900,
+      "units": 2
+    }
   ]
 }

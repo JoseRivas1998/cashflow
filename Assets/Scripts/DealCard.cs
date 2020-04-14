@@ -62,12 +62,26 @@ public class DealCard
     }
 
     [System.Serializable]
+    private struct MultiCardJSON
+    {
+        public string type;
+        public string title;
+        public string flavorText;
+        public int cost;
+        public int mortgage;
+        public int downPayment;
+        public int cashFlow;
+        public int units;
+    }
+
+    [System.Serializable]
     private struct DealCardsJSON
     {
         public StockCardJSON[] stocks;
         public HomeCardJSON[] homes;
         public GoldCardJSON[] gold;
         public GambleCardJSON[] gamble;
+        public MultiCardJSON[] multi;
     }
 
     private static DealCard[] LoadStockCards(DealCardsJSON dealCards)
@@ -139,6 +153,18 @@ public class DealCard
         return smallDeals;
     }
 
+    private static MultiCard[] LoadMultiCards(DealCardsJSON dealCards)
+    {
+        MultiCard[] multiCards = new MultiCard[dealCards.multi.Length];
+        for (int i = 0; i < multiCards.Length; i++)
+        {
+            MultiCardJSON card = dealCards.multi[i];
+            RealEstateType propertyType = (RealEstateType)Enum.Parse(typeof(RealEstateType), card.type, true);
+            multiCards[i] = new MultiCard(propertyType, card.title, card.flavorText, card.cost, card.mortgage, card.downPayment, card.cashFlow, card.units);
+        }
+        return multiCards;
+    }
+
     public static List<DealCard> BigDeals()
     {
         var dealCardsFile = Resources.Load("JSON/deal_cards");
@@ -154,6 +180,8 @@ public class DealCard
                 bigDeals.Add(homeCard);
             }
         }
+
+        bigDeals.AddRange(LoadMultiCards(dealCards));
 
         return bigDeals;
 
