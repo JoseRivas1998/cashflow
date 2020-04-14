@@ -239,7 +239,7 @@
     {
       "title": "Coin Collector Liquidates",
       "flavorText": "A coin collector needs cash quick to shore up a tax issue. Will sell you five (5) gold coiins, well below going rate.",
-      "coins":5,
+      "coins": 5,
       "cost": 1000
     },
     {
@@ -247,6 +247,83 @@
       "flavorText": "A friend has urgent need for money. Will sell you ten (10) gold coins, well below going rate.",
       "coins": 10,
       "cost": 3000
+    }
+  ],
+  "gamble": [
+    {
+      "title": "SIster-In-Law borrows Money",
+      "flavorText": "Sister-in-law is downsized. Needs $5,000 to make house payment. She promises to pay you back $10,000 after she finds a new job.",
+      "instruction": "If you choose to help, pay $5,000 and roll 1 die:",
+      "badMin": 1,
+      "badMax": 3,
+      "goodMin": 4,
+      "goodMax": 6,
+      "reward": 10000,
+      "gold": false,
+      "badText": "She never pays you back and you're out $5,000",
+      "rewardText": "She pays you back $10,000, but family get-togethers are still awkward.",
+      "cost": 5000,
+      "mlm": false
+    },
+    {
+      "title": "Where There's a Will...",
+      "flavorText": "A distant relative passes away. You are named int he will but need to travel to attend.",
+      "instruction": "If you attend, pay $750 for travel and roll 1 die:",
+      "badMin": 1,
+      "badMax": 5,
+      "goodMin": 6,
+      "goodMax": 6,
+      "reward": 10,
+      "gold": true,
+      "badText": "You are bequeathed an elderly cat. Enjoy!",
+      "rewardText": "You are bequeathed ten (10) Gold Coins. Add these to your Asset sheet.",
+      "cost": 750,
+      "mlm": false
+    },
+    {
+      "title": "What's in the Box?!",
+      "flavorText": "You have the option to purchase a locked filing cabinet at an estate sale.",
+      "instruction": "If you buy the cabinet, pay $500 and roll 1 die:",
+      "badMin": 1,
+      "badMax": 5,
+      "goodMin": 6,
+      "goodMax": 6,
+      "reward": 10,
+      "gold": true,
+      "badText": "You find...ABSOLUTELY NOTHING in the cabinet.",
+      "rewardText": "You find...ten (10) Gold Coins. CHA-CHING! Add these to your Asset sheet.",
+      "cost": 500,
+      "mlm": false
+    },
+    {
+      "title": "Multi-Level Marketing Buy-In",
+      "flavorText": "You have a chance to invest in a Muilti-Level-Marketing opportunity. Company is looking to spread the reach of their newest venture.",
+      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD:",
+      "badMin": 1,
+      "badMax": 3,
+      "goodMin": 4,
+      "goodMax": 6,
+      "reward": 500,
+      "gold": false,
+      "badText": "No returns this month, but keep trying.",
+      "rewardText": "Your sweat equity paid off! Collect $500",
+      "cost": 500,
+      "mlm": true
+    },
+    {
+      "title": "Multi-Level Marketing Buy-In",
+      "flavorText": "You have a chance to invest in a Muilti-Level-Marketing opportunity. Company is looking to spread the reach of their newest venture.",
+      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD:",
+      "badMin": 1,
+      "badMax": 3,
+      "goodMin": 4,
+      "goodMax": 6,
+      "reward": 500,
+      "gold": false,
+      "badText": "No returns this month, but keep trying.",
+      "rewardText": "Your sweat equity paid off! Collect $500",
+      "cost": 500,
+      "mlm": true
     }
   ]
 }

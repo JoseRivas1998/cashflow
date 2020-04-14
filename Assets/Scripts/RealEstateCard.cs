@@ -6,8 +6,6 @@ public class RealEstateCard : DealCard
 {
     
     public RealEstateType propertyType { get; private set; }
-    public string title { get; private set; }
-    public string flavorText { get; private set; }
     public int cost { get; private set; }
     public int mortgage { get; private set; }
     public int downPayment { get; private set; }
@@ -31,8 +29,6 @@ public class RealEstateCard : DealCard
     {
         return base.ToString() +
             "\t" + propertyType +
-            "\t" + title +
-            "\t" + flavorText +
             "\t Cost: " + Utility.FormatMoney(cost) +
             "\t Mortgage: " + Utility.FormatMoney(mortgage) +
             "\t Down Payment: " + Utility.FormatMoney(downPayment) +

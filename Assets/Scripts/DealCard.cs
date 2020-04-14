@@ -8,6 +8,8 @@ public class DealCard
 
     public DealType type { get; protected set; }
     public bool smallDeal { get; protected set; }
+    public string title { get; protected set; }
+    public string flavorText { get; protected set; }
 
     [System.Serializable]
     private struct StockCardJSON
@@ -42,11 +44,30 @@ public class DealCard
     }
 
     [System.Serializable]
+    private struct GambleCardJSON
+    {
+        public string title;
+        public string flavorText;
+        public string instruction;
+        public int badMin;
+        public int badMax;
+        public int goodMin;
+        public int goodMax;
+        public int reward;
+        public bool gold;
+        public string badText;
+        public string rewardText;
+        public int cost;
+        public bool mlm;
+    }
+
+    [System.Serializable]
     private struct DealCardsJSON
     {
         public StockCardJSON[] stocks;
         public HomeCardJSON[] homes;
         public GoldCardJSON[] gold;
+        public GambleCardJSON[] gamble;
     }
 
     private static DealCard[] LoadStockCards(DealCardsJSON dealCards)
@@ -83,6 +104,18 @@ public class DealCard
         }
         return goldCards;
     }
+
+    private static GambleCard[] LoadGambleCards(DealCardsJSON dealCards)
+    {
+        GambleCard[] gambleCards = new GambleCard[dealCards.gamble.Length];
+        for (int i = 0; i < gambleCards.Length; i++)
+        {
+            GambleCardJSON card = dealCards.gamble[i];
+            gambleCards[i] = new GambleCard(card.title, card.flavorText, card.instruction, card.goodMin, card.goodMax, card.badMin, card.badMax, card.reward, card.gold, card.rewardText, card.badText, card.cost, card.mlm);
+        }
+        return gambleCards;
+    }
+
     public static List<DealCard> SmallDeals()
     {
         var dealCardsFile = Resources.Load("JSON/deal_cards");
@@ -101,13 +134,16 @@ public class DealCard
         }
 
         smallDeals.AddRange(LoadGoldCards(dealCards));
+        smallDeals.AddRange(LoadGambleCards(dealCards));
 
         return smallDeals;
     }
 
     public override string ToString()
     {
-        return (smallDeal ? "Small" : "Big") + " Deal: " + type;
+        return (smallDeal ? "Small" : "Big") + " Deal: " + type +
+            "\t" + title +
+            "\t" + flavorText;
     }
 
 }

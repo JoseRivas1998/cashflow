@@ -6,5 +6,6 @@ public enum DealType
 {
     Stock,
     RealEstate,
-    Gold
+    Gold,
+    Gamble
 }

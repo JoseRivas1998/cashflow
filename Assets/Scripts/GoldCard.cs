@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GoldCard : DealCard
 {
-    public string title { get; private set; }
-    public string flavorText { get; private set; }
     public int coins { get; private set; }
     public int cost { get; private set; }
 
@@ -22,8 +20,6 @@ public class GoldCard : DealCard
     public override string ToString()
     {
         return base.ToString() +
-            "\t" + title +
-            "\t" + flavorText +
             "\tCoins: " + coins +
             "\tCost: " + Utility.FormatMoney(cost);
     }
