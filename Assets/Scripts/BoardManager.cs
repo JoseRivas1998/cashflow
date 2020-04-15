@@ -54,10 +54,14 @@ public class BoardManager : MonoBehaviour
     };
 
     public bool debug;
+    public bool debugRatRaceDonut;
+    public bool debugRatRaceArcs;
+    public bool debugRatRaceCenters;
     public float ratRaceOuterRadius;
     public float ratRaceInnerRadius;
     public Vector3 ratRaceCenterOffset;
     public float ratRaceStartSpaceAngleOffset;
+    public float ratRaceSpaceCenterThreshold;
 
     // Start is called before the first frame update
     void Start()
@@ -78,21 +82,56 @@ public class BoardManager : MonoBehaviour
     {
         if (debug)
         {
-            UnityEditor.Handles.color = new Color(0, 0, 1, 0.25f);
-            UnityEditor.Handles.DrawSolidDisc(transform.position + ratRaceCenterOffset, Vector3.up, ratRaceOuterRadius);
-            UnityEditor.Handles.color = new Color(0, 1, 0, 0.25f);
-            UnityEditor.Handles.DrawSolidDisc(transform.position + ratRaceCenterOffset, Vector3.up, ratRaceInnerRadius);
+            if(debugRatRaceDonut)
+            {
+                UnityEditor.Handles.color = new Color(0, 0, 1, 0.25f);
+                UnityEditor.Handles.DrawSolidDisc(transform.position + ratRaceCenterOffset, Vector3.up, ratRaceOuterRadius);
+                UnityEditor.Handles.color = new Color(0, 1, 0, 0.25f);
+                UnityEditor.Handles.DrawSolidDisc(transform.position + ratRaceCenterOffset, Vector3.up, ratRaceInnerRadius);
+            }
             for (int i = 0; i < ratRaceSpaces.Length; i++)
             {
+                
                 RatRaceSpaceTypes space = ratRaceSpaces[i];
-                float sectorAngle = 360 / ratRaceSpaces.Length;
-                float fromAngle = (ratRaceStartSpaceAngleOffset - (sectorAngle * i)) * Mathf.Deg2Rad;
                 Color c = ratRaceSpaceColors[space];
                 UnityEditor.Handles.color = new Color(c.r, c.g, c.b, 0.5f);
-                Vector3 from = new Vector3(Mathf.Cos(fromAngle), 0, Mathf.Sin(fromAngle));
-                UnityEditor.Handles.DrawSolidArc(transform.position + ratRaceCenterOffset, Vector3.up, from, sectorAngle, ratRaceOuterRadius);
+                if (debugRatRaceArcs)
+                {
+                    float fromAngle = SpaceStartAngleDeg(i) * Mathf.Deg2Rad;
+                    Vector3 from = new Vector3(Mathf.Cos(fromAngle), 0, Mathf.Sin(fromAngle));
+                    UnityEditor.Handles.DrawSolidArc(transform.position + ratRaceCenterOffset, Vector3.up, from, SpaceArcAngleDeg(), ratRaceOuterRadius);
+                }
+                if(debugRatRaceCenters)
+                {
+                    Vector3 center = SpaceCenter(i);
+                    UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
+                }
             }
         }
+    }
+
+    public float SpaceArcAngleDeg()
+    {
+        return 360 / ratRaceSpaces.Length;
+    }
+
+    public float SpaceLength()
+    {
+        return ratRaceOuterRadius - ratRaceInnerRadius;
+    }
+
+    public float SpaceStartAngleDeg(int space)
+    {
+        return ratRaceStartSpaceAngleOffset - (SpaceArcAngleDeg() * space);
+    }
+
+    public Vector3 SpaceCenter(int space)
+    {
+        float distanceFromCenter = ratRaceInnerRadius + (SpaceLength() * 0.5f);
+        float angleDeg = SpaceStartAngleDeg(space) - (SpaceArcAngleDeg() * 0.5f);
+        float angleRad = angleDeg * Mathf.Deg2Rad;
+        Vector3 offset = new Vector3(Mathf.Cos(angleRad), 0, Mathf.Sin(angleRad)) * distanceFromCenter;
+        return transform.position + ratRaceCenterOffset + offset;
     }
 
 }
