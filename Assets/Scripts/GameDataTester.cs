@@ -25,6 +25,12 @@ public class GameDataTester : MonoBehaviour
         {
             Debug.Log(card);
         }
+        Debug.Log("================================");
+        List<MarketCard> marketCards = MarketCard.LoadMarketCards();
+        foreach (MarketCard card in marketCards)
+        {
+            Debug.Log(card);
+        }
     }
 
     // Update is called once per frame

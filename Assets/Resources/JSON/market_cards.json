@@ -1,0 +1,125 @@
+{
+  "homeBuyers": [
+    {
+      "title": "House or Condo Buyer 2Br/1Ba",
+      "flavorText": "You are offered $65,000 for a 2Br/1Ba House or Condo. Buyer has their own financing.",
+      "baseOffer": 65000,
+      "offerOriginal": false,
+      "additional": 0,
+      "percent": false,
+      "acceptCondo": true,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "title": "House or Condo Buyer 2Br/1Ba",
+      "flavorText": "You are offered $45,000 for a 2Br/1Ba House or Condo. Buyer has their own financing.",
+      "baseOffer": 45000,
+      "offerOriginal": false,
+      "additional": 0,
+      "percent": false,
+      "acceptCondo": true,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus $15,000",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 15000,
+      "percent": false,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus $5,000",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 5000,
+      "percent": false,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "House Buyer - 3Br/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus $10,000",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 10000,
+      "percent": false,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus $20,000",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 20000,
+      "percent": false,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "Home Buyer - 2Br/1BA",
+      "flavorText": "Buyer looking to acquire 2Br/1Ba rentals. Offers your original cost plus 20%",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 20,
+      "percent": true,
+      "acceptCondo": false,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus 15%.",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 15,
+      "percent": true,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "House Buyer - 2BR/1BA",
+      "flavorText": "Buyer looking to acquire 2Br/1Ba rentals. Offers your oriignal cost plus 10%.",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 10,
+      "percent": true,
+      "acceptCondo": false,
+      "bed": 2,
+      "bath": 1
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus 20%.",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 20,
+      "percent": true,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    },
+    {
+      "title": "House Buyer - 3BR/2BA",
+      "flavorText": "Buyer searching for 3Br/2Ba house. Offers your original cost plus 10%.",
+      "baseOffer": 0,
+      "offerOriginal": true,
+      "additional": 10,
+      "percent": true,
+      "acceptCondo": false,
+      "bed": 3,
+      "bath": 2
+    }
+  ]
+}
