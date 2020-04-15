@@ -58,6 +58,13 @@ public class MarketCard
     }
 
     [System.Serializable]
+    private struct StockSplitCardJSON
+    {
+        public string symbol;
+        public string flavorText;
+    }
+
+    [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
@@ -65,6 +72,7 @@ public class MarketCard
         public PlexBuyerJSON[] plexBuyers;
         public BonusCardJSON[] bonuses;
         public DamageCardJSON[] damages;
+        public StockSplitCardJSON[] stockSplits;
     }
 
 
@@ -124,6 +132,18 @@ public class MarketCard
         return damageCards;
     }
 
+    private static StockSplitCard[] StockSplitCards(MarketCardsJSON marketCards)
+    {
+        Dictionary<string, Stocks.Stock> stocks = GameData.Instance.GetStocks();
+        StockSplitCard[] stockSplitCards = new StockSplitCard[marketCards.stockSplits.Length];
+        for (int i = 0; i < stockSplitCards.Length; i++)
+        {
+            StockSplitCardJSON card = marketCards.stockSplits[i];
+            stockSplitCards[i] = new StockSplitCard(stocks[card.symbol], card.flavorText);
+        }
+        return stockSplitCards;
+    }
+
     public static List<MarketCard> LoadMarketCards()
     {
         var marketCardsAsset = Resources.Load<TextAsset>("JSON/market_cards");
@@ -135,6 +155,7 @@ public class MarketCard
         marketCards.AddRange(PlexBuyers(marketCardsJSON));
         marketCards.AddRange(BonusCards(marketCardsJSON));
         marketCards.AddRange(DamageCards(marketCardsJSON));
+        marketCards.AddRange(StockSplitCards(marketCardsJSON));
 
         return marketCards;
     }

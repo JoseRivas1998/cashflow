@@ -237,5 +237,23 @@
       "instruction": "Pay $2,00 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
       "cost": 2000
     }
+  ],
+  "stockSplits": [
+    {
+      "symbol": "GRO4US",
+      "flavorText": "The market is in flux and there will be monumental market swings over the next few months. How will mutual funds fair in this time of change?"
+    },
+    {
+      "symbol": "OK4U",
+      "flavorText": "OK4U begins trial on possible life-saving drug. Side effects are untested. Could change the world... if it works."
+    },
+    {
+      "symbol": "MYT4U",
+      "flavorText": "MYT4U takes a gamble on new home entertainment tech. Will it hit big or be the next Beta-Max?"
+    },
+    {
+      "symbol": "ON2U",
+      "flavorText": "Studio backs fresh director for its summer blockbuster. Groundbreaking production could be too ambitious."
+    }
   ]
 }
