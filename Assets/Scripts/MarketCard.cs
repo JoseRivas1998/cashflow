@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,12 +31,19 @@ public class MarketCard
         public int minUnits;
     }
 
+    [System.Serializable]
+    private struct PlexBuyerJSON
+    {
+        public int additional;
+        public bool percent;
+    }
 
     [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
         public ApartmentBuyerJSON[] apartmentBuyers;
+        public PlexBuyerJSON[] plexBuyers;
     }
 
     private static HomeBuyerCard[] HomeBuyerCards(MarketCardsJSON marketCards)
@@ -61,6 +68,17 @@ public class MarketCard
         return apartmentBuyerCards;
     }
 
+    private static PlexBuyerCard[] PlexBuyers(MarketCardsJSON marketCards)
+    {
+        PlexBuyerCard[] plexBuyerCards = new PlexBuyerCard[marketCards.plexBuyers.Length];
+        for (int i = 0; i < plexBuyerCards.Length; i++)
+        {
+            PlexBuyerJSON card = marketCards.plexBuyers[i];
+            plexBuyerCards[i] = new PlexBuyerCard(card.additional, card.percent);
+        }
+        return plexBuyerCards;
+    }
+
     public static List<MarketCard> LoadMarketCards()
     {
         var marketCardsAsset = Resources.Load<TextAsset>("JSON/market_cards");
@@ -69,6 +87,7 @@ public class MarketCard
 
         marketCards.AddRange(HomeBuyerCards(marketCardsJSON));
         marketCards.AddRange(ApartmentBuyerCards(marketCardsJSON));
+        marketCards.AddRange(PlexBuyers(marketCardsJSON));
 
         return marketCards;
     }

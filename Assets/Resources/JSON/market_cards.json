@@ -147,5 +147,47 @@
       "offer": 40000,
       "minUnits": 0
     }
+  ],
+  "plexBuyers": [
+    {
+      "additional": 20,
+      "percent": true
+    },
+    {
+      "additional": 15,
+      "percent": true
+    },
+    {
+      "additional": 10,
+      "percent": true
+    },
+    {
+      "additional": 20000,
+      "percent": false
+    },
+    {
+      "additional": 15000,
+      "percent": false
+    },
+    {
+      "additional": 10000,
+      "percent": false
+    },
+    {
+      "additional": 30000,
+      "percent": false
+    },
+    {
+      "additional": 5,
+      "percent": true
+    },
+    {
+      "additional": 1000,
+      "percent": false
+    },
+    {
+      "additional": 5000,
+      "percent": false
+    }
   ]
 }
