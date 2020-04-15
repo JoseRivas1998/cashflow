@@ -15,6 +15,7 @@ public class HomeBuyerCard : RealEstateMarketCard
     public HomeBuyerCard(string title, string flavorText, int baseOffer, bool offerOriginal, int additional, bool percent, bool acceptCondo, int bed, int bath)
     {
         this.type = MarketType.RealEstate;
+        this.realEstateMarketType = RealEstateMarketType.Home;
         this.title = title;
         this.flavorText = flavorText;
         this.baseOffer = baseOffer;

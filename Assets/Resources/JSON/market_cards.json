@@ -121,5 +121,31 @@
       "bed": 3,
       "bath": 2
     }
+  ],
+  "apartmentBuyers": [
+    {
+      "title": "Apartment House Buyer",
+      "flavorText": "Buyer offers $25,000 per unit for all units in apartment houses of any size. Buyer has their own financing. (His 1031 tax-deferred exchange time is running out.)",
+      "offer": 25000,
+      "minUnits": 0
+    },
+    {
+      "title": "Apartment House Buyer",
+      "flavorText": "Buyer offers $45,000 per unit for all units in apartment houses of any size. Buyer has their own financing. (His 1031 tax-deferred exchange time is running out.)",
+      "offer": 45000,
+      "minUnits": 0
+    },
+    {
+      "title": "Apartment House Buyer",
+      "flavorText": "REIT offers $30,000 per unit for all units in apartment houses of 12 units or more. Buyer has capital from the sale of another apartment complex.",
+      "offer": 30000,
+      "minUnits": 12
+    },
+    {
+      "title": "Apartment House Buyer",
+      "flavorText": "REIT offers $40,000 per unit for all units in apartment houses of any size. Buyer has their own financing",
+      "offer": 40000,
+      "minUnits": 0
+    }
   ]
 }

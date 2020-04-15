@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,9 +23,20 @@ public class MarketCard
     }
 
     [System.Serializable]
+    private struct ApartmentBuyerJSON
+    {
+        public string title;
+        public string flavorText;
+        public int offer;
+        public int minUnits;
+    }
+
+
+    [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
+        public ApartmentBuyerJSON[] apartmentBuyers;
     }
 
     private static HomeBuyerCard[] HomeBuyerCards(MarketCardsJSON marketCards)
@@ -39,6 +50,17 @@ public class MarketCard
         return homeBuyerCards;
     }
 
+    private static ApartmentBuyerCard[] ApartmentBuyerCards(MarketCardsJSON marketCards)
+    {
+        ApartmentBuyerCard[] apartmentBuyerCards = new ApartmentBuyerCard[marketCards.apartmentBuyers.Length];
+        for (int i = 0; i < apartmentBuyerCards.Length; i++)
+        {
+            ApartmentBuyerJSON card = marketCards.apartmentBuyers[i];
+            apartmentBuyerCards[i] = new ApartmentBuyerCard(card.title, card.flavorText, card.offer, card.minUnits);
+        }
+        return apartmentBuyerCards;
+    }
+
     public static List<MarketCard> LoadMarketCards()
     {
         var marketCardsAsset = Resources.Load<TextAsset>("JSON/market_cards");
@@ -46,6 +68,7 @@ public class MarketCard
         List<MarketCard> marketCards = new List<MarketCard>();
 
         marketCards.AddRange(HomeBuyerCards(marketCardsJSON));
+        marketCards.AddRange(ApartmentBuyerCards(marketCardsJSON));
 
         return marketCards;
     }
