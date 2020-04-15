@@ -65,6 +65,14 @@ public class MarketCard
     }
 
     [System.Serializable]
+    private struct GoldBuyerCardJSON 
+    {
+        public string title;
+        public string flavorText;
+        public int offer;
+    }
+
+    [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
@@ -73,9 +81,8 @@ public class MarketCard
         public BonusCardJSON[] bonuses;
         public DamageCardJSON[] damages;
         public StockSplitCardJSON[] stockSplits;
+        public GoldBuyerCardJSON[] goldBuyers;
     }
-
-
 
     private static HomeBuyerCard[] HomeBuyerCards(MarketCardsJSON marketCards)
     {
@@ -144,6 +151,17 @@ public class MarketCard
         return stockSplitCards;
     }
 
+    private static GoldBuyerCard[] GoldBuyerCards(MarketCardsJSON marketCards)
+    {
+        GoldBuyerCard[] goldBuyerCards = new GoldBuyerCard[marketCards.goldBuyers.Length];
+        for (int i = 0; i < goldBuyerCards.Length; i++)
+        {
+            GoldBuyerCardJSON card = marketCards.goldBuyers[i];
+            goldBuyerCards[i] = new GoldBuyerCard(card.title, card.flavorText, card.offer);
+        }
+        return goldBuyerCards;
+    }
+
     public static List<MarketCard> LoadMarketCards()
     {
         var marketCardsAsset = Resources.Load<TextAsset>("JSON/market_cards");
@@ -156,6 +174,7 @@ public class MarketCard
         marketCards.AddRange(BonusCards(marketCardsJSON));
         marketCards.AddRange(DamageCards(marketCardsJSON));
         marketCards.AddRange(StockSplitCards(marketCardsJSON));
+        marketCards.AddRange(GoldBuyerCards(marketCardsJSON));
 
         return marketCards;
     }

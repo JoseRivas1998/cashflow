@@ -255,5 +255,27 @@
       "symbol": "ON2U",
       "flavorText": "Studio backs fresh director for its summer blockbuster. Groundbreaking production could be too ambitious."
     }
+  ],
+  "goldBuyers": [
+    {
+      "title": "Collector wants Gold Coins",
+      "flavorText": "Wealthy collector is looking for gold coins. Cash offer at $500 for each coin.",
+      "offer": 500
+    },
+    {
+      "title": "Collector wants Gold Coins",
+      "flavorText": "Wealthy collector is looking for gold coins. Cash offer at $1,000 for each coin.",
+      "offer": 1000
+    },
+    {
+      "title": "Price of Gold Soars",
+      "flavorText": "The Central Bank is printing money in an attempt to boost the economy causing massive inflation. The price of gold skyrockets. Buyer offers $2000 for each gold coin.",
+      "offer": 2000
+    },
+    {
+      "title": "Price of Gold Soars",
+      "flavorText": "Rioting Overseas. Oil prices threatened. Price of gold skyrockets. Buyer offers $1,000 cash for each gold coin.",
+      "offer": 1000
+    }
   ]
 }
