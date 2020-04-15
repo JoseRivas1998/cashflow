@@ -39,12 +39,25 @@ public class MarketCard
     }
 
     [System.Serializable]
+    private struct BonusJSON
+    {
+        public string title;
+        public string flavorText;
+        public int cashFlowMax;
+        public int cashFlowIncrease;
+        public bool everyone;
+    }
+
+    [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
         public ApartmentBuyerJSON[] apartmentBuyers;
         public PlexBuyerJSON[] plexBuyers;
+        public BonusJSON[] bonuses;
     }
+
+
 
     private static HomeBuyerCard[] HomeBuyerCards(MarketCardsJSON marketCards)
     {
@@ -79,6 +92,17 @@ public class MarketCard
         return plexBuyerCards;
     }
 
+    private static BonusCard[] BonusCards(MarketCardsJSON marketCards)
+    {
+        BonusCard[] bonusCards = new BonusCard[marketCards.bonuses.Length];
+        for (int i = 0; i < bonusCards.Length; i++)
+        {
+            BonusJSON card = marketCards.bonuses[i];
+            bonusCards[i] = new BonusCard(card.title, card.flavorText, card.cashFlowMax, card.cashFlowIncrease, card.everyone);
+        }
+        return bonusCards;
+    }
+
     public static List<MarketCard> LoadMarketCards()
     {
         var marketCardsAsset = Resources.Load<TextAsset>("JSON/market_cards");
@@ -88,6 +112,7 @@ public class MarketCard
         marketCards.AddRange(HomeBuyerCards(marketCardsJSON));
         marketCards.AddRange(ApartmentBuyerCards(marketCardsJSON));
         marketCards.AddRange(PlexBuyers(marketCardsJSON));
+        marketCards.AddRange(BonusCards(marketCardsJSON));
 
         return marketCards;
     }

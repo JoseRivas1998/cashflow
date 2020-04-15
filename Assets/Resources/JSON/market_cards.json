@@ -189,5 +189,21 @@
       "additional": 5000,
       "percent": false
     }
+  ],
+  "bonuses": [
+    {
+      "title": "New Management System",
+      "flavorText": "A new management system creates new efficiencies and lowers costs. Only the person who drew this card is affected.",
+      "cashFlowMax": 1000,
+      "cashFlowIncrease": 400,
+      "everyone": false
+    },
+    {
+      "title": "Small Business Boom!",
+      "flavorText": "The downtown economy has exploded! EVERYONE is affected.",
+      "cashFlowMax": 1000,
+      "cashFlowIncrease": 250,
+      "everyone": true
+    }
   ]
 }
