@@ -39,7 +39,7 @@ public class MarketCard
     }
 
     [System.Serializable]
-    private struct BonusJSON
+    private struct BonusCardJSON
     {
         public string title;
         public string flavorText;
@@ -49,12 +49,22 @@ public class MarketCard
     }
 
     [System.Serializable]
+    private struct DamageCardJSON
+    {
+        public string title;
+        public string flavorText;
+        public string instruction;
+        public int cost;
+    }
+
+    [System.Serializable]
     private struct MarketCardsJSON
     {
         public HomeBuyerJSON[] homeBuyers;
         public ApartmentBuyerJSON[] apartmentBuyers;
         public PlexBuyerJSON[] plexBuyers;
-        public BonusJSON[] bonuses;
+        public BonusCardJSON[] bonuses;
+        public DamageCardJSON[] damages;
     }
 
 
@@ -97,10 +107,21 @@ public class MarketCard
         BonusCard[] bonusCards = new BonusCard[marketCards.bonuses.Length];
         for (int i = 0; i < bonusCards.Length; i++)
         {
-            BonusJSON card = marketCards.bonuses[i];
+            BonusCardJSON card = marketCards.bonuses[i];
             bonusCards[i] = new BonusCard(card.title, card.flavorText, card.cashFlowMax, card.cashFlowIncrease, card.everyone);
         }
         return bonusCards;
+    }
+
+    private static DamageCard[] DamageCards(MarketCardsJSON marketCards)
+    {
+        DamageCard[] damageCards = new DamageCard[marketCards.damages.Length];
+        for (int i = 0; i < damageCards.Length; i++)
+        {
+            DamageCardJSON card = marketCards.damages[i];
+            damageCards[i] = new DamageCard(card.title, card.flavorText, card.cost, card.instruction);
+        }
+        return damageCards;
     }
 
     public static List<MarketCard> LoadMarketCards()
@@ -113,6 +134,7 @@ public class MarketCard
         marketCards.AddRange(ApartmentBuyerCards(marketCardsJSON));
         marketCards.AddRange(PlexBuyers(marketCardsJSON));
         marketCards.AddRange(BonusCards(marketCardsJSON));
+        marketCards.AddRange(DamageCards(marketCardsJSON));
 
         return marketCards;
     }

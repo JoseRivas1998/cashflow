@@ -205,5 +205,37 @@
       "cashFlowIncrease": 250,
       "everyone": true
     }
+  ],
+  "damages": [
+    {
+      "title": "Tenant Damages Your Property",
+      "flavorText": "Tenant refuses to pay rent. After the tenant has been evicted, you discover significant damage to your propery.",
+      "instruction": "Insurance covers most repairs, but you still must pay $500 (one time). Take out a bank loan if necessary to cover these expenses.",
+      "cost": 500
+    },
+    {
+      "title": "Tenant Damages Your Property",
+      "flavorText": "Tenant refuses to pay rent. After the tenant has been evicted, you discover significant damage to your propery.",
+      "instruction": "Insurance covers most repairs, but you still must pay $1,000 (one time). Take out a bank loan if necessary to cover these expenses.",
+      "cost": 1000
+    },
+    {
+      "title": "Tenant Damages Your Property",
+      "flavorText": "Tenant refuses to pay rent. After the tenant has been evicted, you discover significant damage to your propery.",
+      "instruction": "Insurance covers most repairs, but you still must pay $500 (one time). Take out a bank loan if necessary to cover these expenses.",
+      "cost": 500
+    },
+    {
+      "title": "Sewer Line Breaks",
+      "flavorText": "Water is everywhere at your propery!",
+      "instruction": "Pay $1,00 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
+      "cost": 1000
+    },
+    {
+      "title": "Sewer Line Breaks",
+      "flavorText": "Water is everywhere at your propery!",
+      "instruction": "Pay $2,00 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
+      "cost": 2000
+    }
   ]
 }
