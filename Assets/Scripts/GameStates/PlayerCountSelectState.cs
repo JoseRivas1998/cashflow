@@ -13,7 +13,7 @@ public class PlayerCountSelectState : GameState
         mgm.playerCount.gameObject.SetActive(true);
         mgm.playerCount.playGame.onClick.AddListener(() => {
             selecting = false;
-            mgm.numPlayers = mgm.playerCount.count;
+            mgm.SetNumPlayers(mgm.playerCount.count);
             mgm.playerCount.gameObject.SetActive(false);
         });
     }

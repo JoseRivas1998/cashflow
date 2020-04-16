@@ -12,7 +12,7 @@ public class PlayerInputDataState : GameState
     public PlayerInputDataState(MainGameManager mgm)
     {
         nextButtonText = mgm.playerNameDreamColor.nextButton.GetComponentInChildren<Text>();
-        nextButtonText.text = mgm.numPlayers == 1 ? "Assign Professions!" : "Next";
+        nextButtonText.text = mgm.NumPlayers == 1 ? "Assign Professions!" : "Next";
         done = false;
         mgm.playerNameDreamColor.nextButton.onClick.AddListener(() =>
         {
@@ -21,19 +21,19 @@ public class PlayerInputDataState : GameState
             string dream = mgm.playerNameDreamColor.dreamField.text.Trim();
             mgm.playerNameDreamColor.dreamField.text = "";
             Color color = mgm.playerNameDreamColor.colorSelector.selectedButton.image.color;
-            if (mgm.playerNameDreamColor.currentPlayer == mgm.numPlayers - 1)
+            mgm.RegisterPlayer(mgm.playerNameDreamColor.currentPlayer, name, dream, color);
+            if (mgm.playerNameDreamColor.currentPlayer == mgm.NumPlayers - 1)
             {
                 done = true;
             }
             else 
             {
-                if (mgm.playerNameDreamColor.currentPlayer + 1 == mgm.numPlayers - 1)
+                if (mgm.playerNameDreamColor.currentPlayer + 1 == mgm.NumPlayers - 1)
                 {
                     nextButtonText.text = "Assign Professions!";
                 }
             }
             mgm.playerNameDreamColor.NextPlayer();
-            Debug.Log(name + " " + dream + " " + color);
         });
         mgm.playerNameDreamColor.Activate();
     }
