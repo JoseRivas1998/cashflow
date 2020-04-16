@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class LoopState : GameState
 {
-    public override GameState Update()
+    public override GameState Update(MainGameManager mgm)
     {
         return this;
     }

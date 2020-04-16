@@ -6,6 +6,7 @@ public class MainGameManager : MonoBehaviour
 {
 
     public PlayerCount playerCount;
+    public PlayerNameDreamColor playerNameDreamColor;
 
     public int numPlayers;
 
@@ -20,6 +21,6 @@ public class MainGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentState = currentState.Update();
+        currentState = currentState.Update(this);
     }
 }

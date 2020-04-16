@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class GameState
 {
 
-    public abstract GameState Update();
+    public abstract GameState Update(MainGameManager mgm);
 }

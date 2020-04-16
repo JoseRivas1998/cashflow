@@ -10,6 +10,7 @@ public class PlayerCountSelectState : GameState
     public PlayerCountSelectState(MainGameManager mgm)
     {
         selecting = true;
+        mgm.playerCount.gameObject.SetActive(true);
         mgm.playerCount.playGame.onClick.AddListener(() => {
             selecting = false;
             mgm.numPlayers = mgm.playerCount.count;
@@ -17,13 +18,13 @@ public class PlayerCountSelectState : GameState
         });
     }
 
-    public override GameState Update()
+    public override GameState Update(MainGameManager mgm)
     {
         if (selecting)
         {
             return this;
         }
-        return new LoopState();
+        return new PlayerInputDataState(mgm);
     }
 
 
