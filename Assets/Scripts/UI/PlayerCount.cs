@@ -10,6 +10,7 @@ public class PlayerCount : MonoBehaviour
     public Text playerCountText;
     public Button upArrow;
     public Button downArrow;
+    public Button playGame;
 
     public int count { get; private set; }
 
