@@ -538,10 +538,10 @@ MonoBehaviour:
   colors:
   - {r: 0.7647059, g: 0.13333334, b: 0.13333334, a: 1}
   - {r: 0.8862745, g: 0.64705884, b: 0.078431375, a: 1}
-  - {r: 0.7137255, g: 0.57254905, b: 1, a: 1}
   - {r: 0.93333334, g: 0.91764706, b: 0.06666667, a: 1}
   - {r: 0.50980395, g: 0.8784314, b: 0.12156863, a: 1}
   - {r: 0.015686275, g: 0, b: 0.7058824, a: 1}
+  - {r: 0.7137255, g: 0.57254905, b: 1, a: 1}
   margin: 20
 --- !u!1001 &507642119
 PrefabInstance:
@@ -1299,7 +1299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCount: {fileID: 2017296026}
   playerNameDreamColor: {fileID: 972976367}
-  numPlayers: 0
 --- !u!1 &963254588
 GameObject:
   m_ObjectHideFlags: 0

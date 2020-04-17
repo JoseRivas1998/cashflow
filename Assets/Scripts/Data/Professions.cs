@@ -26,6 +26,12 @@ public class Professions
         public int col;
         public int Expenses { get { return taxes + mortgagePayment + schoolPayment + carPayment + creditPayment + otherExpenses; } }
         public int CashFlow { get { return salary - Expenses; } }
+
+        public override string ToString()
+        {
+            return "Profession: " + this.name;
+        }
+
     }
 
     public Profession[] professions;
