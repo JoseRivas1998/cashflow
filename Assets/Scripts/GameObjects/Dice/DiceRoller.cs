@@ -28,10 +28,7 @@ public class DiceRoller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = RollState.RollReady;
-        rb.useGravity = false;
-        Debug.Log("Roller Ready");
-        shakeCenter = pos.position;
+        ResetRoll();
     }
 
     // Update is called once per frame
@@ -50,6 +47,7 @@ public class DiceRoller : MonoBehaviour
 
     public void Shake()
     {
+        rb.velocity = Vector3.zero;
         if (state == RollState.RollReady)
         {
             shakeCenter = pos.position;
@@ -80,6 +78,8 @@ public class DiceRoller : MonoBehaviour
     {
         state = RollState.RollReady;
         rb.useGravity = false;
+        shakeCenter = pos.position;
+        rb.velocity = Vector3.zero;
     }
 
     public bool RollReady()
@@ -115,7 +115,6 @@ public class DiceRoller : MonoBehaviour
     {
         if (rb.IsSleeping())
         {
-            Debug.Log("Rolling Complete");
             state = RollState.RollComplete;
         }
     }

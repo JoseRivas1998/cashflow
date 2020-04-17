@@ -656,6 +656,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994944087461895477, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17, type: 3}
 --- !u!4 &403072872 stripped
@@ -1695,9 +1700,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a27b7d730291e4e8a1f2cc04966fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 1149945730}
   playerCount: {fileID: 2017296026}
   playerNameDreamColor: {fileID: 972976367}
   playerProfessionReveal: {fileID: 1317259967}
+  diePrefab: {fileID: 5945870147979824624, guid: e20e85eb5ffcfb8409f9ce3861b74344,
+    type: 3}
+  diceSpawnDistance: 4
+  diceSpawnOffset: 2
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0

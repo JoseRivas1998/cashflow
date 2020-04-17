@@ -5,9 +5,14 @@ using UnityEngine;
 public class MainGameManager : MonoBehaviour
 {
 
+    public Camera mainCam;
     public PlayerCount playerCount;
     public PlayerNameDreamColor playerNameDreamColor;
     public PlayerProfessionReveal playerProfessionReveal;
+
+    public GameObject diePrefab;
+    public float diceSpawnDistance = 1f;
+    public float diceSpawnOffset = 2f;
 
     private GameState currentState;
     private Player[] players;
@@ -64,4 +69,22 @@ public class MainGameManager : MonoBehaviour
     {
         currentState = currentState.Update(this);
     }
+
+    public DiceContainer[] SpawnDice(int n)
+    {
+        DiceContainer[] dice = new DiceContainer[n];
+        Transform camTransform = mainCam.transform;
+        float mid = (n - 1) / 2f;
+        Vector3 center = camTransform.position + camTransform.forward * diceSpawnDistance;
+        for (int i = 0; i < n; i++)
+        {
+            float distToMid = i - mid;
+            Vector3 spawnPoint = center + Vector3.right * distToMid * diceSpawnOffset;
+            GameObject diceObject = Instantiate(diePrefab, spawnPoint, camTransform.rotation);
+            diceObject.transform.Rotate(Random.onUnitSphere * 360);
+            dice[i] = diceObject.GetComponent<DiceContainer>();
+        }
+        return dice;
+    }
+
 }
