@@ -69,7 +69,6 @@ public class BoardManager : MonoBehaviour
         for (int i = 0; i < ratRaceSpaces.Length; i++)
         {
             RatRaceSpaceTypes space = ratRaceSpaces[i];
-            Debug.Log(space);
         }
     }
 

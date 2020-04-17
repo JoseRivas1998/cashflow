@@ -30,4 +30,9 @@ public class Utility
         list[j] = temp;
     }
 
+    public static int RandomSign()
+    {
+        return Random.Range(0f, 1f) < 0.5 ? 1 : -1;
+    }
+
 }
