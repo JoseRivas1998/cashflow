@@ -25,7 +25,7 @@ public class DiceDirection : MonoBehaviour
         lookUp[Vector3.back] = 7 - lookUp[Vector3.forward];
     }
 
-    public int getNumber(float epsilonDeg = 5f)
+    public int DieValue(float epsilonDeg = 5f)
     {
         // here I would assert lookup is not empty, epsilon is positive and larger than smallest possible float etc
         // Transform reference up to object space

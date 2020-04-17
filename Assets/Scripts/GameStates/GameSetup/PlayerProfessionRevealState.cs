@@ -43,7 +43,7 @@ public class PlayerProfessionRevealState : GameState
             if (playerIndex == mgm.NumPlayers - 1)
             {
                 mgm.playerProfessionReveal.gameObject.SetActive(false);
-                return new LoopState();
+                return new TurnOrderState(mgm);
             }
             cardFlip.ResetFlip();
             NextPlayer(mgm);

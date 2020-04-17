@@ -27,7 +27,7 @@ public class DieRollerTester : MonoBehaviour
         if (dice.roller.RollComplete())
         {
             dice.roller.ResetRoll();
-            int num = dice.dir.getNumber();
+            int num = dice.dir.DieValue();
             if(num == -1)
             {
                 dice.roller.Roll();

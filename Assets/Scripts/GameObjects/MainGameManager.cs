@@ -9,6 +9,7 @@ public class MainGameManager : MonoBehaviour
     public PlayerCount playerCount;
     public PlayerNameDreamColor playerNameDreamColor;
     public PlayerProfessionReveal playerProfessionReveal;
+    public TurnOrder turnOrder;
 
     public GameObject diePrefab;
     public float diceSpawnDistance = 1f;
@@ -17,6 +18,7 @@ public class MainGameManager : MonoBehaviour
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
+    private TurnManager turnManager;
     public int NumPlayers { get { return players != null ? players.Length : 0; } }
 
     // Start is called before the first frame update
@@ -43,6 +45,7 @@ public class MainGameManager : MonoBehaviour
         if(players == null)
         {
             players = new Player[numPlayers];
+            turnManager = new TurnManager(numPlayers);
         } 
         else
         {
@@ -59,6 +62,11 @@ public class MainGameManager : MonoBehaviour
         players[index] = new Player(index, name, dream, color, professions.Pop());
     }
 
+    public void RegisterPlayerTurnRoll(int player, int rollValue)
+    {
+        turnManager.RegisterRoll(player, rollValue);
+        Debug.Log(turnManager.TurnOrder());
+    }
     public Player GetPlayer(int i)
     {
         return players[i];
