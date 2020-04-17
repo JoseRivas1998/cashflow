@@ -6,11 +6,13 @@ public class MainGameManager : MonoBehaviour
 {
 
     public Camera mainCam;
+    public CameraTrack mainCamTracker;
     public PlayerCount playerCount;
     public PlayerNameDreamColor playerNameDreamColor;
     public PlayerProfessionReveal playerProfessionReveal;
     public TurnOrder turnOrder;
     public PlayerTabContainer playerTabs;
+    public BoardManager board;
 
     public GameObject diePrefab;
     public float diceSpawnDistance = 1f;
@@ -26,6 +28,7 @@ public class MainGameManager : MonoBehaviour
     void Start()
     {
         LoadProfessions();
+        mainCamTracker.origin = board.transform.position + board.ratRaceCenterOffset;
         currentState = new PlayerCountSelectState(this);
     }
 
