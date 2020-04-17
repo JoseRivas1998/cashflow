@@ -133,6 +133,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4705c680929551a4a9c5bfcd7d4d7b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &45175006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45175007}
+  - component: {fileID: 45175008}
+  m_Layer: 5
+  m_Name: PlayerTabContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &45175007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45175006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1252065583}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1280, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &45175008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45175006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa6033b096dab74fbe5f13d91456f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabObject: {fileID: 3325527971564757895, guid: ef59d2e75df2d434fb20c270afd95222,
+    type: 3}
 --- !u!1 &68468357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,6 +1836,8 @@ MonoBehaviour:
   playerCount: {fileID: 2017296026}
   playerNameDreamColor: {fileID: 972976367}
   playerProfessionReveal: {fileID: 1317259967}
+  turnOrder: {fileID: 1201362543}
+  playerTabs: {fileID: 45175008}
   diePrefab: {fileID: 5945870147979824624, guid: e20e85eb5ffcfb8409f9ce3861b74344,
     type: 3}
   diceSpawnDistance: 4
@@ -2414,7 +2466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1201362542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2447,6 +2499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79f478257276e34eab010da84461aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRolling: {fileID: 1464021200}
 --- !u!1 &1252065579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2594,7 @@ RectTransform:
   - {fileID: 972976366}
   - {fileID: 1317259966}
   - {fileID: 1201362542}
+  - {fileID: 45175007}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

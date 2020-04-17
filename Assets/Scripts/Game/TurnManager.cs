@@ -66,19 +66,15 @@ public class TurnManager
         return currentPlayer;
     }
 
-    public string TurnOrder()
+    public int[] TurnOrder()
     {
-        var s = "{";
+        int[] order = new int[numPlayers];
         for (int i = 0; i < numPlayers; i++)
         {
             int player = (startingPlayer + i) % numPlayers;
-            s += player;
-            if(i < numPlayers - 1)
-            {
-                s += ", ";
-            }
+            order[i] = player;
         }
-        return s + "}";
+        return order;
     }
 
 }

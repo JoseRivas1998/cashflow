@@ -10,6 +10,7 @@ public class MainGameManager : MonoBehaviour
     public PlayerNameDreamColor playerNameDreamColor;
     public PlayerProfessionReveal playerProfessionReveal;
     public TurnOrder turnOrder;
+    public PlayerTabContainer playerTabs;
 
     public GameObject diePrefab;
     public float diceSpawnDistance = 1f;
@@ -65,8 +66,18 @@ public class MainGameManager : MonoBehaviour
     public void RegisterPlayerTurnRoll(int player, int rollValue)
     {
         turnManager.RegisterRoll(player, rollValue);
-        Debug.Log(turnManager.TurnOrder());
     }
+
+    public void CreatePlayerTabs()
+    {
+        int[] playerOrder = turnManager.TurnOrder();
+        Debug.Log("{" + string.Join(", ", playerOrder) + "}");
+        foreach (int pIndex in playerOrder)
+        {
+            players[pIndex].SetTab(playerTabs.AddTab(players[pIndex]));
+        }
+    }
+
     public Player GetPlayer(int i)
     {
         return players[i];
