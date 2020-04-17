@@ -17,6 +17,7 @@ public class Professions
         public int carPayment;
         public int creditPayment;
         public int otherExpenses;
+        public int perChildExpenses;
         public int savings;
         public int mortgage;
         public int schoolLoans;

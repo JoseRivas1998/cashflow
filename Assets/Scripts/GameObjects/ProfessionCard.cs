@@ -15,6 +15,7 @@ public class ProfessionCard : MonoBehaviour
     public Text carLoanPayment;
     public Text creditCardPayment;
     public Text otherExpenses;
+    public Text perChildExpenses;
     public Text savings;
     public Text homeMortgage;
     public Text schoolLoans;
@@ -51,6 +52,7 @@ public class ProfessionCard : MonoBehaviour
         SetMoneyText(carLoanPayment, profession.carPayment);
         SetMoneyText(creditCardPayment, profession.creditPayment);
         SetMoneyText(otherExpenses, profession.otherExpenses);
+        SetMoneyText(perChildExpenses, profession.perChildExpenses);
         SetMoneyText(savings, profession.savings);
         SetMoneyText(homeMortgage, profession.mortgage);
         SetMoneyText(schoolLoans, profession.schoolLoans);
