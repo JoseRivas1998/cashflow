@@ -13,7 +13,9 @@
       "mortgage": 38000,
       "schoolLoans": 0,
       "carLoans": 4000,
-      "creditCardDebt": 3000
+      "creditCardDebt": 3000,
+      "row": 0,
+      "col": 1
     },
     {
       "name": "Lawyer",
@@ -28,7 +30,9 @@
       "mortgage": 115000,
       "schoolLoans": 78000,
       "carLoans": 11000,
-      "creditCardDebt": 7000
+      "creditCardDebt": 7000,
+      "row": 1,
+      "col": 1
     },
     {
       "name": "Teacher (K-12)",
@@ -43,7 +47,9 @@
       "mortgage": 50000,
       "schoolLoans": 12000,
       "carLoans": 5000,
-      "creditCardDebt": 4000
+      "creditCardDebt": 4000,
+      "row": 2,
+      "col": 1
     },
     {
       "name": "Engineer",
@@ -58,7 +64,9 @@
       "mortgage": 75000,
       "schoolLoans": 12000,
       "carLoans": 7000,
-      "creditCardDebt": 5000
+      "creditCardDebt": 5000,
+      "row": 3,
+      "col": 1
     },
     {
       "name": "Nurse",
@@ -73,7 +81,9 @@
       "mortgage": 47000,
       "schoolLoans": 6000,
       "carLoans": 5000,
-      "creditCardDebt": 4000
+      "creditCardDebt": 4000,
+      "row": 0,
+      "col": 0
     },
     {
       "name": "Mechanic",
@@ -88,7 +98,9 @@
       "mortgage": 31000,
       "schoolLoans": 0,
       "carLoans": 3000,
-      "creditCardDebt": 3000
+      "creditCardDebt": 3000,
+      "row": 1,
+      "col": 0
     },
     {
       "name": "Airline Pilot",
@@ -103,7 +115,9 @@
       "mortgage": 90000,
       "schoolLoans": 0,
       "carLoans": 15000,
-      "creditCardDebt": 22000
+      "creditCardDebt": 22000,
+      "row": 2,
+      "col": 0
     },
     {
       "name": "Business Mgr",
@@ -118,7 +132,9 @@
       "mortgage": 75000,
       "schoolLoans": 12000,
       "carLoans": 6000,
-      "creditCardDebt": 4000
+      "creditCardDebt": 4000,
+      "row": 3,
+      "col": 0
     },
     {
       "name": "Truck Driver",
@@ -133,7 +149,9 @@
       "mortgage": 38000,
       "schoolLoans": 0,
       "carLoans": 4000,
-      "creditCardDebt": 3000
+      "creditCardDebt": 3000,
+      "row": 0,
+      "col": 2
     },
     {
       "name": "Doctor (MD)",
@@ -148,7 +166,9 @@
       "mortgage": 202000,
       "schoolLoans": 150000,
       "carLoans": 19000,
-      "creditCardDebt": 10000
+      "creditCardDebt": 10000,
+      "row": 1,
+      "col": 2
     },
     {
       "name": "Police Officer",
@@ -163,7 +183,9 @@
       "mortgage": 46000,
       "schoolLoans": 0,
       "carLoans": 5000,
-      "creditCardDebt": 3000
+      "creditCardDebt": 3000,
+      "row": 2,
+      "col": 2
     },
     {
       "name": "Janitor",
@@ -178,7 +200,9 @@
       "mortgage": 20000,
       "schoolLoans": 0,
       "carLoans": 4000,
-      "creditCardDebt": 3000
+      "creditCardDebt": 3000,
+      "row": 3,
+      "col": 2
     }
   ]
 }

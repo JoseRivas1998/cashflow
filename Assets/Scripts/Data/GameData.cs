@@ -8,9 +8,11 @@ public class GameData : Singleton<GameData>
 
     private bool professionsLoaded = false;
     private bool stocksLoaded = false;
+    private bool professionIconsLoaded = false;
 
     private Professions professions;
     private Dictionary<string, Stock> stocks;
+    private Sprite[] professionIcons;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,16 @@ public class GameData : Singleton<GameData>
         stocks = Stocks.CreateFromJSON(stocksJSON.ToString());
         stocksLoaded = true;
         return stocks;
+    }
+
+    public Sprite GetProfessionIcon(int row, int col)
+    {
+        if(!professionIconsLoaded)
+        {
+            professionIcons = Resources.LoadAll<Sprite>("Img/profession_icons");
+            professionIconsLoaded = true;
+        }
+        return professionIcons[row * 3 + col];
     }
 
 }

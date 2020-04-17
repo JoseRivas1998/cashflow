@@ -42,6 +42,7 @@ public class ProfessionCard : MonoBehaviour
     public Text totalIncome;
     public Text totalExpenses;
     public Text monthlyCashFlow;
+    public Image icon;
 
     private Professions.Profession profession;
     private FlipState state;
@@ -63,6 +64,7 @@ public class ProfessionCard : MonoBehaviour
     public void SetProfession(Professions.Profession profession)
     {
         title.text = profession.name.ToUpper();
+        icon.sprite = GameData.Instance.GetProfessionIcon(profession.row, profession.col);
         SetMoneyText(salary, profession.salary);
         SetMoneyText(taxes, profession.taxes);
         SetMoneyText(mortgagePayment, profession.mortgagePayment);

@@ -22,6 +22,8 @@ public class Professions
         public int schoolLoans;
         public int carLoans;
         public int creditCardDebt;
+        public int row;
+        public int col;
         public int Expenses { get { return taxes + mortgagePayment + schoolPayment + carPayment + creditPayment + otherExpenses; } }
         public int CashFlow { get { return salary - Expenses; } }
     }
