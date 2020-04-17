@@ -7,7 +7,7 @@ public class MainGameManager : MonoBehaviour
 
     public PlayerCount playerCount;
     public PlayerNameDreamColor playerNameDreamColor;
-
+    public PlayerProfessionReveal playerProfessionReveal;
 
     private GameState currentState;
     private Player[] players;
@@ -52,6 +52,11 @@ public class MainGameManager : MonoBehaviour
             throw new System.Exception("No more professions!");
         }
         players[index] = new Player(index, name, dream, color, professions.Pop());
+    }
+
+    public Player GetPlayer(int i)
+    {
+        return players[i];
     }
 
     // Update is called once per frame

@@ -43,7 +43,7 @@ public class PlayerInputDataState : GameState
         if (done)
         {
             mgm.playerNameDreamColor.gameObject.SetActive(false);
-            return new LoopState();
+            return new PlayerProfessionRevealState(mgm);
         }
         return this;
     }
