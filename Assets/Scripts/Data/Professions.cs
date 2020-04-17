@@ -7,7 +7,7 @@ public class Professions
 {
 
     [System.Serializable]
-    public struct Profession
+    public class Profession
     {
         public string name;
         public int salary;
