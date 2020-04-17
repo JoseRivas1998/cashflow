@@ -44,20 +44,20 @@ public class GameDataTester : MonoBehaviour
     {
         if(Input.GetMouseButtonUp(0))
         {
-            if(professionCard.FlipReadyBack())
+            if(professionCard.cardFlip.FlipReadyBack())
             {
                 professionCard.SetProfession(professions.professions[professionIndex]);
                 professionIndex = (professionIndex + 1) % professions.professions.Length;
-                professionCard.BeginFlip();
+                professionCard.cardFlip.BeginFlip();
             }
-            else if(professionCard.FlipReadyFront())
+            else if(professionCard.cardFlip.FlipReadyFront())
             {
-                professionCard.BeginFlipBack();
+                professionCard.cardFlip.BeginFlipBack();
             }
         }
-        if(professionCard.FlipDone())
+        if(professionCard.cardFlip.FlipDone())
         {
-            professionCard.ResetFlip();
+            professionCard.cardFlip.ResetFlip();
         }
     }
 }
