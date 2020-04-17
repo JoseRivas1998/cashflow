@@ -13,6 +13,7 @@ public class Player
     public readonly IncomeStatement incomeStatement;
 
     private PlayerTab tab;
+    public GamePiece gamePiece { get; private set; }
 
     public Player(int index, string name, string dream, Color color, Professions.Profession profession)
     {
@@ -23,6 +24,7 @@ public class Player
         this.profession = profession;
         this.ledger = new Ledger(profession);
         this.incomeStatement = new IncomeStatement(profession);
+        this.gamePiece = null;
     }
 
     public override string ToString()
@@ -33,6 +35,17 @@ public class Player
     public void SetTab(PlayerTab tab)
     {
         this.tab = tab;
+    }
+
+    public bool GamePieceExists()
+    {
+        return gamePiece != null;
+    }
+
+    public void SetGamePiece(GamePiece gamePiece)
+    {
+        this.gamePiece = gamePiece;
+        this.gamePiece.SetColor(this.color);
     }
 
 }

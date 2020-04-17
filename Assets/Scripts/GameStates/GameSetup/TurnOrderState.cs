@@ -68,7 +68,7 @@ public class TurnOrderState : GameState
                         Object.Destroy(die.gameObject);
                         mgm.turnOrder.gameObject.SetActive(false);
                         mgm.CreatePlayerTabs();
-                        return new LoopState();
+                        return new PreTurn(mgm);
                     }
                     else
                     {

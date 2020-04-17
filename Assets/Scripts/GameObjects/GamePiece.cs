@@ -5,7 +5,6 @@ using UnityEngine;
 public class GamePiece : MonoBehaviour
 {
 
-    public Color[] colors;
     public Renderer render;
 
     // Start is called before the first frame update
@@ -20,9 +19,9 @@ public class GamePiece : MonoBehaviour
         
     }
 
-    public void SetColor(int index)
+    public void SetColor(Color color)
     {
-        render.material.color = colors[index % colors.Length];
+        render.material.color = color;
     }
 
 }

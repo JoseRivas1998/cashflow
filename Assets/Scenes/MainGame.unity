@@ -860,6 +860,18 @@ MonoBehaviour:
   - {r: 0.015686275, g: 0, b: 0.7058824, a: 1}
   - {r: 0.7137255, g: 0.57254905, b: 1, a: 1}
   margin: 20
+--- !u!114 &463619061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+    type: 3}
+  m_PrefabInstance: {fileID: 403072871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f38cc4b2a5771b4892bac639f658c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503476710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,15 +1845,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1149945730}
+  mainCamTracker: {fileID: 1149945732}
   playerCount: {fileID: 2017296026}
   playerNameDreamColor: {fileID: 972976367}
   playerProfessionReveal: {fileID: 1317259967}
   turnOrder: {fileID: 1201362543}
   playerTabs: {fileID: 45175008}
+  board: {fileID: 463619061}
   diePrefab: {fileID: 5945870147979824624, guid: e20e85eb5ffcfb8409f9ce3861b74344,
     type: 3}
   diceSpawnDistance: 4
   diceSpawnOffset: 2
+  gamePiecePrefab: {fileID: 6454078457573357034, guid: a571d75937b4bd84e8e3971fd037b77d,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {x: 0, y: 0, z: 0}
-  planarDistanceFromObject: 2
+  planarDistanceFromObject: 5
   smoothing: 25
 --- !u!1 &1174892865
 GameObject:

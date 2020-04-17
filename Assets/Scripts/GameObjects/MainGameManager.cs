@@ -18,10 +18,12 @@ public class MainGameManager : MonoBehaviour
     public float diceSpawnDistance = 1f;
     public float diceSpawnOffset = 2f;
 
+    public GameObject gamePiecePrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
-    private TurnManager turnManager;
+    public TurnManager turnManager;
     public int NumPlayers { get { return players != null ? players.Length : 0; } }
 
     // Start is called before the first frame update
@@ -74,11 +76,16 @@ public class MainGameManager : MonoBehaviour
     public void CreatePlayerTabs()
     {
         int[] playerOrder = turnManager.TurnOrder();
-        Debug.Log("{" + string.Join(", ", playerOrder) + "}");
         foreach (int pIndex in playerOrder)
         {
             players[pIndex].SetTab(playerTabs.AddTab(players[pIndex]));
         }
+    }
+
+    public void SpawnGamePiece(int player)
+    {
+        GameObject gamePiece = Instantiate(gamePiecePrefab);
+        players[player].SetGamePiece(gamePiece.GetComponent<GamePiece>());
     }
 
     public Player GetPlayer(int i)

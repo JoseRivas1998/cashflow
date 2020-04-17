@@ -26,9 +26,9 @@ public class TempSpanwer : MonoBehaviour
             GameObject go = Instantiate(gamePiecePrefab);
             Rigidbody rb = go.GetComponent<Rigidbody>();
             GamePiece gp = go.GetComponent<GamePiece>();
+            gp.SetColor(new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
             go.transform.position = transform.position;
             rb.AddForceAtPosition(Random.onUnitSphere * spawnForce, Random.onUnitSphere * 0.5f, ForceMode.Impulse);
-            gp.SetColor(Random.Range(0, gp.colors.Length));
         }
     }
 }
