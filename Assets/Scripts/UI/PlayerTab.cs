@@ -75,11 +75,7 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (balanceDisplay < playerBalance)
         {
             int diff = playerBalance - balanceDisplay;
-            if (diff > 1000)
-            {
-                balanceDisplay += 1000;
-            }
-            else if (diff > 100)
+            if (diff > 100)
             {
                 balanceDisplay += 100;
             }
@@ -96,11 +92,7 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         else if (balanceDisplay > playerBalance)
         {
             int diff = playerBalance - balanceDisplay;
-            if (diff > 1000)
-            {
-                balanceDisplay -= 1000;
-            }
-            else if (diff > 100)
+            if (diff > 100)
             {
                 balanceDisplay -= 100;
             }
@@ -130,4 +122,14 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         targetY = pulledInTarget;
     }
+
+    public void UpdatePlayerBalance(Player player)
+    {
+        int newBalance = player.ledger.GetCurretBalance();
+        if(newBalance != playerBalance)
+        {
+            playerBalance = newBalance;
+        }
+    }
+
 }

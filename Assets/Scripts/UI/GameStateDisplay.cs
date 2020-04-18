@@ -10,6 +10,7 @@ public class GameStateDisplay : MonoBehaviour
     public void SetText(string s)
     {
         displayText.text = s;
+        gameObject.SetActive(true);
     }
 
 }

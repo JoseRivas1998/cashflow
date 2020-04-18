@@ -7,10 +7,12 @@ public class PlayerRollDiceState : GameState
 {
 
     private DiceContainer[] dice;
+    private readonly int currentSpace;
 
     public PlayerRollDiceState(MainGameManager mgm, int numDice)
     {
         dice = mgm.SpawnDice(numDice);
+        currentSpace = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer()).space;
     } 
 
     public override GameState Update(MainGameManager mgm)
@@ -33,7 +35,13 @@ public class PlayerRollDiceState : GameState
                 {
                     Object.Destroy(die.gameObject);
                 }
-                return new PlayerMoving(mgm, sum);
+                int payDays = mgm.board.PayDays(currentSpace, sum);
+                if (payDays == 0)
+                {
+                    return new PlayerMoving(mgm, sum);
+                }
+                // TODO check for MLM
+                return new PaydayState(mgm, sum, payDays);
             }
         }
         return this;

@@ -12,6 +12,7 @@ public class MainGameManager : MonoBehaviour
     public PlayerProfessionReveal playerProfessionReveal;
     public GameStateDisplay gameStateDisplay;
     public TurnOrder turnOrder;
+    public PayDayAnimation payDayAnimation;
     public PlayerTabContainer playerTabs;
     public BoardManager board;
 

@@ -51,4 +51,16 @@ public class Player
         this.gamePiece.SetColor(this.color);
     }
 
+    public void AddMoney(int amount)
+    {
+        ledger.AddMoney(amount);
+        tab.UpdatePlayerBalance(this);
+    }
+
+    public void SubtractMoney(int amount)
+    {
+        ledger.SubtractMoney(amount);
+        tab.UpdatePlayerBalance(this);
+    }
+
 }

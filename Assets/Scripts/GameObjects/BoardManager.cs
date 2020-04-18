@@ -139,4 +139,19 @@ public class BoardManager : MonoBehaviour
         return space % ratRaceSpaces.Length;
     }
 
+    public int PayDays(int startingSpace, int numSpaces)
+    {
+        int sum = 0;
+        for (int i = 1; i <= numSpaces; i++)
+        {
+            int spaceIndex = NormalizeSpace(startingSpace + i);
+            RatRaceSpaceTypes space = ratRaceSpaces[spaceIndex];
+            if(space == RatRaceSpaceTypes.Payday)
+            {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
 }
