@@ -10,6 +10,7 @@ public class MainGameManager : MonoBehaviour
     public PlayerCount playerCount;
     public PlayerNameDreamColor playerNameDreamColor;
     public PlayerProfessionReveal playerProfessionReveal;
+    public GameStateDisplay gameStateDisplay;
     public TurnOrder turnOrder;
     public PlayerTabContainer playerTabs;
     public BoardManager board;

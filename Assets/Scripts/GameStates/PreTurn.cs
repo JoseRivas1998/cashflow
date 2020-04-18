@@ -17,6 +17,8 @@ public class PreTurn : GameState
             player.gamePiece.transform.position = spawnPosition;
         }
         mgm.mainCamTracker.TrackObject(player.gamePiece.transform);
+        mgm.gameStateDisplay.SetText(player.name + "'s Turn");
+        mgm.gameStateDisplay.gameObject.SetActive(true);
     } 
 
     public override GameState Update(MainGameManager mgm)

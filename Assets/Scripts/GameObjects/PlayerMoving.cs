@@ -17,13 +17,14 @@ public class PlayerMoving : GameState
         targetSpace = mgm.board.NormalizeSpace(currentSpace + dieCount);
         targetPosition = mgm.board.SpaceCenter(mgm.board.NormalizeSpace(currentSpace + 1));
         targetPosition.y = player.gamePiece.transform.position.y;
+        mgm.gameStateDisplay.SetText("Moving " + dieCount + " space" + (dieCount > 1 ? "s" : ""));
     }
 
     public override GameState Update(MainGameManager mgm)
     {
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
-            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 25f;
+            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 40f;
         }
         else
         {
