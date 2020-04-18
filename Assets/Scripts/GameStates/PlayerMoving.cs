@@ -39,6 +39,8 @@ public class PlayerMoving : GameState
                     case BoardManager.RatRaceSpaceTypes.Downsized:
                         player.Downsize();
                         break;
+                    case BoardManager.RatRaceSpaceTypes.Baby:
+                        return new BabyState(mgm);
                 }
                 // TODO make this post turn
                 return new PreTurn(mgm);

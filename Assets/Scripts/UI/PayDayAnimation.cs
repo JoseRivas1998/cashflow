@@ -21,7 +21,7 @@ public class PayDayAnimation : MonoBehaviour
     {
         if(AnimatiorReady())
         {
-            soundEffect.Play();
+            if(soundEffect != null) soundEffect.Play();
             NextState();
         }
     }

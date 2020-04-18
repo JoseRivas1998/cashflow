@@ -53,4 +53,14 @@ public class IncomeStatement
         this.bankLoan = 0;
     }
 
+    public bool AddChild()
+    {
+        if(this.numChildren < 3)
+        {
+            numChildren++;
+            return true;
+        }
+        return false;
+    }
+
 }

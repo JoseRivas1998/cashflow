@@ -14,6 +14,7 @@ public class MainGameManager : MonoBehaviour
     public TurnOrder turnOrder;
     public FinancialStatementToggle financialStatementToggle;
     public PayDayAnimation payDayAnimation;
+    public PayDayAnimation babyAnimation;
     public PlayerTabContainer playerTabs;
     public BoardManager board;
 

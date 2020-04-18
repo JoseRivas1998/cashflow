@@ -113,6 +113,7 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             float yOffset = (targetY - transform.localPosition.y) / smoothing;
             transform.localPosition += Vector3.up * yOffset;
         }
+        UpdateValues();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
