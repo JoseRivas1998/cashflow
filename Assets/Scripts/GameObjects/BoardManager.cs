@@ -62,7 +62,11 @@ public class BoardManager : MonoBehaviour
     public Vector3 ratRaceCenterOffset;
     public float ratRaceStartSpaceAngleOffset;
     public float ratRaceSpaceCenterThreshold;
+    public float downSizedTurnOneDistance;
+    public float downSizedTurnTwoDistance;
     public float sqRatRaceSpaceCenterThreshold { get { return ratRaceSpaceCenterThreshold * ratRaceSpaceCenterThreshold; } }
+
+    private const int DOWNSIZED_SPACE = 11;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +110,14 @@ public class BoardManager : MonoBehaviour
                     Vector3 center = SpaceCenter(i);
                     UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
                 }
+            }
+            if(debugRatRaceCenters)
+            {
+                UnityEditor.Handles.color = new Color(1f, 0f, 1f, 0.25f);
+                Vector3 center = DownSizedSpace(1);
+                UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
+                center = DownSizedSpace(2);
+                UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
             }
         }
     }
@@ -152,6 +164,29 @@ public class BoardManager : MonoBehaviour
             }
         }
         return sum;
+    }
+
+    public Vector3 DownSizedSpace(int downSizedTurn)
+    {
+        float dist;
+        if(downSizedTurn == 1)
+        {
+            dist = downSizedTurnOneDistance;
+        } 
+        else if (downSizedTurn == 2)
+        {
+            dist = downSizedTurnTwoDistance;
+        } 
+        else 
+        {
+            dist = ratRaceInnerRadius + (SpaceLength() * 0.5f);
+        }
+        return transform.position + (SpaceCenter(DOWNSIZED_SPACE) - transform.position - ratRaceCenterOffset).normalized * dist;
+    }
+
+    public RatRaceSpaceTypes GetSpaceType(int space)
+    {
+        return ratRaceSpaces[NormalizeSpace(space)];
     }
 
 }

@@ -229,7 +229,9 @@ MonoBehaviour:
   ratRaceInnerRadius: 4.12
   ratRaceCenterOffset: {x: -0.1, y: 0, z: 0}
   ratRaceStartSpaceAngleOffset: 225
-  ratRaceSpaceCenterThreshold: 0.5
+  ratRaceSpaceCenterThreshold: 0.31
+  downSizedTurnOneDistance: 8.55
+  downSizedTurnTwoDistance: 7.67
 --- !u!1 &4994944087272651876
 GameObject:
   m_ObjectHideFlags: 0

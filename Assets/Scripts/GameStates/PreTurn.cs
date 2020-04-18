@@ -26,6 +26,12 @@ public class PreTurn : GameState
         if(mgm.mainCamTracker.SquareDistanceFromTarget < 1)
         {
             // TODO check rules here
+            int playerIndex = mgm.turnManager.GetCurrentPlayer();
+            Player player = mgm.GetPlayer(playerIndex);
+            if (player.downsized)
+            {
+                return new DownsizedState(mgm);
+            }
             return new PlayerRollDiceState(mgm, 1);
         }
         return this;

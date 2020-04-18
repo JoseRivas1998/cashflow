@@ -33,6 +33,14 @@ public class PlayerMoving : GameState
             {
                 player.gamePiece.transform.position = targetPosition;
                 player.space = targetSpace;
+                BoardManager.RatRaceSpaceTypes spaceType = mgm.board.GetSpaceType(targetSpace);
+                switch(spaceType)
+                {
+                    case BoardManager.RatRaceSpaceTypes.Downsized:
+                        player.Downsize();
+                        break;
+                }
+                // TODO make this post turn
                 return new PreTurn(mgm);
             }
             targetPosition = mgm.board.SpaceCenter(mgm.board.NormalizeSpace(currentSpace + 1));

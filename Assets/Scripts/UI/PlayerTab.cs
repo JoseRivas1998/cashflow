@@ -91,7 +91,7 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
         else if (balanceDisplay > playerBalance)
         {
-            int diff = playerBalance - balanceDisplay;
+            int diff = balanceDisplay - playerBalance;
             if (diff > 100)
             {
                 balanceDisplay -= 100;

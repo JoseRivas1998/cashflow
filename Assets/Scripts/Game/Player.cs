@@ -17,6 +17,8 @@ public class Player
     private PlayerTab tab;
     public GamePiece gamePiece { get; private set; }
 
+    public bool downsized { get; private set; }
+    public int downsizedTurns;
     public Player(int index, string name, string dream, Color color, Professions.Profession profession)
     {
         this.index = index;
@@ -28,6 +30,8 @@ public class Player
         this.incomeStatement = new IncomeStatement(profession);
         this.gamePiece = null;
         this.space = 0;
+        this.downsized = false;
+        this.downsizedTurns = 0;
     }
 
     public override string ToString()
@@ -61,6 +65,19 @@ public class Player
     {
         ledger.SubtractMoney(amount);
         tab.UpdatePlayerBalance(this);
+    }
+
+    public void Downsize()
+    {
+        this.SubtractMoney(incomeStatement.TotalExpenses);
+        this.downsized = true;
+        this.downsizedTurns = 0;
+    }
+
+    public void RemoveDownsize()
+    {
+        this.downsized = false;
+        this.downsizedTurns = 0;
     }
 
 }
