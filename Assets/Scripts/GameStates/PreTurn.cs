@@ -19,6 +19,8 @@ public class PreTurn : GameState
         mgm.mainCamTracker.TrackObject(player.gamePiece.transform);
         mgm.gameStateDisplay.SetText(player.name + "'s Turn");
         mgm.gameStateDisplay.gameObject.SetActive(true);
+        mgm.financialStatementToggle.Close();
+        mgm.financialStatementToggle.gameObject.SetActive(true);
     } 
 
     public override GameState Update(MainGameManager mgm)
