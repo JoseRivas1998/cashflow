@@ -421,6 +421,8 @@ MonoBehaviour:
   bg: {fileID: 3804488102753767375}
   luminanceThreshold: 0.4
   smoothing: 25
+  additionPrefab: {fileID: 5967309661761196698, guid: 7f5e6c9da45428643ab5c67825963f05,
+    type: 3}
 --- !u!1 &3567245021057620888
 GameObject:
   m_ObjectHideFlags: 0

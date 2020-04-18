@@ -25,6 +25,8 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public float luminanceThreshold = 0.4f;
     public float smoothing = 25f;
 
+    public GameObject additionPrefab;
+
     private int playerBalance;
     private int balanceDisplay;
     private float pulledInTarget;
@@ -128,6 +130,8 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         int newBalance = player.ledger.GetCurretBalance();
         if(newBalance != playerBalance)
         {
+            GameObject additionObject = Instantiate(additionPrefab, this.transform);
+            additionObject.GetComponent<MoneyAddition>().Initialize(newBalance - playerBalance);
             playerBalance = newBalance;
         }
     }
