@@ -12,6 +12,8 @@ public class Player
     public readonly Ledger ledger;
     public readonly IncomeStatement incomeStatement;
 
+    public int space;
+
     private PlayerTab tab;
     public GamePiece gamePiece { get; private set; }
 
@@ -25,6 +27,7 @@ public class Player
         this.ledger = new Ledger(profession);
         this.incomeStatement = new IncomeStatement(profession);
         this.gamePiece = null;
+        this.space = 0;
     }
 
     public override string ToString()

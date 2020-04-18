@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1185381313982414892}
   - component: {fileID: 5384383886998576494}
   - component: {fileID: 1073686548861493944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Solid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7026464539174530800}
   - component: {fileID: 5607784751957304725}
   - component: {fileID: 2810918410779562454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RoundedDieCentered
   m_TagString: Untagged
   m_Icon: {fileID: 0}

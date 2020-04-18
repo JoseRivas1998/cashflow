@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9211414980614864075}
   - component: {fileID: 8161968223625223041}
   - component: {fileID: 2014479450163745795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Solid5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 7339909928888990770}
   - component: {fileID: 5689252543283197968}
   - component: {fileID: 3633901649653724962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CashFlowGamePiece
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,11 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5e6a5015aae6c4db02f2655eaf0264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.764151, g: 0.13336597, b: 0.13336597, a: 0}
-  - {r: 0.8867924, g: 0.64828026, b: 0.079476655, a: 0}
-  - {r: 0.7137255, g: 0.5707547, b: 1, a: 0}
-  - {r: 0.9339623, g: 0.9193374, b: 0.066082224, a: 0}
-  - {r: 0.5095345, g: 0.8773585, b: 0.120016046, a: 0}
-  - {r: 0.01727444, g: 0, b: 0.7075472, a: 0}
   render: {fileID: 2014479450163745795}

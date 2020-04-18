@@ -9,6 +9,7 @@ public class CameraTrack : MonoBehaviour
     public float smoothing = 25f;
     private Transform lookingAt;
     private Transform targetTrans;
+    private Vector3 target;
 
     // Start is called before the first frame update
     void Start()
@@ -30,13 +31,15 @@ public class CameraTrack : MonoBehaviour
         }
         if(targetTrans != null)
         {
-            if(Vector3.SqrMagnitude(targetTrans.position - transform.position) > 1)
+            target = CalculateTargetPos();
+            if ( SquareDistanceFromTarget > 1)
             {
-                Vector3 target = CalculateTargetPos();
                 transform.position += (target - transform.position) / smoothing;
             }
         }
     }
+
+    public float SquareDistanceFromTarget { get { return targetTrans == null ? float.MaxValue : Vector3.SqrMagnitude(target - transform.position); } }
 
     public Vector3 CalculateTargetPos()
     {

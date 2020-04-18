@@ -728,6 +728,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
+    - target: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: ratRaceSpaceCenterThreshold
+      value: 0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 4994944087205267237, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2387,7 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {x: 0, y: 0, z: 0}
-  planarDistanceFromObject: 5
+  planarDistanceFromObject: 6
   smoothing: 25
 --- !u!1 &1174892865
 GameObject:

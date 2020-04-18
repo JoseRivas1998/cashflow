@@ -62,6 +62,7 @@ public class BoardManager : MonoBehaviour
     public Vector3 ratRaceCenterOffset;
     public float ratRaceStartSpaceAngleOffset;
     public float ratRaceSpaceCenterThreshold;
+    public float sqRatRaceSpaceCenterThreshold { get { return ratRaceSpaceCenterThreshold * ratRaceSpaceCenterThreshold; } }
 
     // Start is called before the first frame update
     void Start()
@@ -131,6 +132,11 @@ public class BoardManager : MonoBehaviour
         float angleRad = angleDeg * Mathf.Deg2Rad;
         Vector3 offset = new Vector3(Mathf.Cos(angleRad), 0, Mathf.Sin(angleRad)) * distanceFromCenter;
         return transform.position + ratRaceCenterOffset + offset;
+    }
+
+    public int NormalizeSpace(int space)
+    {
+        return space % ratRaceSpaces.Length;
     }
 
 }

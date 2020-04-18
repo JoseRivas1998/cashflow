@@ -13,6 +13,7 @@ public class PreTurn : GameState
         {
             Vector3 spawnPosition = mgm.board.SpaceCenter(0) + (Vector3.up * 0.5f);
             mgm.SpawnGamePiece(playerIndex);
+            player.gamePiece.origin = mgm.board.transform.position + mgm.board.ratRaceCenterOffset;
             player.gamePiece.transform.position = spawnPosition;
         }
         mgm.mainCamTracker.TrackObject(player.gamePiece.transform);
@@ -20,6 +21,12 @@ public class PreTurn : GameState
 
     public override GameState Update(MainGameManager mgm)
     {
+        if(mgm.mainCamTracker.SquareDistanceFromTarget < 1)
+        {
+            // TODO check rules here
+            return new PlayerRollDiceState(mgm, 1);
+        }
         return this;
     }
+
 }
