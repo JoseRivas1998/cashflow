@@ -16,6 +16,7 @@ public class MainGameManager : MonoBehaviour
     public PayDayAnimation payDayAnimation;
     public PayDayAnimation babyAnimation;
     public PlayerTabContainer playerTabs;
+    public Canvas mainUICanvas;
     public BoardManager board;
 
     public GameObject diePrefab;
@@ -23,6 +24,9 @@ public class MainGameManager : MonoBehaviour
     public float diceSpawnOffset = 2f;
 
     public GameObject gamePiecePrefab;
+
+    public GameObject charityOptionPrefab;
+    public GameObject dieAmountSelectPrefab;
 
     private GameState currentState;
     private Player[] players;

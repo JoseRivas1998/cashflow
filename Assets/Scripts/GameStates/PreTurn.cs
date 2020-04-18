@@ -34,6 +34,10 @@ public class PreTurn : GameState
             {
                 return new DownsizedState(mgm);
             }
+            if (player.charityTurnsLeft > 0)
+            {
+                return new SelectingDieAmountState(mgm);
+            }
             return new PlayerRollDiceState(mgm, 1);
         }
         return this;

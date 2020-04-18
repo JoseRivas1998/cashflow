@@ -19,6 +19,8 @@ public class Player
 
     public bool downsized { get; private set; }
     public int downsizedTurns;
+    public int charityTurnsLeft { get; private set; }
+
     public Player(int index, string name, string dream, Color color, Professions.Profession profession)
     {
         this.index = index;
@@ -32,6 +34,7 @@ public class Player
         this.space = 0;
         this.downsized = false;
         this.downsizedTurns = 0;
+        this.charityTurnsLeft = 0;
     }
 
     public override string ToString()
@@ -72,12 +75,23 @@ public class Player
         this.SubtractMoney(incomeStatement.TotalExpenses);
         this.downsized = true;
         this.downsizedTurns = 0;
+        this.charityTurnsLeft = 0;
     }
 
     public void RemoveDownsize()
     {
         this.downsized = false;
         this.downsizedTurns = 0;
+    }
+
+    public void AddCharity()
+    {
+        this.charityTurnsLeft += 3;
+    }
+
+    public void SubtractFromCharity()
+    {
+        this.charityTurnsLeft = Mathf.Max(0, charityTurnsLeft - 1);
     }
 
 }

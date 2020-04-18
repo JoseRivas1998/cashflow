@@ -37,10 +37,13 @@ public class PlayerMoving : GameState
                 switch(spaceType)
                 {
                     case BoardManager.RatRaceSpaceTypes.Downsized:
+                        // TODO CHECK IF LOAN NEEDED
                         player.Downsize();
                         break;
                     case BoardManager.RatRaceSpaceTypes.Baby:
                         return new BabyState(mgm);
+                    case BoardManager.RatRaceSpaceTypes.Charity:
+                        return new CharityOptionState(mgm);
                 }
                 // TODO make this post turn
                 return new PreTurn(mgm);
