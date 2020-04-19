@@ -27,10 +27,13 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject charityOptionPrefab;
     public GameObject dieAmountSelectPrefab;
+    public GameObject doodadDisplayPrefab;
 
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
+    private Stack<DoodadCard> doodadCards;
+    private List<DoodadCard> doodadDiscardPile;
     public TurnManager turnManager;
     public int NumPlayers { get { return players != null ? players.Length : 0; } }
 
@@ -38,6 +41,7 @@ public class MainGameManager : MonoBehaviour
     void Start()
     {
         LoadProfessions();
+        LoadDoodads();
         mainCamTracker.origin = board.transform.position + board.ratRaceCenterOffset;
         currentState = new PlayerCountSelectState(this);
     }
@@ -52,6 +56,19 @@ public class MainGameManager : MonoBehaviour
         {
             professions.Push(profession);
         }
+    }
+
+    private void LoadDoodads()
+    {
+        List<DoodadCard> doodadCardList = new List<DoodadCard>();
+        doodadCardList.AddRange(DoodadCard.LoadDoodadCards());
+        Utility.ShuffleList(doodadCardList);
+        doodadCards = new Stack<DoodadCard>();
+        foreach (DoodadCard doodad in doodadCardList)
+        {
+            doodadCards.Push(doodad);
+        }
+        doodadDiscardPile = new List<DoodadCard>();
     }
 
     public void SetNumPlayers(int numPlayers)
@@ -122,6 +139,22 @@ public class MainGameManager : MonoBehaviour
             dice[i] = diceObject.GetComponent<DiceContainer>();
         }
         return dice;
+    }
+
+    public DoodadCard PullDoodadCard()
+    {
+        if(doodadCards.Count == 0)
+        {
+            Utility.ShuffleList(doodadDiscardPile);
+            foreach (DoodadCard doodad in doodadDiscardPile)
+            {
+                doodadCards.Push(doodad);
+            }
+            doodadDiscardPile.Clear();
+        }
+        DoodadCard card = doodadCards.Pop();
+        doodadDiscardPile.Add(card);
+        return card;
     }
 
 }

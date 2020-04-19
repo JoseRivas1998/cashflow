@@ -44,6 +44,8 @@ public class PlayerMoving : GameState
                         return new BabyState(mgm);
                     case BoardManager.RatRaceSpaceTypes.Charity:
                         return new CharityOptionState(mgm);
+                    case BoardManager.RatRaceSpaceTypes.Doodad:
+                        return new DoodadState(mgm);
                 }
                 // TODO make this post turn
                 return new PreTurn(mgm);

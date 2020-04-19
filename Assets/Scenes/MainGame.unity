@@ -2998,6 +2998,8 @@ MonoBehaviour:
     type: 3}
   dieAmountSelectPrefab: {fileID: 1436598167411769877, guid: 782870290379b424684b38967db58c40,
     type: 3}
+  doodadDisplayPrefab: {fileID: 7442826129787397122, guid: 8cd5b5fea2e6dc34a938834a54326ffe,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
