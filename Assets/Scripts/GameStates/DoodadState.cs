@@ -64,8 +64,7 @@ public class DoodadState : GameState
         if(done)
         {
             Object.Destroy(display.gameObject);
-            // TOOD make this post turn
-            return new PreTurn(mgm);
+            return new PostTurnState(mgm);
         }
         if(canceling)
         {
@@ -73,8 +72,7 @@ public class DoodadState : GameState
             if(cancelTime > cancelTimer) 
             {
                 Object.Destroy(display.gameObject);
-                // TODO POST TURN
-                return new PreTurn(mgm);
+                return new PostTurnState(mgm);
             }
             return this;
         }

@@ -22,14 +22,13 @@ public class BabyState : GameState
     {
         if(skip)
         {
-            return new PreTurn(mgm);
+            return new PostTurnState(mgm);
         }
         if(mgm.babyAnimation.AnimatorDone())
         {
             mgm.babyAnimation.ResetAnimation();
             mgm.babyAnimation.gameObject.SetActive(false);
-            // TODO GO TO END TURN
-            return new PreTurn(mgm);
+            return new PostTurnState(mgm);
         }
         return this;
     }

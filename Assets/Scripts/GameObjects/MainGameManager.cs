@@ -30,6 +30,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject doodadDisplayPrefab;
     public GameObject loanDisplayPrefab;
     public GameObject preTurnChoicesPrefab;
+    public GameObject postTurnChoicesPrefab;
 
     private GameState currentState;
     private Player[] players;

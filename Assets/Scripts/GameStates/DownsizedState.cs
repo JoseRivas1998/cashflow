@@ -39,7 +39,7 @@ public class DownsizedState : GameState
                 player.RemoveDownsize();
                 return new PreTurnChoicesState(mgm);
             }
-            return new PreTurn(mgm);
+            return new PostTurnState(mgm);
         }
         return this;
     }

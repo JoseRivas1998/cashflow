@@ -59,8 +59,7 @@ public class CharityOptionState : GameState
                 }
             }
             Object.Destroy(charityOption.gameObject);
-            // TODO GO TO END TURN
-            return new PreTurn(mgm);
+            return new PostTurnState(mgm);
         }
         return this;
     }

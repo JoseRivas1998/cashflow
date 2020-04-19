@@ -31,7 +31,7 @@ public class PlayerMoving : GameState
             if(player.ledger.GetCurretBalance() - downsizeCost >= 0)
             {
                 player.Downsize();
-                return new PreTurn(mgm);
+                return new PostTurnState(mgm);
             }
             return new LoanState(mgm, this);
         } 
@@ -67,8 +67,7 @@ public class PlayerMoving : GameState
                     case BoardManager.RatRaceSpaceTypes.Doodad:
                         return new DoodadState(mgm);
                 }
-                // TODO make this post turn
-                return new PreTurn(mgm);
+                return new PostTurnState(mgm);
             }
             targetPosition = mgm.board.SpaceCenter(mgm.board.NormalizeSpace(currentSpace + 1));
             targetPosition.y = player.gamePiece.transform.position.y;

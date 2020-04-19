@@ -3004,6 +3004,8 @@ MonoBehaviour:
     type: 3}
   preTurnChoicesPrefab: {fileID: 3829666190813412480, guid: 18bb386758da6f641b90547789a396c7,
     type: 3}
+  postTurnChoicesPrefab: {fileID: 7086283143387744178, guid: bc300e84c694d414aac5c0402472b848,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
