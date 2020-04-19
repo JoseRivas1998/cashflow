@@ -8,27 +8,33 @@ public class PlayerRollDiceState : GameState
 
     private DiceContainer[] dice;
     private readonly int currentSpace;
+    private Player player;
+
 
     public PlayerRollDiceState(MainGameManager mgm, int numDice)
     {
+        player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
         dice = mgm.SpawnDice(numDice);
         currentSpace = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer()).space;
-    } 
+        ResetAll();
+    }
 
     public override GameState Update(MainGameManager mgm)
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             ShakeAll();
         }
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             RollAll();
+            mgm.mainCamTracker.TrackObject(dice[0].transform);
         }
-        if(AllDone())
+        if (AllDone())
         {
-            if(!RerollCocked())
+            if (!RerollCocked())
             {
+                mgm.mainCamTracker.TrackObject(player.gamePiece.transform);
                 int sum = dice.Sum(die => die.dir.DieValue());
                 Debug.Log(sum);
                 foreach (DiceContainer die in dice)
@@ -81,12 +87,12 @@ public class PlayerRollDiceState : GameState
         return result;
     }
 
-    private bool RerollCocked() 
+    private bool RerollCocked()
     {
         bool anyRolled = false;
-        foreach (DiceContainer die in dice) 
-        { 
-            if(die.dir.DieValue() == -1)
+        foreach (DiceContainer die in dice)
+        {
+            if (die.dir.DieValue() == -1)
             {
                 die.roller.ResetRoll();
                 die.roller.Roll();

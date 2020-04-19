@@ -47,9 +47,9 @@ public class DiceRoller : MonoBehaviour
 
     public void Shake()
     {
-        rb.velocity = Vector3.zero;
         if (state == RollState.RollReady)
         {
+            rb.velocity = Vector3.zero;
             shakeCenter = pos.position;
             state = RollState.Shaking;
         }
