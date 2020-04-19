@@ -28,6 +28,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject charityOptionPrefab;
     public GameObject dieAmountSelectPrefab;
     public GameObject doodadDisplayPrefab;
+    public GameObject loanDisplayPrefab;
 
     private GameState currentState;
     private Player[] players;

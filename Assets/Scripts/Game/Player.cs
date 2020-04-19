@@ -94,4 +94,10 @@ public class Player
         this.charityTurnsLeft = Mathf.Max(0, charityTurnsLeft - 1);
     }
 
+    public void TakeOutLoan(int amount)
+    {
+        this.AddMoney(amount);
+        this.incomeStatement.bankLoan += amount;
+    }
+
 }

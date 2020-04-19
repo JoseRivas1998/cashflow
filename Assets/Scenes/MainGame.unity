@@ -3000,6 +3000,8 @@ MonoBehaviour:
     type: 3}
   doodadDisplayPrefab: {fileID: 7442826129787397122, guid: 8cd5b5fea2e6dc34a938834a54326ffe,
     type: 3}
+  loanDisplayPrefab: {fileID: 7501528466990069076, guid: 4f83672a77f1a1249aa7bc296464076f,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
