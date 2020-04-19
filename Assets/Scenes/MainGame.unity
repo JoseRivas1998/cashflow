@@ -2996,7 +2996,8 @@ MonoBehaviour:
     type: 3}
   charityOptionPrefab: {fileID: 1215777797585537229, guid: 6bf6659fa9008cb48b1c820bfcaf87a3,
     type: 3}
-  dieAmountSelectPrefab: {fileID: 0}
+  dieAmountSelectPrefab: {fileID: 1436598167411769877, guid: 782870290379b424684b38967db58c40,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0

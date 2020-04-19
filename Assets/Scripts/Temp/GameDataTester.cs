@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameDataTester : MonoBehaviour
 {
 
-    public ProfessionCard professionCard;
+    public DoodadCardGameObject doodadCard;
 
     private Professions professions;
     int professionIndex;
+
+    private List<DoodadCard> doodads;
+    private int doodadIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +29,8 @@ public class GameDataTester : MonoBehaviour
             Debug.Log(card);
         }
         Debug.Log("================================");
-        List<DoodadCard> doodads = DoodadCard.LoadDoodadCards();
-        foreach (DoodadCard card in doodads)
-        {
-            Debug.Log(card);
-        }
-        Debug.Log("================================");
+        doodads = DoodadCard.LoadDoodadCards();
+        doodadIndex = 0;
         List<MarketCard> marketCards = MarketCard.LoadMarketCards();
         foreach (MarketCard card in marketCards)
         {
@@ -44,20 +43,20 @@ public class GameDataTester : MonoBehaviour
     {
         if(Input.GetMouseButtonUp(0))
         {
-            if(professionCard.cardFlip.FlipReadyBack())
+            if(doodadCard.cardFlip.FlipReadyBack())
             {
-                professionCard.SetProfession(professions.professions[professionIndex]);
-                professionIndex = (professionIndex + 1) % professions.professions.Length;
-                professionCard.cardFlip.BeginFlip();
+                doodadCard.SetDoodad(doodads[doodadIndex]);
+                doodadIndex = (doodadIndex + 1) % doodads.Count;
+                doodadCard.cardFlip.BeginFlip();
             }
-            else if(professionCard.cardFlip.FlipReadyFront())
+            else if(doodadCard.cardFlip.FlipReadyFront())
             {
-                professionCard.cardFlip.BeginFlipBack();
+                doodadCard.cardFlip.BeginFlipBack();
             }
         }
-        if(professionCard.cardFlip.FlipDone())
+        if(doodadCard.cardFlip.FlipDone())
         {
-            professionCard.cardFlip.ResetFlip();
+            doodadCard.cardFlip.ResetFlip();
         }
     }
 }
