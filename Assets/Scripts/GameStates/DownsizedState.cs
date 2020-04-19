@@ -37,8 +37,7 @@ public class DownsizedState : GameState
             if (player.downsizedTurns > 2)
             {
                 player.RemoveDownsize();
-                // TODO make this options state
-                return new PlayerRollDiceState(mgm, 1);
+                return new PreTurnChoicesState(mgm);
             }
             return new PreTurn(mgm);
         }

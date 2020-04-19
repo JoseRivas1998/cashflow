@@ -1502,12 +1502,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503476710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.3, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 220.58214, y: 53.96816, z: -194.12854}
   m_LocalScale: {x: 129.32324, y: 1.26, z: 63.719193}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1316291062}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &507642119
 PrefabInstance:
@@ -3001,6 +3001,8 @@ MonoBehaviour:
   doodadDisplayPrefab: {fileID: 7442826129787397122, guid: 8cd5b5fea2e6dc34a938834a54326ffe,
     type: 3}
   loanDisplayPrefab: {fileID: 7501528466990069076, guid: 4f83672a77f1a1249aa7bc296464076f,
+    type: 3}
+  preTurnChoicesPrefab: {fileID: 3829666190813412480, guid: 18bb386758da6f641b90547789a396c7,
     type: 3}
 --- !u!1 &924259648
 GameObject:
@@ -4606,8 +4608,9 @@ Transform:
   - {fileID: 1918729267}
   - {fileID: 1793318474}
   - {fileID: 170926496}
+  - {fileID: 503476714}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317259965
 GameObject:

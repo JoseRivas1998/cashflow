@@ -9,6 +9,7 @@ public class CharityOptionState : GameState
     private bool willBuy;
     private Player player;
     private CharityOption charityOption;
+    private bool takingLoan;
 
     public CharityOptionState(MainGameManager mgm)
     {
@@ -29,20 +30,35 @@ public class CharityOptionState : GameState
             willBuy = false;
         });
         mgm.gameStateDisplay.gameObject.SetActive(false);
+        this.takingLoan = false;
     }
 
     public override GameState Update(MainGameManager mgm)
     {
+        if(takingLoan)
+        {
+            charityOption.gameObject.SetActive(true);
+            takingLoan = false;
+            selecting = true;
+        }
         if(!selecting)
         {
-            Object.Destroy(charityOption.gameObject);
             if(willBuy)
             {
                 int cost = player.incomeStatement.TotalIncome / 10;
-                // TODO CHECK FOR LOAN
-                player.SubtractMoney(cost);
-                player.AddCharity();
+                if (player.ledger.GetCurretBalance() - cost >= 0)
+                {
+                    player.SubtractMoney(cost);
+                    player.AddCharity();
+                }
+                else
+                {
+                    charityOption.gameObject.SetActive(false);
+                    takingLoan = true;
+                    return new LoanState(mgm, this);
+                }
             }
+            Object.Destroy(charityOption.gameObject);
             // TODO GO TO END TURN
             return new PreTurn(mgm);
         }
