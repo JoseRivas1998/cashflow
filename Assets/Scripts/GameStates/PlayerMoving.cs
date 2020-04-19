@@ -9,6 +9,8 @@ public class PlayerMoving : GameState
     private int targetSpace;
     private Player player;
     private Vector3 targetPosition;
+    private bool downsizeLoan;
+    private int downsizeCost;
 
     public PlayerMoving(MainGameManager mgm, int dieCount)
     {
@@ -18,10 +20,21 @@ public class PlayerMoving : GameState
         targetPosition = mgm.board.SpaceCenter(mgm.board.NormalizeSpace(currentSpace + 1));
         targetPosition.y = player.gamePiece.transform.position.y;
         mgm.gameStateDisplay.SetText("Moving " + dieCount + " space" + (dieCount > 1 ? "s" : ""));
+        downsizeLoan = false;
+        downsizeCost = 0;
     }
 
     public override GameState Update(MainGameManager mgm)
     {
+        if(downsizeLoan)
+        {
+            if(player.ledger.GetCurretBalance() - downsizeCost >= 0)
+            {
+                player.Downsize();
+                return new PreTurn(mgm);
+            }
+            return new LoanState(mgm, this);
+        } 
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
             player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 40f;
@@ -37,8 +50,15 @@ public class PlayerMoving : GameState
                 switch(spaceType)
                 {
                     case BoardManager.RatRaceSpaceTypes.Downsized:
-                        // TODO CHECK IF LOAN NEEDED
-                        player.Downsize();
+                        downsizeCost = player.incomeStatement.TotalExpenses;
+                        if(player.ledger.GetCurretBalance() - downsizeCost >= 0)
+                        {
+                            player.Downsize();
+                        } else
+                        {
+                            downsizeLoan = true;
+                            return new LoanState(mgm, this);
+                        }
                         break;
                     case BoardManager.RatRaceSpaceTypes.Baby:
                         return new BabyState(mgm);
