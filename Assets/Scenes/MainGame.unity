@@ -767,7 +767,7 @@ RectTransform:
   - {fileID: 1521656082}
   - {fileID: 549087597}
   m_Father: {fileID: 1252065583}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -2563,7 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3317,7 +3317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3775,6 +3775,14 @@ MonoBehaviour:
     type: 3}
   postTurnChoicesPrefab: {fileID: 7086283143387744178, guid: bc300e84c694d414aac5c0402472b848,
     type: 3}
+  dealCardPrefab: {fileID: 5258573596988326995, guid: 6646f41ba8026ef47a97727bc2251b3f,
+    type: 3}
+  dealTypeChoicesPrefab: {fileID: 5946809376711179625, guid: 68e3e73682e467042b47f0d2c5a77856,
+    type: 3}
+  buyStockOptionsPrefab: {fileID: 7116580346279286638, guid: 8d993b46e8175d648bf5ea288bf4b64e,
+    type: 3}
+  numberStocksInputPrefab: {fileID: 4741811540286762018, guid: 16fa51eb7feffc845a6b27344c51f402,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3886,7 +3894,7 @@ RectTransform:
   - {fileID: 469825880}
   - {fileID: 1974108135}
   m_Father: {fileID: 1252065583}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5141,8 +5149,8 @@ RectTransform:
   - {fileID: 804562251}
   - {fileID: 1181719406}
   - {fileID: 442210758}
-  - {fileID: 945189254}
   - {fileID: 196236906}
+  - {fileID: 945189254}
   - {fileID: 45175007}
   m_Father: {fileID: 0}
   m_RootOrder: 3

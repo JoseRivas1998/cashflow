@@ -100,4 +100,16 @@ public class Player
         this.incomeStatement.bankLoan += amount;
     }
 
+    public void BuyStock(StockCard stockCard, int numShares)
+    {
+        this.BuyStock(stockCard.stock.symbol, stockCard.price, numShares);
+    }
+
+    private void BuyStock(string symbol, int price, int numShares)
+    {
+        int cost = price * numShares;
+        SubtractMoney(cost);
+        incomeStatement.AddStock(symbol, price, numShares);
+    }
+
 }

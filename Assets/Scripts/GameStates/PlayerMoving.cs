@@ -66,6 +66,8 @@ public class PlayerMoving : GameState
                         return new CharityOptionState(mgm);
                     case BoardManager.RatRaceSpaceTypes.Doodad:
                         return new DoodadState(mgm);
+                    case BoardManager.RatRaceSpaceTypes.Deals:
+                        return new ChoosingDealTypeState(mgm);
                 }
                 return new PostTurnState(mgm);
             }

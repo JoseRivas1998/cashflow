@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -33,11 +34,17 @@ public class MainGameManager : MonoBehaviour
     public GameObject preTurnChoicesPrefab;
     public GameObject postTurnChoicesPrefab;
 
+    public GameObject dealCardPrefab;
+    public GameObject dealTypeChoicesPrefab;
+    public GameObject buyStockOptionsPrefab;
+    public GameObject numberStocksInputPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
-    private Stack<DoodadCard> doodadCards;
-    private List<DoodadCard> doodadDiscardPile;
+    private CardStack<DoodadCard> doodadCards;
+    private CardStack<DealCard> smallDeals;
+    private CardStack<DealCard> bigDeals;
     public TurnManager turnManager;
     public int NumPlayers { get { return players != null ? players.Length : 0; } }
 
@@ -46,6 +53,8 @@ public class MainGameManager : MonoBehaviour
     {
         LoadProfessions();
         LoadDoodads();
+        LoadSmallDeals();
+        LoadBigDeals();
         mainCamTracker.origin = board.transform.position + board.ratRaceCenterOffset;
         currentState = new PlayerCountSelectState(this);
     }
@@ -64,15 +73,17 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadDoodads()
     {
-        List<DoodadCard> doodadCardList = new List<DoodadCard>();
-        doodadCardList.AddRange(DoodadCard.LoadDoodadCards());
-        Utility.ShuffleList(doodadCardList);
-        doodadCards = new Stack<DoodadCard>();
-        foreach (DoodadCard doodad in doodadCardList)
-        {
-            doodadCards.Push(doodad);
-        }
-        doodadDiscardPile = new List<DoodadCard>();
+        doodadCards = new CardStack<DoodadCard>(DoodadCard.LoadDoodadCards());
+    }
+
+    private void LoadSmallDeals()
+    {
+        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.Stock).ToList());
+    }
+
+    private void LoadBigDeals()
+    {
+        bigDeals = new CardStack<DealCard>(DealCard.BigDeals());
     }
 
     public void SetNumPlayers(int numPlayers)
@@ -147,18 +158,17 @@ public class MainGameManager : MonoBehaviour
 
     public DoodadCard PullDoodadCard()
     {
-        if(doodadCards.Count == 0)
-        {
-            Utility.ShuffleList(doodadDiscardPile);
-            foreach (DoodadCard doodad in doodadDiscardPile)
-            {
-                doodadCards.Push(doodad);
-            }
-            doodadDiscardPile.Clear();
-        }
-        DoodadCard card = doodadCards.Pop();
-        doodadDiscardPile.Add(card);
-        return card;
+        return doodadCards.Pop();
+    }
+
+    public DealCard PullSmallDealCard()
+    {
+        return smallDeals.Pop();
+    }
+
+    public DealCard PullBigDeal()
+    {
+        return bigDeals.Pop();
     }
 
 }

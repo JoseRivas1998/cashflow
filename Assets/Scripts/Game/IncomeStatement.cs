@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class IncomeStatement
 {
@@ -34,6 +35,21 @@ public class IncomeStatement
 
     public int MonthlyCashflow { get { return TotalIncome - TotalExpenses; } }
 
+    public struct StockEntry
+    {
+        public readonly string Symbol;
+        public readonly int Price;
+        public readonly int NumberOfShares;
+        public StockEntry(string symbol, int price, int numShares)
+        {
+            this.Symbol = symbol;
+            this.Price = price;
+            this.NumberOfShares = numShares;
+        }
+    }
+
+    private readonly List<StockEntry> stockEntries;
+
     public IncomeStatement(Professions.Profession profession)
     {
         this.salary = profession.salary;
@@ -51,6 +67,7 @@ public class IncomeStatement
         this.carLoans = profession.carLoans;
         this.creditCardDebt = profession.creditCardDebt;
         this.bankLoan = 0;
+        this.stockEntries = new List<StockEntry>();
     }
 
     public bool AddChild()
@@ -61,6 +78,37 @@ public class IncomeStatement
             return true;
         }
         return false;
+    }
+
+    public void AddStock(string symbol, int price, int numShares)
+    {
+        int foundIndex = -1;
+        int currentShares = 0;
+        for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
+        {
+            if(this.stockEntries[i].Symbol.Equals(symbol) && this.stockEntries[i].Price == price)
+            {
+                foundIndex = i;
+                currentShares = this.stockEntries[i].NumberOfShares;
+            }
+        }
+        if(foundIndex != -1)
+        {
+            this.stockEntries.RemoveAt(foundIndex);
+        }
+        this.stockEntries.Add(new StockEntry(symbol, price, currentShares + numShares));
+    }
+
+    public int NumShares(string symbol)
+    {
+        return stockEntries.Where(entry => entry.Symbol.Equals(symbol)).Sum(entry => entry.NumberOfShares);
+    }
+
+    public List<StockEntry> StockEntries()
+    {
+        List<StockEntry> entries = new List<StockEntry>();
+        entries.AddRange(this.stockEntries);
+        return entries;
     }
 
 }
