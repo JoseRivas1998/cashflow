@@ -347,7 +347,7 @@
   ],
   "gamble": [
     {
-      "title": "SIster-In-Law borrows Money",
+      "title": "Sister-In-Law borrows Money",
       "flavorText": "Sister-in-law is downsized. Needs $5,000 to make house payment. She promises to pay you back $10,000 after she finds a new job.",
       "instruction": "If you choose to help, pay $5,000 and roll 1 die:",
       "badMin": 1,
@@ -394,7 +394,7 @@
     {
       "title": "Multi-Level Marketing Buy-In",
       "flavorText": "You have a chance to invest in a Muilti-Level-Marketing opportunity. Company is looking to spread the reach of their newest venture.",
-      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD:",
+      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD: Every PayDay, roll 1 die:",
       "badMin": 1,
       "badMax": 3,
       "goodMin": 4,
@@ -409,7 +409,7 @@
     {
       "title": "Multi-Level Marketing Buy-In",
       "flavorText": "You have a chance to invest in a Muilti-Level-Marketing opportunity. Company is looking to spread the reach of their newest venture.",
-      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD:",
+      "instruction": "If you choose to buy-in, pay $500 and KEEP THIS CARD: Every PayDay, roll 1 die:",
       "badMin": 1,
       "badMax": 3,
       "goodMin": 4,

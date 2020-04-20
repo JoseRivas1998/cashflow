@@ -1,36 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameDataTester : MonoBehaviour
 {
 
-    public DoodadCardGameObject doodadCard;
+    public GameObject dealCardPrefab;
+    public Canvas canvas;
 
-    private Professions professions;
-    int professionIndex;
+    private List<DealCard> dealCards;
+    private int dealIndex;
+    private DealCardGameObject dealCard;
 
-    private List<DoodadCard> doodads;
-    private int doodadIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        professions = GameData.Instance.GetProfessions();
-        List<DealCard> smallDeals = DealCard.SmallDeals();
-        foreach (DealCard card in smallDeals)
-        {
-            Debug.Log(card);
-        }
-        Debug.Log("================================");
-        List<DealCard> bigDeals = DealCard.BigDeals();
-        foreach (DealCard card in bigDeals)
-        {
-            Debug.Log(card);
-        }
-        Debug.Log("================================");
-        doodads = DoodadCard.LoadDoodadCards();
-        doodadIndex = 0;
+        dealCards = new List<DealCard>();
+        dealCards.AddRange(DealCard.SmallDeals());
+        dealCards.AddRange(DealCard.BigDeals());
+        dealIndex = 0;
+        dealCard = null;
         List<MarketCard> marketCards = MarketCard.LoadMarketCards();
         foreach (MarketCard card in marketCards)
         {
@@ -41,22 +32,28 @@ public class GameDataTester : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            if(doodadCard.cardFlip.FlipReadyBack())
+            if(dealCard == null)
             {
-                doodadCard.SetDoodad(doodads[doodadIndex]);
-                doodadIndex = (doodadIndex + 1) % doodads.Count;
-                doodadCard.cardFlip.BeginFlip();
+                GameObject card = Instantiate(dealCardPrefab, canvas.transform);
+                dealCard = card.GetComponent<DealCardGameObject>();
+                dealCard.SetDeal(dealCards[dealIndex]);
+                dealIndex = (dealIndex + 1) % dealCards.Count;
             }
-            else if(doodadCard.cardFlip.FlipReadyFront())
+            if (dealCard != null && dealCard.cardFlip.FlipReadyBack())
             {
-                doodadCard.cardFlip.BeginFlipBack();
+                dealCard.cardFlip.BeginFlip();
+            }
+            else if (dealCard != null && dealCard.cardFlip.FlipReadyFront())
+            {
+                dealCard.cardFlip.BeginFlipBack();
             }
         }
-        if(doodadCard.cardFlip.FlipDone())
+        if (dealCard != null && dealCard.cardFlip.FlipDone())
         {
-            doodadCard.cardFlip.ResetFlip();
+            Destroy(dealCard.gameObject);
+            dealCard = null;
         }
     }
 }
