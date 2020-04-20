@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinancialStatementToggle : MonoBehaviour
+public class CashLedgerToggle : MonoBehaviour
 {
-    public FinancialStatement statement;
+    public CashLedger ledger;
     public float smoothing = 25f;
     public RectTransform rect;
 
@@ -21,7 +21,7 @@ public class FinancialStatementToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetX = open ? statement.GetWidth() : 0;
+        targetX = open ? ledger.GetWidth() : 0;
         if (Mathf.Abs(transform.position.x - targetX) > 1)
         {
             transform.position += Vector3.right * ((targetX - transform.position.x) / smoothing);
@@ -30,24 +30,27 @@ public class FinancialStatementToggle : MonoBehaviour
         {
             transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
         }
-        
+
     }
 
-    public void ToggleFinancialStatement()
+    public void ToggleCashLedger()
     {
-        if (!open)
+        if (open)
         {
-            statement.UpdateToCurrentPlayer();
+            ledger.StopUpdatingToPlayer();
+        }
+        else
+        {
+            ledger.BeginUpdatingToPlayer();
         }
         open = !open;
     }
 
     public void Close()
     {
-        if(open)
+        if (open)
         {
-            ToggleFinancialStatement();
+            ToggleCashLedger();
         }
     }
-
 }

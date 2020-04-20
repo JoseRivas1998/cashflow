@@ -13,6 +13,7 @@ public class MainGameManager : MonoBehaviour
     public GameStateDisplay gameStateDisplay;
     public TurnOrder turnOrder;
     public FinancialStatementToggle financialStatementToggle;
+    public CashLedgerToggle cashLedgerToggle;
     public PayDayAnimation payDayAnimation;
     public PayDayAnimation babyAnimation;
     public PlayerTabContainer playerTabs;

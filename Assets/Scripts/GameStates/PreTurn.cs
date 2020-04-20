@@ -21,6 +21,8 @@ public class PreTurn : GameState
         mgm.gameStateDisplay.gameObject.SetActive(true);
         mgm.financialStatementToggle.Close();
         mgm.financialStatementToggle.gameObject.SetActive(true);
+        mgm.cashLedgerToggle.Close();
+        mgm.cashLedgerToggle.gameObject.SetActive(true);
     } 
 
     public override GameState Update(MainGameManager mgm)

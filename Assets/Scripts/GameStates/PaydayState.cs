@@ -12,7 +12,10 @@ public class PaydayState : GameState
         mgm.gameStateDisplay.gameObject.SetActive(false);
         Player player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
         int monthlyCashFlow = player.incomeStatement.MonthlyCashflow;
-        player.AddMoney(monthlyCashFlow * payDays);
+        for (int i = 0; i < payDays; i++)
+        {
+            player.AddMoney(monthlyCashFlow);
+        }
         mgm.payDayAnimation.gameObject.SetActive(true);
         mgm.payDayAnimation.ResetAnimation();
         mgm.payDayAnimation.StartAnimation();

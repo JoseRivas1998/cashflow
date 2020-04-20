@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ledger
 {
 
-    private readonly struct Entry
+    public readonly struct Entry
     {
         public Entry(bool add, int amount)
         {
@@ -58,6 +58,18 @@ public class Ledger
     private void AddEntry(bool add, int amount)
     {
         entries.Add(new Entry(add, amount));
+    }
+
+    public int NumEntries { get { return entries.Count; } }
+
+    public Entry[] Entries()
+    {
+        Entry[] res = new Entry[this.entries.Count];
+        for (int i = 0; i < res.Length; i++)
+        {
+            res[i] = new Entry(this.entries[i].Add, this.entries[i].Amount);
+        }
+        return res;
     }
 
 }
