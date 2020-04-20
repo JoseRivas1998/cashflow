@@ -99,6 +99,73 @@ public class IncomeStatement
         this.stockEntries.Add(new StockEntry(symbol, price, currentShares + numShares));
     }
 
+    public void SellStock(string symbol, int numShares)
+    {
+        int remainingShares = numShares;
+        int foundIndex;
+        while(remainingShares > 0)
+        {
+            /*
+             * step one: find a stock entry that is <= remaining shares
+             */
+            foundIndex = -1;
+            for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
+            {
+                StockEntry entry = stockEntries[i];
+                if(entry.Symbol.Equals(symbol) && entry.NumberOfShares <= remainingShares)
+                {
+                    foundIndex = i;
+                }
+            }
+            if (foundIndex != -1)
+            {
+                /* 
+                 * step two: if such a stock was found, subtract shares in that entry
+                 *           from remaining, remove entry from list and continue
+                 */
+                StockEntry entry = stockEntries[foundIndex];
+                remainingShares -= entry.NumberOfShares;
+                stockEntries.RemoveAt(foundIndex);
+            }
+            else
+            {
+                /*
+                 * step three: if no such stock was found, find a stock where
+                 *             the entry has more shares than the remaining
+                 */
+                foundIndex = -1;
+                for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
+                {
+                    StockEntry entry = stockEntries[i];
+                    if (entry.Symbol.Equals(symbol) && entry.NumberOfShares > remainingShares)
+                    {
+                        foundIndex = i;
+                    }
+                }
+                if (foundIndex == -1)
+                {
+                    return; // this should NEVER happen
+                }
+                else
+                {
+                    /*
+                     * step four: calculate difference between
+                     *             number of shares and remaining shares, set remaining
+                     *             shares to zero, remove found stock, add new entry
+                     *             with the same symbol and price, but the number of entries
+                     *             is the difference
+                     */
+                    StockEntry entry = stockEntries[foundIndex];
+                    int diff = entry.NumberOfShares - remainingShares;
+                    remainingShares = 0;
+                    stockEntries.RemoveAt(foundIndex);
+                    this.AddStock(entry.Symbol, entry.Price, diff);
+                }
+
+            }
+        }
+    }
+
     public int NumShares(string symbol)
     {
         return stockEntries.Where(entry => entry.Symbol.Equals(symbol)).Sum(entry => entry.NumberOfShares);

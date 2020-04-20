@@ -35,6 +35,12 @@ public class BuyingStockState : GameState
             selected = true;
             choice = Choice.Buy;
         });
+        stockOptions.cancelBtn.onClick.AddListener(() => 
+        {
+            if (selected) return;
+            selected = true;
+            choice = Choice.Cancel;
+        });
     }
 
     public override GameState Update(MainGameManager mgm)
@@ -51,7 +57,8 @@ public class BuyingStockState : GameState
             switch (choice)
             {
                 case Choice.Cancel:
-                    break;
+                    Object.Destroy(stockOptions.gameObject);
+                    return new SellingStockState(mgm, (StockCard)dealCard, dealCardObject);
                 case Choice.Buy:
                     Object.Destroy(stockOptions.gameObject);
                     return new EnteringNumberStocksToBuyState(mgm, dealCard, dealCardObject);

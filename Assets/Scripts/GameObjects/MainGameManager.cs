@@ -38,6 +38,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject dealTypeChoicesPrefab;
     public GameObject buyStockOptionsPrefab;
     public GameObject numberStocksInputPrefab;
+    public GameObject sellStockOptionsPrefab;
 
     private GameState currentState;
     private Player[] players;

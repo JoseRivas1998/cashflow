@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnteringNumberStocksToBuyState : GameState
+public class EnteringNumberStocksToSellState : GameState
 {
-
     private readonly StockCard stockCard;
     private readonly DealCardGameObject dealCard;
     private readonly NumberOfSharesInput sharesInput;
     private readonly Player player;
     private bool done;
+    private readonly SellingStockState previousState;
 
-    public EnteringNumberStocksToBuyState(MainGameManager mgm, DealCard deal, DealCardGameObject dealCard)
+    public EnteringNumberStocksToSellState(MainGameManager mgm, StockCard stock, DealCardGameObject dealCard, SellingStockState previousState)
     {
-        this.stockCard = (StockCard)deal;
+        this.previousState = previousState;
+        this.stockCard = stock;
         this.dealCard = dealCard;
         this.dealCard.gameObject.SetActive(false);
 
@@ -21,7 +22,7 @@ public class EnteringNumberStocksToBuyState : GameState
         GameObject gameObject = Object.Instantiate(mgm.numberStocksInputPrefab, mgm.mainUICanvas.transform);
         gameObject.transform.SetSiblingIndex(this.dealCard.transform.GetSiblingIndex() + 1);
         sharesInput = gameObject.GetComponent<NumberOfSharesInput>();
-        sharesInput.numberInput.maxNumber = player.ledger.GetCurretBalance() / this.stockCard.price;
+        sharesInput.numberInput.maxNumber = player.incomeStatement.NumShares(this.stockCard.stock.symbol);
         sharesInput.Initialize(this.stockCard);
         done = false;
         sharesInput.numberInput.confirmBtn.onClick.AddListener(() =>
@@ -29,19 +30,20 @@ public class EnteringNumberStocksToBuyState : GameState
             if (done) return;
             done = true;
         });
+        mgm.gameStateDisplay.gameObject.SetActive(false);
     }
 
     public override GameState Update(MainGameManager mgm)
     {
-        if(done)
+        if (done)
         {
             int numShares = sharesInput.numberInput.Number;
             Object.DestroyImmediate(sharesInput.gameObject);
-            player.BuyStock(stockCard, numShares);
+            player.SellStock(stockCard, numShares);
             dealCard.gameObject.SetActive(true);
             mgm.financialStatementToggle.Close();
             mgm.cashLedgerToggle.Close();
-            return new SellingStockState(mgm, stockCard, dealCard);
+            return this.previousState;
         }
         return this;
     }

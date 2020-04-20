@@ -112,4 +112,11 @@ public class Player
         incomeStatement.AddStock(symbol, price, numShares);
     }
 
+    public void SellStock(StockCard stockCard, int numShares)
+    {
+        int revenue = stockCard.price * numShares;
+        AddMoney(revenue);
+        incomeStatement.SellStock(stockCard.stock.symbol, numShares);
+    }
+
 }

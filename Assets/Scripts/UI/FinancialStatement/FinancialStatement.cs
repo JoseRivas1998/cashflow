@@ -40,6 +40,8 @@ public class FinancialStatement : MonoBehaviour
     public Color defaultColor;
     public Color mutedColor;
 
+    public StockList stockList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +93,7 @@ public class FinancialStatement : MonoBehaviour
         SetAmountText(CarLoans, player.incomeStatement.carLoans, true);
         SetAmountText(CreditCardDebt, player.incomeStatement.creditCardDebt, true);
         SetAmountText(BankLoan, player.incomeStatement.bankLoan, true);
+        stockList.ResetList(player);
     }
 
     private void SetAmountText(Text text, int amount, bool money)
