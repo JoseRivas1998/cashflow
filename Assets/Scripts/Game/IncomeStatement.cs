@@ -19,7 +19,9 @@ public class IncomeStatement
     public int numChildren { get; private set; }
     public int ChildPayment { get { return perChildExpenses * numChildren; } }
     // ASSETS
-    public int savings {get; private set;}
+    public int savings {get; private set; }
+    private readonly List<StockEntry> stockEntries;
+    private readonly List<RealEstateCard> realEstate;
     // LIABILITIES
     public int mortgage {get; private set;}
     public int schoolLoans {get; private set;}
@@ -27,9 +29,9 @@ public class IncomeStatement
     public int creditCardDebt {get; private set;}
     public int bankLoan { get; set; }
 
-    public int PassiveIncome { get { return 0; } }
+    public int PassiveIncome { get { return this.realEstate.Sum(card => card.cashFlow); } }
 
-    public int TotalIncome { get { return salary - PassiveIncome; } }
+    public int TotalIncome { get { return salary + PassiveIncome; } }
 
     public int TotalExpenses { get { return taxes + mortgagePayment + schoolPayment + carPayment + creditPayment + otherExpenses + BankLoanPayment + ChildPayment; } }
 
@@ -47,8 +49,6 @@ public class IncomeStatement
             this.NumberOfShares = numShares;
         }
     }
-
-    private readonly List<StockEntry> stockEntries;
 
     public IncomeStatement(Professions.Profession profession)
     {
@@ -68,6 +68,7 @@ public class IncomeStatement
         this.creditCardDebt = profession.creditCardDebt;
         this.bankLoan = 0;
         this.stockEntries = new List<StockEntry>();
+        this.realEstate = new List<RealEstateCard>();
     }
 
     public bool AddChild()
@@ -176,6 +177,11 @@ public class IncomeStatement
         List<StockEntry> entries = new List<StockEntry>();
         entries.AddRange(this.stockEntries);
         return entries;
+    }
+
+    public void AddRealEstate(RealEstateCard card)
+    {
+        this.realEstate.Add(card);
     }
 
 }

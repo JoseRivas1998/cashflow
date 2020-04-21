@@ -31,7 +31,7 @@ public class DealCardFlippingState : GameState
                 case DealType.Stock:
                     return new BuyingStockState(mgm, dealCard, dealCardObject);
                 case DealType.RealEstate:
-                    break;
+                    return new BuySellRealEstateState(mgm, (RealEstateCard)dealCard, dealCardObject);
                 case DealType.Gold:
                     break;
                 case DealType.Gamble:

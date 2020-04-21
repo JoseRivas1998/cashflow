@@ -119,4 +119,10 @@ public class Player
         incomeStatement.SellStock(stockCard.stock.symbol, numShares);
     }
 
+    public void BuyRealEstate(RealEstateCard realEstate)
+    {
+        this.SubtractMoney(realEstate.downPayment);
+        this.incomeStatement.AddRealEstate(realEstate);
+    }
+
 }
