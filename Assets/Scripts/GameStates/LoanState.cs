@@ -11,9 +11,11 @@ public class LoanState : GameState
 
     private bool done;
 
-    public LoanState(MainGameManager mgm, GameState previousState)
+    public LoanState(MainGameManager mgm, GameState previousState) : this(mgm, previousState, mgm.turnManager.GetCurrentPlayer()) { }
+
+    public LoanState(MainGameManager mgm, GameState previousState, int playerIndex)
     {
-        player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
+        player = mgm.GetPlayer(playerIndex);
         this.previousState = previousState;
         GameObject display = Object.Instantiate(mgm.loanDisplayPrefab, mgm.mainUICanvas.transform);
         display.transform.SetSiblingIndex(mgm.financialStatementToggle.transform.GetSiblingIndex() - 1);

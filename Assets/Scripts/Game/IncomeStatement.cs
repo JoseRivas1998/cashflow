@@ -184,4 +184,11 @@ public class IncomeStatement
         this.realEstate.Add(card);
     }
 
+    public List<RealEstateCard> RealEstate()
+    {
+        List<RealEstateCard> cards = new List<RealEstateCard>();
+        cards.AddRange(this.realEstate);
+        return cards;
+    }
+
 }

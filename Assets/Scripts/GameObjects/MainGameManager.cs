@@ -41,6 +41,10 @@ public class MainGameManager : MonoBehaviour
     public GameObject sellStockOptionsPrefab;
 
     public GameObject buyPropertyOptionsPrefab;
+    public GameObject realEstateBuyOnlyOptionPrefab;
+
+    public GameObject sellCardOptionsPrefab;
+    public GameObject cardOfferPrefab;
 
     private GameState currentState;
     private Player[] players;

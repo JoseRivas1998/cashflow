@@ -33,7 +33,14 @@ public class BuySellRealEstateState : GameState
         this.options.buyBtn.interactable = originalBuyer.ledger.GetCurretBalance() >= realEstateCard.downPayment;
         this.selected = false;
         this.isTakingLoan = false;
-        // TODO sell button on click
+        if(mgm.NumPlayers > 1)
+        {
+            this.options.sellBtn.onClick.AddListener(() => {
+                if (selected) return;
+                selected = true;
+                this.choice = Choices.Sell;
+            });
+        }
         this.options.buyBtn.onClick.AddListener(() =>
         {
             if (selected) return;
@@ -64,7 +71,9 @@ public class BuySellRealEstateState : GameState
             switch (this.choice)
             {
                 case Choices.Sell:
-                    break;
+                    Object.Destroy(this.options.gameObject);
+                    this.dealCard.gameObject.SetActive(false);
+                    return new SellingRealEstateCardState(mgm, realEstateCard, dealCard);
                 case Choices.Buy:
                     if (originalBuyer.ledger.GetCurretBalance() >= realEstateCard.downPayment)
                     {

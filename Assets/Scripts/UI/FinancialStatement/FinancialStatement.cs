@@ -41,6 +41,7 @@ public class FinancialStatement : MonoBehaviour
     public Color mutedColor;
 
     public StockList stockList;
+    public RealEstateLists realEstateLists;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +95,7 @@ public class FinancialStatement : MonoBehaviour
         SetAmountText(CreditCardDebt, player.incomeStatement.creditCardDebt, true);
         SetAmountText(BankLoan, player.incomeStatement.bankLoan, true);
         stockList.ResetList(player);
+        realEstateLists.ResetPlayer(player);
     }
 
     private void SetAmountText(Text text, int amount, bool money)
