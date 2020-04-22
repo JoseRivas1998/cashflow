@@ -85,7 +85,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadSmallDeals()
     {
-        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.RealEstate).ToList());
+        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.RealEstate || dealCard.type == DealType.Stock).ToList());
     }
 
     private void LoadBigDeals()
