@@ -11,7 +11,9 @@ public class PreTurn : GameState
         Player player = mgm.GetPlayer(playerIndex);
         if(!player.GamePieceExists())
         {
-            Vector3 spawnPosition = mgm.board.SpaceCenter(0) + (Vector3.up * 0.5f);
+            float angle = Random.Range(0, Mathf.PI * 2);
+            Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 0.5f;
+            Vector3 spawnPosition = mgm.board.SpaceCenter(0) + (new Vector3(offset.x, 0.5f, offset.y));
             mgm.SpawnGamePiece(playerIndex);
             player.gamePiece.origin = mgm.board.transform.position + mgm.board.ratRaceCenterOffset;
             player.gamePiece.transform.position = spawnPosition;
