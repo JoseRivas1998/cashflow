@@ -46,7 +46,10 @@ public class PlayerRollDiceState : GameState
                 {
                     return new PlayerMoving(mgm, sum);
                 }
-                // TODO check for MLM
+                if(player.incomeStatement.HasMLM)
+                {
+                    return new RollingMLMState(mgm, sum, payDays);
+                }
                 return new PaydayState(mgm, sum, payDays);
             }
         }

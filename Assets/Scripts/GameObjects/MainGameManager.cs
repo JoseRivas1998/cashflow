@@ -46,6 +46,8 @@ public class MainGameManager : MonoBehaviour
     public GameObject sellCardOptionsPrefab;
     public GameObject cardOfferPrefab;
 
+    public GameObject gambleOptionsPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
@@ -85,7 +87,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadSmallDeals()
     {
-        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.RealEstate || dealCard.type == DealType.Stock).ToList());
+        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.Gamble).ToList());
     }
 
     private void LoadBigDeals()

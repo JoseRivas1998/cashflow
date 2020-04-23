@@ -125,4 +125,10 @@ public class Player
         this.incomeStatement.AddRealEstate(realEstate);
     }
 
+    public void InvestMLM(GambleCard gambleCard)
+    {
+        this.SubtractMoney(gambleCard.cost);
+        this.incomeStatement.AddMLM(gambleCard);
+    }
+
 }

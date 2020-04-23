@@ -35,7 +35,7 @@ public class DealCardFlippingState : GameState
                 case DealType.Gold:
                     break;
                 case DealType.Gamble:
-                    break;
+                    return new GambleCardOptionsState(mgm, (GambleCard)dealCard, dealCardObject);
                 default:
                     break;
             }

@@ -6,27 +6,29 @@ using System.Linq;
 public class IncomeStatement
 {
     // INCOME
-    public int salary {get; private set;}
+    public int salary { get; private set; }
     // EXPENSES
-    public int taxes {get; private set;}
-    public int mortgagePayment {get; private set;}
-    public int schoolPayment {get; private set;}
-    public int carPayment {get; private set;}
-    public int creditPayment {get; private set;}
-    public int otherExpenses {get; private set;}
+    public int taxes { get; private set; }
+    public int mortgagePayment { get; private set; }
+    public int schoolPayment { get; private set; }
+    public int carPayment { get; private set; }
+    public int creditPayment { get; private set; }
+    public int otherExpenses { get; private set; }
     public int BankLoanPayment { get { return bankLoan / 10; } }
     public int perChildExpenses { get; private set; }
     public int numChildren { get; private set; }
     public int ChildPayment { get { return perChildExpenses * numChildren; } }
     // ASSETS
-    public int savings {get; private set; }
+    public int savings { get; private set; }
+    public int goldCoins { get; private set; }
     private readonly List<StockEntry> stockEntries;
     private readonly List<RealEstateCard> realEstate;
+    private readonly List<GambleCard> mlms;
     // LIABILITIES
-    public int mortgage {get; private set;}
-    public int schoolLoans {get; private set;}
-    public int carLoans {get; private set;}
-    public int creditCardDebt {get; private set;}
+    public int mortgage { get; private set; }
+    public int schoolLoans { get; private set; }
+    public int carLoans { get; private set; }
+    public int creditCardDebt { get; private set; }
     public int bankLoan { get; set; }
 
     public int PassiveIncome { get { return this.realEstate.Sum(card => card.cashFlow); } }
@@ -67,13 +69,15 @@ public class IncomeStatement
         this.carLoans = profession.carLoans;
         this.creditCardDebt = profession.creditCardDebt;
         this.bankLoan = 0;
+        this.goldCoins = 0;
         this.stockEntries = new List<StockEntry>();
         this.realEstate = new List<RealEstateCard>();
+        this.mlms = new List<GambleCard>();
     }
 
     public bool AddChild()
     {
-        if(this.numChildren < 3)
+        if (this.numChildren < 3)
         {
             numChildren++;
             return true;
@@ -87,13 +91,13 @@ public class IncomeStatement
         int currentShares = 0;
         for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
         {
-            if(this.stockEntries[i].Symbol.Equals(symbol) && this.stockEntries[i].Price == price)
+            if (this.stockEntries[i].Symbol.Equals(symbol) && this.stockEntries[i].Price == price)
             {
                 foundIndex = i;
                 currentShares = this.stockEntries[i].NumberOfShares;
             }
         }
-        if(foundIndex != -1)
+        if (foundIndex != -1)
         {
             this.stockEntries.RemoveAt(foundIndex);
         }
@@ -104,7 +108,7 @@ public class IncomeStatement
     {
         int remainingShares = numShares;
         int foundIndex;
-        while(remainingShares > 0)
+        while (remainingShares > 0)
         {
             /*
              * step one: find a stock entry that is <= remaining shares
@@ -113,7 +117,7 @@ public class IncomeStatement
             for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
             {
                 StockEntry entry = stockEntries[i];
-                if(entry.Symbol.Equals(symbol) && entry.NumberOfShares <= remainingShares)
+                if (entry.Symbol.Equals(symbol) && entry.NumberOfShares <= remainingShares)
                 {
                     foundIndex = i;
                 }
@@ -190,5 +194,25 @@ public class IncomeStatement
         cards.AddRange(this.realEstate);
         return cards;
     }
+
+    public void AddGold(int coins)
+    {
+        this.goldCoins += coins;
+    }
+
+    public void SubtractGold(int coins)
+    {
+        this.goldCoins -= coins;
+    }
+
+    public int MLMCount { get { return this.mlms.Count; } }
+    public bool HasMLM { get { return this.MLMCount > 0; } }
+
+    public void AddMLM(GambleCard gambleCard)
+    {
+        this.mlms.Add(gambleCard);
+    }
+
+    public GambleCard GetMLM(int index) { return this.mlms[index]; }
 
 }

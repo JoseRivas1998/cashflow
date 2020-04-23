@@ -6196,6 +6196,8 @@ MonoBehaviour:
     type: 3}
   cardOfferPrefab: {fileID: 8858948008371135622, guid: 24c9bbeb9ff424946a885455e0467685,
     type: 3}
+  gambleOptionsPrefab: {fileID: 5427966962623907053, guid: 6bb1ebb9a71c09d4a8c2a17431454a81,
+    type: 3}
 --- !u!1 &891022692
 GameObject:
   m_ObjectHideFlags: 0

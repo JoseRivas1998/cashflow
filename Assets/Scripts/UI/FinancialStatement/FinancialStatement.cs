@@ -88,7 +88,8 @@ public class FinancialStatement : MonoBehaviour
         SetAmountText(PerChildExpense, player.incomeStatement.perChildExpenses, true);
         SetAmountText(NumberOfChildren, player.incomeStatement.numChildren, false);
         SetAmountText(Savings, player.incomeStatement.savings, true);
-        SetAmountText(PreciousMetals, 0, false); // TODO ADD GOLD TO STATEMENT
+        SetAmountText(PreciousMetals, player.incomeStatement.goldCoins, false);
+        PreciousMetals.text += " Gold Coins";
         SetAmountText(Mortgage, player.incomeStatement.mortgage, true);
         SetAmountText(SchoolLoans, player.incomeStatement.schoolLoans, true);
         SetAmountText(CarLoans, player.incomeStatement.carLoans, true);
