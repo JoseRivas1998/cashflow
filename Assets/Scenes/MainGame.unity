@@ -6198,6 +6198,10 @@ MonoBehaviour:
     type: 3}
   gambleOptionsPrefab: {fileID: 5427966962623907053, guid: 6bb1ebb9a71c09d4a8c2a17431454a81,
     type: 3}
+  buyGoldOptionsPrefab: {fileID: 8702714686533290709, guid: ff06fbedee2545d4f9e8a7006c11e36c,
+    type: 3}
+  goldBuyOnlyOptionPrefab: {fileID: 6710647425426157960, guid: 97ec565e47a98144c9e0ea9e13955e39,
+    type: 3}
 --- !u!1 &891022692
 GameObject:
   m_ObjectHideFlags: 0

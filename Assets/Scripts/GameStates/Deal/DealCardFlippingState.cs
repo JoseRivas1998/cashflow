@@ -33,7 +33,7 @@ public class DealCardFlippingState : GameState
                 case DealType.RealEstate:
                     return new BuySellRealEstateState(mgm, (RealEstateCard)dealCard, dealCardObject);
                 case DealType.Gold:
-                    break;
+                    return new BuySellGoldState(mgm, (GoldCard)dealCard, dealCardObject);
                 case DealType.Gamble:
                     return new GambleCardOptionsState(mgm, (GambleCard)dealCard, dealCardObject);
                 default:
