@@ -228,13 +228,13 @@
     {
       "title": "Sewer Line Breaks",
       "flavorText": "Water is everywhere at your propery!",
-      "instruction": "Pay $1,00 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
+      "instruction": "Pay $1,000 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
       "cost": 1000
     },
     {
       "title": "Sewer Line Breaks",
       "flavorText": "Water is everywhere at your propery!",
-      "instruction": "Pay $2,00 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
+      "instruction": "Pay $2,000 for a new sewer line (one-time). Take out a bank loan if necessary to cover these expenses.",
       "cost": 2000
     }
   ],

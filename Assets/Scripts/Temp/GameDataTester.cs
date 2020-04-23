@@ -5,28 +5,19 @@ using System.Linq;
 
 public class GameDataTester : MonoBehaviour
 {
-
-    public GameObject dealCardPrefab;
+    public GameObject marketCardPrefab;
     public Canvas canvas;
 
-    private List<DealCard> dealCards;
-    private int dealIndex;
-    private DealCardGameObject dealCard;
-
+    private List<MarketCard> marketCards;
+    private int marketIndex;
+    private MarketCardGameObject marketCard;
 
     // Start is called before the first frame update
     void Start()
     {
-        dealCards = new List<DealCard>();
-        dealCards.AddRange(DealCard.SmallDeals());
-        dealCards.AddRange(DealCard.BigDeals());
-        dealIndex = 0;
-        dealCard = null;
-        List<MarketCard> marketCards = MarketCard.LoadMarketCards();
-        foreach (MarketCard card in marketCards)
-        {
-            Debug.Log(card);
-        }
+
+        marketCards = MarketCard.LoadMarketCards();
+        marketIndex = 0;
     }
 
     // Update is called once per frame
@@ -34,26 +25,26 @@ public class GameDataTester : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if(dealCard == null)
+            if(marketCard == null)
             {
-                GameObject card = Instantiate(dealCardPrefab, canvas.transform);
-                dealCard = card.GetComponent<DealCardGameObject>();
-                dealCard.SetDeal(dealCards[dealIndex]);
-                dealIndex = (dealIndex + 1) % dealCards.Count;
+                GameObject card = Instantiate(marketCardPrefab, canvas.transform);
+                marketCard = card.GetComponent<MarketCardGameObject>();
+                marketCard.SetMarket(marketCards[0]);
             }
-            if (dealCard != null && dealCard.cardFlip.FlipReadyBack())
+            if (marketCard != null && marketCard.cardFlip.FlipReadyBack())
             {
-                dealCard.cardFlip.BeginFlip();
+                marketCard.cardFlip.BeginFlip();
             }
-            else if (dealCard != null && dealCard.cardFlip.FlipReadyFront())
+            else if (marketCard != null && marketCard.cardFlip.FlipReadyFront())
             {
-                dealCard.cardFlip.BeginFlipBack();
+                marketCard.cardFlip.BeginFlipBack();
             }
         }
-        if (dealCard != null && dealCard.cardFlip.FlipDone())
+        if (marketCard != null && marketCard.cardFlip.FlipDone())
         {
-            Destroy(dealCard.gameObject);
-            dealCard = null;
+            marketIndex = (marketIndex + 1) % marketCards.Count;
+            marketCard.cardFlip.ResetFlip();
+            marketCard.SetMarket(marketCards[marketIndex]);
         }
     }
 }
