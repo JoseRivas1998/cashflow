@@ -53,6 +53,7 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject marketCardPrefab;
     public GameObject damageOptionsPrefab;
+    public GameObject numberCoinsInput;
 
     private GameState currentState;
     private Player[] players;

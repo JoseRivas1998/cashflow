@@ -131,4 +131,11 @@ public class Player
         this.incomeStatement.AddMLM(gambleCard);
     }
 
+    public void SellGold(int price, int numGold) 
+    {
+        int goldSell = Mathf.Min(numGold, incomeStatement.goldCoins);
+        incomeStatement.SubtractGold(goldSell);
+        AddMoney(goldSell * price);
+    }
+
 }

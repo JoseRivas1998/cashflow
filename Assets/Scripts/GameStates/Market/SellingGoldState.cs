@@ -109,6 +109,18 @@ public class SellingGoldState : GameState
             mgm.mainCamTracker.TrackObject(currentPlayer.gamePiece.transform);
             return new PostTurnState(mgm);
         }
+        if (selected)
+        {
+            if (willSell)
+            {
+                this.options.gameObject.SetActive(false);
+                this.marketCard.gameObject.SetActive(false);
+                selling = true;
+                return new InputCoinsToSellState(mgm, goldBuyer, marketCard, this);
+            }
+            selected = false;
+            next = true;
+        }
         return this;
     }
 }
