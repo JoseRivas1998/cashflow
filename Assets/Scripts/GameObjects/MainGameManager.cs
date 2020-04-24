@@ -51,12 +51,16 @@ public class MainGameManager : MonoBehaviour
     public GameObject buyGoldOptionsPrefab;
     public GameObject goldBuyOnlyOptionPrefab;
 
+    public GameObject marketCardPrefab;
+    public GameObject damageOptionsPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
     private CardStack<DoodadCard> doodadCards;
     private CardStack<DealCard> smallDeals;
     private CardStack<DealCard> bigDeals;
+    private CardStack<MarketCard> marketCards;
     public TurnManager turnManager;
     public int NumPlayers { get { return players != null ? players.Length : 0; } }
 
@@ -67,6 +71,7 @@ public class MainGameManager : MonoBehaviour
         LoadDoodads();
         LoadSmallDeals();
         LoadBigDeals();
+        LoadMarkets();
         mainCamTracker.origin = board.transform.position + board.ratRaceCenterOffset;
         currentState = new PlayerCountSelectState(this);
     }
@@ -96,6 +101,11 @@ public class MainGameManager : MonoBehaviour
     private void LoadBigDeals()
     {
         bigDeals = new CardStack<DealCard>(DealCard.BigDeals());
+    }
+
+    private void LoadMarkets()
+    {
+        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.Damage).ToList());
     }
 
     public void SetNumPlayers(int numPlayers)
@@ -181,6 +191,11 @@ public class MainGameManager : MonoBehaviour
     public DealCard PullBigDeal()
     {
         return bigDeals.Pop();
+    }
+
+    public MarketCard PullMarketCard()
+    {
+        return marketCards.Pop();
     }
 
 }

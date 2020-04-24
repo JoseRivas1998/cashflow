@@ -68,6 +68,8 @@ public class PlayerMoving : GameState
                         return new DoodadState(mgm);
                     case BoardManager.RatRaceSpaceTypes.Deals:
                         return new ChoosingDealTypeState(mgm);
+                    case BoardManager.RatRaceSpaceTypes.Market:
+                        return new MarketCardFlipState(mgm);
                 }
                 return new PostTurnState(mgm);
             }

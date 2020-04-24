@@ -3460,7 +3460,7 @@ RectTransform:
   m_Father: {fileID: 1212231346}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.000000059604645, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -5131,7 +5131,7 @@ PrefabInstance:
     - target: {fileID: 7974957980936698014, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.6176043
+      value: 4.6242776
       objectReference: {fileID: 0}
     - target: {fileID: 7974957980936698014, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
@@ -5141,7 +5141,7 @@ PrefabInstance:
     - target: {fileID: 7974957980936698014, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 9.2352085
+      value: 9.248555
       objectReference: {fileID: 0}
     - target: {fileID: 7974957980936698014, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
@@ -5166,7 +5166,7 @@ PrefabInstance:
     - target: {fileID: 7974957981078617009, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.2352085
+      value: 9.248555
       objectReference: {fileID: 0}
     - target: {fileID: 7974957981078617009, guid: 0443d0d7346622b41a25f8f826dcc781,
         type: 3}
@@ -6201,6 +6201,10 @@ MonoBehaviour:
   buyGoldOptionsPrefab: {fileID: 8702714686533290709, guid: ff06fbedee2545d4f9e8a7006c11e36c,
     type: 3}
   goldBuyOnlyOptionPrefab: {fileID: 6710647425426157960, guid: 97ec565e47a98144c9e0ea9e13955e39,
+    type: 3}
+  marketCardPrefab: {fileID: 8350918763152160831, guid: fc95b008edf0d68448108c59fd5f9660,
+    type: 3}
+  damageOptionsPrefab: {fileID: 5031466903772827245, guid: bfbe173b98b15dd44ba074b86318833c,
     type: 3}
 --- !u!1 &891022692
 GameObject:
@@ -10864,8 +10868,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 476306200}
   m_HandleRect: {fileID: 476306199}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11421,7 +11425,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 371796713}
   m_HandleRect: {fileID: 371796712}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
