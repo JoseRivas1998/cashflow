@@ -10,7 +10,7 @@ public class SellingStockState : GameState
 
     private readonly StockCard stockCard;
     private readonly DealCardGameObject dealCard;
-    private readonly SellStockOptions options;
+    private readonly YesNoOptions options;
     private bool done;
     private bool next;
     private bool selected;
@@ -21,9 +21,10 @@ public class SellingStockState : GameState
     {
         this.stockCard = stockCard;
         this.dealCard = dealCard;
-        GameObject sellOptions = Object.Instantiate(mgm.sellStockOptionsPrefab, mgm.mainUICanvas.transform);
+        GameObject sellOptions = Object.Instantiate(mgm.yesNoOptionsPrefab, mgm.mainUICanvas.transform);
         sellOptions.transform.SetSiblingIndex(this.dealCard.transform.GetSiblingIndex() + 1);
-        this.options = sellOptions.GetComponent<SellStockOptions>();
+        this.options = sellOptions.GetComponent<YesNoOptions>();
+        this.options.prompt.text = "Sell this stock?";
         this.dealCard.gameObject.SetActive(true);
         mgm.turnManager.Push(); // save this in case things get messed, this might be unnessasary 
         startingPlayerIndex = mgm.turnManager.GetCurrentPlayer();

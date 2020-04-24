@@ -6186,7 +6186,7 @@ MonoBehaviour:
     type: 3}
   numberStocksInputPrefab: {fileID: 4741811540286762018, guid: 16fa51eb7feffc845a6b27344c51f402,
     type: 3}
-  sellStockOptionsPrefab: {fileID: 5829928535154024210, guid: 69b3a291254dc704da674b31c149f139,
+  yesNoOptionsPrefab: {fileID: 5829928535154024210, guid: 69b3a291254dc704da674b31c149f139,
     type: 3}
   buyPropertyOptionsPrefab: {fileID: 7244037953180569541, guid: 6979d9afb3de8c74a8cd45b77c64063f,
     type: 3}
