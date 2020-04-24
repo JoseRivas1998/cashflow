@@ -57,7 +57,22 @@ public class MarketCardFlipState : GameState
                 case MarketType.RealEstate:
                     break;
                 case MarketType.StockSplit:
-                    break;
+                    bool playersHaveStock = false;
+                    StockSplitCard stockSplit = (StockSplitCard)this.marketCard;
+                    for (int i = 0; i < mgm.NumPlayers && !playersHaveStock; i++)
+                    {
+                        if(mgm.GetPlayer(i).incomeStatement.NumShares(stockSplit.stock.symbol) > 0)
+                        {
+                            playersHaveStock = true;
+                        }
+                    }
+                    if(playersHaveStock)
+                    {
+                        return new RollingStockSplitState(mgm, (StockSplitCard)this.marketCard, marketCardObject);
+                    }
+                    skip = true;
+                    mgm.gameStateDisplay.SetText("No one has this stock");
+                    return this;
                 case MarketType.Damage:
                     if(this.player.incomeStatement.RealEstate().Count == 0)
                     {

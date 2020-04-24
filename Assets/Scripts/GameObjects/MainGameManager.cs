@@ -96,7 +96,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadSmallDeals()
     {
-        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals());
+        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.Stock).ToList());
     }
 
     private void LoadBigDeals()
@@ -106,7 +106,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadMarkets()
     {
-        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.Bonus).ToList());
+        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.StockSplit).ToList());
     }
 
     public void SetNumPlayers(int numPlayers)

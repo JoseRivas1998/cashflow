@@ -138,4 +138,16 @@ public class Player
         AddMoney(goldSell * price);
     }
 
+    public void SplitStock(string symbol) 
+    {
+        int currentShares = this.incomeStatement.NumShares(symbol);
+        this.incomeStatement.AddStock(symbol, 0, currentShares);
+    }
+
+    public void ReverseSplitStock(string symbol)
+    {
+        int currentShares = this.incomeStatement.NumShares(symbol);
+        this.incomeStatement.SellStock(symbol, currentShares / 2);
+    }
+
 }
