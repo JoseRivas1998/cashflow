@@ -215,4 +215,26 @@ public class IncomeStatement
 
     public GambleCard GetMLM(int index) { return this.mlms[index]; }
 
+    public void BoostBusinesses(int maxCashFlow, int boostAmount)
+    {
+        List<RealEstateCard> toAdd = new List<RealEstateCard>();
+        for (int i = this.realEstate.Count - 1; i >= 0; i--)
+        {
+            if(this.realEstate[i].propertyType == RealEstateType.Business && this.realEstate[i].cashFlow <= maxCashFlow)
+            {
+                toAdd.Add(new RealEstateCard(
+                    this.realEstate[i].smallDeal,
+                    this.realEstate[i].propertyType,
+                    this.realEstate[i].title,
+                    this.realEstate[i].flavorText,
+                    this.realEstate[i].cost,
+                    this.realEstate[i].mortgage,
+                    this.realEstate[i].downPayment,
+                    this.realEstate[i].cashFlow + boostAmount));
+                this.realEstate.RemoveAt(i);
+            }
+        }
+        this.realEstate.AddRange(toAdd);
+    }
+
 }

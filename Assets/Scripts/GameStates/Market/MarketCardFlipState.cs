@@ -81,7 +81,20 @@ public class MarketCardFlipState : GameState
                     skip = true;
                     return this;
                 case MarketType.Bonus:
-                    break;
+                    BonusCard bonusCard = (BonusCard)this.marketCard;
+                    if (bonusCard.everyone)
+                    {
+                        for (int i = 0; i < mgm.NumPlayers; i++)
+                        {
+                            mgm.GetPlayer(i).incomeStatement.BoostBusinesses(bonusCard.cashFlowMax, bonusCard.cashFlowIncrease);
+                        }
+                    }
+                    else
+                    {
+                        this.player.incomeStatement.BoostBusinesses(bonusCard.cashFlowMax, bonusCard.cashFlowIncrease);
+                    }
+                    skip = true;
+                    return this;
                 default:
                     break;
             }

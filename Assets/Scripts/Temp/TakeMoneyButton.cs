@@ -6,11 +6,18 @@ using UnityEngine.UI;
 public class TakeMoneyButton : MonoBehaviour
 {
     public MainGameManager mgm;
-
+    public int amount = -100;
     public void OnClick()
     {
         Player p = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
-        p.SubtractMoney(p.ledger.GetCurretBalance() - 100);
+        if(amount > 0)
+        {
+            p.AddMoney(amount);
+        }
+        else
+        {
+            p.SubtractMoney(Mathf.Abs(amount));
+        }
     }
 
 }
