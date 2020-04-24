@@ -105,7 +105,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadMarkets()
     {
-        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.Damage).ToList());
+        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.Gold).ToList());
     }
 
     public void SetNumPlayers(int numPlayers)

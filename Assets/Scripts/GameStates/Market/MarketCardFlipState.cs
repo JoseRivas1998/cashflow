@@ -66,7 +66,20 @@ public class MarketCardFlipState : GameState
                     }
                     return new PayForDamageState(mgm, (DamageCard)this.marketCard, this.marketCardObject);
                 case MarketType.Gold:
-                    break;
+                    bool hasGold = false;
+                    for (int i = 0; i < mgm.NumPlayers && !hasGold; i++)
+                    {
+                        if(mgm.GetPlayer(i).incomeStatement.goldCoins > 0)
+                        {
+                            hasGold = true;
+                        }
+                    }
+                    if (hasGold)
+                    {
+                        return new SellingGoldState(mgm, (GoldBuyerCard)marketCard, marketCardObject);
+                    }
+                    skip = true;
+                    return this;
                 case MarketType.Bonus:
                     break;
                 default:
