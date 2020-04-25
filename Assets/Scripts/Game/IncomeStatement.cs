@@ -188,6 +188,23 @@ public class IncomeStatement
         this.realEstate.Add(card);
     }
 
+    public void RemoveRealEstate(RealEstateCard card)
+    {
+        int index = -1;
+        for (int i = 0; i < this.realEstate.Count && index == -1; i++)
+        {
+            if(this.realEstate[i].cardId == card.cardId)
+            {
+                index = i;
+            }
+        }
+        if(index != -1)
+        {
+            this.realEstate.RemoveAt(index);
+        }
+
+    }
+
     public List<RealEstateCard> RealEstate()
     {
         List<RealEstateCard> cards = new List<RealEstateCard>();

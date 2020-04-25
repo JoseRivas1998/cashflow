@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player
 {
@@ -148,6 +149,23 @@ public class Player
     {
         int currentShares = this.incomeStatement.NumShares(symbol);
         this.incomeStatement.SellStock(symbol, currentShares / 2);
+    }
+
+    public int CapitalGains(RealEstateMarketCard offer, List<RealEstateCard> realEstates)
+    {
+        int revenue = realEstates.Sum(card => RealEstateMarketCard.OfferAmount(offer, card));
+        int cost = realEstates.Sum(card => card.mortgage);
+        return revenue - cost;
+    }
+
+    public void SellRealEstates(RealEstateMarketCard offer, List<RealEstateCard> realEstates)
+    {
+        int capitalGains = CapitalGains(offer, realEstates);
+        this.AddMoney(capitalGains);
+        foreach (RealEstateCard card in realEstates)
+        {
+            this.incomeStatement.RemoveRealEstate(card);
+        }
     }
 
 }

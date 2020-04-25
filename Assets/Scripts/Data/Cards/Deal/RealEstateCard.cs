@@ -11,6 +11,9 @@ public class RealEstateCard : DealCard
     public int downPayment { get; private set; }
     public int cashFlow { get; private set; }
 
+    public readonly int cardId;
+
+    private static int numCards = 0;
 
     public RealEstateCard(bool smallDeal, RealEstateType propertyType, string title, string flavorText, int cost, int mortgage, int downPayment, int cashFlow)
     {
@@ -23,6 +26,7 @@ public class RealEstateCard : DealCard
         this.mortgage = mortgage;
         this.downPayment = downPayment;
         this.cashFlow = cashFlow;
+        this.cardId = ++numCards;
     }
 
     public override string ToString()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MarketCardFlipState : GameState
 {
@@ -55,7 +56,24 @@ public class MarketCardFlipState : GameState
             switch (this.marketCard.type)
             {
                 case MarketType.RealEstate:
-                    break;
+                    bool playerHaveRealEstate = false;
+                    RealEstateMarketCard buyer = (RealEstateMarketCard)this.marketCard;
+                    for (int i = 0; i < mgm.NumPlayers && !playerHaveRealEstate; i++)
+                    {
+                        List<RealEstateCard> realEstate = mgm.GetPlayer(i).incomeStatement.RealEstate();
+                        if(realEstate.Where(RealEstateMarketCard.GetRealEstatePredicate(buyer)).Any())
+                        {
+                            playerHaveRealEstate = true;
+                        }
+                    }
+                    if (playerHaveRealEstate)
+                    {
+                        skip = true;
+                        return new SellingRealEstateMarketState(mgm, (RealEstateMarketCard)this.marketCard, this.marketCardObject);
+                    }
+                    skip = true;
+                    mgm.gameStateDisplay.SetText("No one has this kind of property");
+                    return this;
                 case MarketType.StockSplit:
                     bool playersHaveStock = false;
                     StockSplitCard stockSplit = (StockSplitCard)this.marketCard;

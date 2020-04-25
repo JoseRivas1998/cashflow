@@ -55,6 +55,10 @@ public class MainGameManager : MonoBehaviour
     public GameObject damageOptionsPrefab;
     public GameObject numberCoinsInput;
 
+    public GameObject realEstateSellPrefab;
+    public GameObject realEstateButtonPrefab;
+    public GameObject realEstateRowPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
@@ -96,7 +100,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadSmallDeals()
     {
-        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals().Where(dealCard => dealCard.type == DealType.Stock).ToList());
+        smallDeals = new CardStack<DealCard>(DealCard.SmallDeals());
     }
 
     private void LoadBigDeals()
@@ -106,7 +110,7 @@ public class MainGameManager : MonoBehaviour
 
     private void LoadMarkets()
     {
-        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards().Where(marketCard => marketCard.type == MarketType.StockSplit).ToList());
+        marketCards = new CardStack<MarketCard>(MarketCard.LoadMarketCards());
     }
 
     public void SetNumPlayers(int numPlayers)
