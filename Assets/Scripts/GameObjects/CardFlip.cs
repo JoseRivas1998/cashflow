@@ -119,7 +119,7 @@ public class CardFlip : MonoBehaviour
 
     private FlipState TurnBackAway()
     {
-        if (Mathf.Abs(90f - rect.eulerAngles.y) < degThreshold)
+        if (rect.eulerAngles.y > 90)
         {
             rect.eulerAngles = new Vector3(0, -90, 0);
             cardDataContainer.SetActive(true);
@@ -132,7 +132,7 @@ public class CardFlip : MonoBehaviour
 
     private FlipState TurnFrontTowards()
     {
-        if (Mathf.Abs(rect.eulerAngles.y) < degThreshold)
+        if (rect.eulerAngles.y < 270)
         {
             rect.eulerAngles = Vector3.zero;
             return FlipState.FlipReadyFront;
@@ -143,7 +143,7 @@ public class CardFlip : MonoBehaviour
 
     private FlipState TurnFrontAway()
     {
-        if (Mathf.Abs(-90f - (rect.eulerAngles.y - 360)) < degThreshold)
+        if (rect.eulerAngles.y > 180 && rect.eulerAngles.y < 270)
         {
             rect.eulerAngles = new Vector3(0, 90, 0);
             cardDataContainer.SetActive(false);

@@ -32,10 +32,7 @@ public class CameraTrack : MonoBehaviour
         if(targetTrans != null)
         {
             target = CalculateTargetPos();
-            if ( SquareDistanceFromTarget > 1)
-            {
-                transform.position += (target - transform.position) / smoothing;
-            }
+            transform.position += (target - transform.position) / smoothing;
         }
     }
 

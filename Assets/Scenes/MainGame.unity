@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 549087601}
-  smoothing: 25
+  smoothing: 8
   rect: {fileID: 196236906}
 --- !u!1 &223112246
 GameObject:
@@ -3267,7 +3267,7 @@ PrefabInstance:
     - target: {fileID: 9180376193881205241, guid: 4ae309e730987b046964657f219f2a7b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 39.3
+      value: 39.30005
       objectReference: {fileID: 0}
     - target: {fileID: 9180376193881205241, guid: 4ae309e730987b046964657f219f2a7b,
         type: 3}
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statement: {fileID: 1974108138}
-  smoothing: 25
+  smoothing: 8
   rect: {fileID: 945189254}
 --- !u!1 &957426952
 GameObject:
@@ -7480,7 +7480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {x: 0, y: 0, z: 0}
   planarDistanceFromObject: 6
-  smoothing: 25
+  smoothing: 8
 --- !u!1 &1170943862
 GameObject:
   m_ObjectHideFlags: 0

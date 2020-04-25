@@ -37,7 +37,7 @@ public class PlayerMoving : GameState
         } 
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
-            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 40f;
+            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 12f;
         }
         else
         {

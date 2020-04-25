@@ -81,7 +81,7 @@ public class BoardManager : MonoBehaviour
     void Update()
     {
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (debug)
@@ -121,6 +121,7 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
+#endif
 
     public float SpaceArcAngleDeg()
     {
