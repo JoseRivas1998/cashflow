@@ -59,6 +59,8 @@ public class MainGameManager : MonoBehaviour
     public GameObject realEstateButtonPrefab;
     public GameObject realEstateRowPrefab;
 
+    public GameObject payDebtScreenPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;

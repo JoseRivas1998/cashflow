@@ -254,4 +254,33 @@ public class IncomeStatement
         this.realEstate.AddRange(toAdd);
     }
 
+    public void RemoveMortgate()
+    {
+        this.mortgage = 0;
+        this.mortgagePayment = 0;
+    }
+
+    public void RemoveSchoolLoans()
+    {
+        this.schoolLoans = 0;
+        this.schoolPayment = 0;
+    }
+
+    public void RemoveCarLoans()
+    {
+        this.carLoans = 0;
+        this.carPayment = 0;
+    }
+
+    public void RemoveCreditCardDebt()
+    {
+        this.creditCardDebt = 0;
+        this.creditPayment = 0;
+    }
+
+    public void SubtractBankLoan(int amount)
+    {
+        this.bankLoan = Mathf.Max(this.bankLoan - amount, 0);
+    }
+
 }

@@ -10,6 +10,7 @@ public class PostTurnState : GameState
     private Choices selectedChoice;
 
     private bool takingLoan;
+    private bool payingDebt;
 
     private readonly Player player;
     private readonly PostTurnChoices choices;
@@ -30,17 +31,24 @@ public class PostTurnState : GameState
             selected = true;
             selectedChoice = Choices.Loan;
         });
+        choices.debtBtn.onClick.AddListener(() => {
+            if (selected) return;
+            selected = true;
+            selectedChoice = Choices.Debt;
+        });
         selected = false;
         takingLoan = false;
+        payingDebt = false;
         mgm.gameStateDisplay.SetText(player.name + "'s post turn");
     }
 
     public override GameState Update(MainGameManager mgm)
     {
-        if (takingLoan)
+        if (takingLoan || payingDebt)
         {
             selected = false;
             takingLoan = false;
+            payingDebt = false;
             choices.gameObject.SetActive(true);
             mgm.gameStateDisplay.SetText(player.name + "'s post turn");
         }
@@ -56,6 +64,12 @@ public class PostTurnState : GameState
                 case Choices.EndTurn:
                     Object.Destroy(choices.gameObject);
                     return new PreTurn(mgm);
+                case Choices.Debt:
+                    choices.gameObject.SetActive(false);
+                    mgm.gameStateDisplay.gameObject.SetActive(false);
+                    this.payingDebt = true;
+                    this.selected = false;
+                    return new PayingDebtState(mgm, this);
             }
         }
         return this;

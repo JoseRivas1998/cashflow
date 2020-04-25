@@ -11,6 +11,7 @@ public class PreTurnChoicesState : GameState
     private Choices selectedChoice;
 
     private bool takingLoan;
+    private bool payingDebt;
 
     private readonly Player player;
     private readonly PreTurnChoices choices;
@@ -31,16 +32,23 @@ public class PreTurnChoicesState : GameState
             selected = true;
             selectedChoice = Choices.Loan;
         });
+        choices.payOffDebtBtn.onClick.AddListener(() => {
+            if (selected) return;
+            selected = true;
+            selectedChoice = Choices.Debt;
+        });
         selected = false;
         takingLoan = false;
+        payingDebt = false;
     }
 
     public override GameState Update(MainGameManager mgm)
     {
-        if (takingLoan)
+        if (takingLoan || payingDebt)
         {
             selected = false;
             takingLoan = false;
+            payingDebt = false;
             choices.gameObject.SetActive(true);
             mgm.gameStateDisplay.SetText(player.name + "'s turn");
         }
@@ -60,6 +68,13 @@ public class PreTurnChoicesState : GameState
                         return new SelectingDieAmountState(mgm);
                     }
                     return new PlayerRollDiceState(mgm, 1);
+                case Choices.Debt:
+                    choices.gameObject.SetActive(false);
+                    mgm.gameStateDisplay.gameObject.SetActive(false);
+                    this.payingDebt = true;
+                    this.selected = false;
+                    return new PayingDebtState(mgm, this);
+
             }
         }
         return this;
