@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +30,7 @@ public class PlayerMoving : GameState
         {
             if(player.ledger.GetCurretBalance() - downsizeCost >= 0)
             {
-                player.Downsize();
+                player.Downsize(downsizeCost);
                 return new PostTurnState(mgm);
             }
             return new LoanState(mgm, this);
@@ -53,7 +53,7 @@ public class PlayerMoving : GameState
                         downsizeCost = player.incomeStatement.TotalExpenses;
                         if(player.ledger.GetCurretBalance() - downsizeCost >= 0)
                         {
-                            player.Downsize();
+                            player.Downsize(downsizeCost);
                         } else
                         {
                             downsizeLoan = true;
