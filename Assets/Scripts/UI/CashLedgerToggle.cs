@@ -19,7 +19,7 @@ public class CashLedgerToggle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         targetX = open ? ledger.GetWidth() : 0;
         if (Mathf.Abs(transform.position.x - targetX) > 1)

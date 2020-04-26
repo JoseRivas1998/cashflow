@@ -471,7 +471,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1252065583}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1711,7 +1711,7 @@ RectTransform:
   - {fileID: 1521656082}
   - {fileID: 549087597}
   m_Father: {fileID: 1252065583}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 549087601}
-  smoothing: 8
+  smoothing: 7
   rect: {fileID: 196236906}
 --- !u!1 &223112246
 GameObject:
@@ -6434,7 +6434,7 @@ RectTransform:
   - {fileID: 469825880}
   - {fileID: 1974108135}
   m_Father: {fileID: 1252065583}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statement: {fileID: 1974108138}
-  smoothing: 8
+  smoothing: 7
   rect: {fileID: 945189254}
 --- !u!1 &957426952
 GameObject:
@@ -8003,9 +8003,9 @@ RectTransform:
   - {fileID: 804562251}
   - {fileID: 1181719406}
   - {fileID: 442210758}
+  - {fileID: 45175007}
   - {fileID: 196236906}
   - {fileID: 945189254}
-  - {fileID: 45175007}
   - {fileID: 57356219}
   m_Father: {fileID: 0}
   m_RootOrder: 3

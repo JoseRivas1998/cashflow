@@ -19,7 +19,7 @@ public class FinancialStatementToggle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         targetX = open ? statement.GetWidth() : 0;
         if (Mathf.Abs(transform.position.x - targetX) > 1)
