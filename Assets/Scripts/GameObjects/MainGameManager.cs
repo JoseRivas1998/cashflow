@@ -20,6 +20,7 @@ public class MainGameManager : MonoBehaviour
     public PlayerTabContainer playerTabs;
     public Canvas mainUICanvas;
     public BoardManager board;
+    public AnimationCurve playerMovementCurve;
 
     public GameObject diePrefab;
     public float diceSpawnDistance = 1f;

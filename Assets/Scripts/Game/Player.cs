@@ -71,9 +71,9 @@ public class Player
         tab.UpdatePlayerBalance(this);
     }
 
-    public void Downsize()
+    public void Downsize(int cost)
     {
-        this.SubtractMoney(incomeStatement.TotalExpenses);
+        this.SubtractMoney(cost);
         this.downsized = true;
         this.downsizedTurns = 0;
         this.charityTurnsLeft = 0;

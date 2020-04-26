@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,11 @@ public class PlayerMoving : GameState
     private bool downsizeLoan;
     private int downsizeCost;
 
+    private float moveTime;
+    private readonly float moveTimer = 0.4f;
+
+    private Vector3 startPos;
+
     public PlayerMoving(MainGameManager mgm, int dieCount)
     {
         player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
@@ -22,6 +27,8 @@ public class PlayerMoving : GameState
         mgm.gameStateDisplay.SetText("Moving " + dieCount + " space" + (dieCount > 1 ? "s" : ""));
         downsizeLoan = false;
         downsizeCost = 0;
+        moveTime = 0;
+        startPos = player.gamePiece.transform.position;
     }
 
     public override GameState Update(MainGameManager mgm)
@@ -37,10 +44,13 @@ public class PlayerMoving : GameState
         } 
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
-            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 12f;
+            player.gamePiece.transform.position = Vector3.Lerp(startPos, targetPosition, mgm.playerMovementCurve.Evaluate(moveTime / moveTimer));
+            moveTime += Time.deltaTime;
         }
         else
         {
+            moveTime = 0;
+            startPos = player.gamePiece.transform.position;
             currentSpace = mgm.board.NormalizeSpace(currentSpace + 1);
             if (currentSpace == targetSpace)
             {

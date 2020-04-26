@@ -8,6 +8,9 @@ public class DownsizedState : GameState
 
     private Player player;
     private Vector3 targetPosition;
+    private Vector3 startPos;
+    private float moveTime;
+    private readonly float moveTimer = 0.4f;
 
     public DownsizedState(MainGameManager mgm)
     {
@@ -23,17 +26,21 @@ public class DownsizedState : GameState
         }
         targetPosition = mgm.board.DownSizedSpace(player.downsizedTurns);
         targetPosition.y = player.gamePiece.transform.position.y;
+        startPos = player.gamePiece.transform.position;
     }
 
     public override GameState Update(MainGameManager mgm)
     {
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
-            player.gamePiece.transform.position += (targetPosition - player.gamePiece.transform.position) / 8f;
+            player.gamePiece.transform.position = Vector3.Lerp(startPos, targetPosition, mgm.playerMovementCurve.Evaluate(moveTime / moveTimer));
+            moveTime += Time.deltaTime;
         }
         else
         {
+            moveTime = 0;
             player.gamePiece.transform.position = targetPosition;
+            startPos = player.gamePiece.transform.position;
             if (player.downsizedTurns > 2)
             {
                 player.RemoveDownsize();
