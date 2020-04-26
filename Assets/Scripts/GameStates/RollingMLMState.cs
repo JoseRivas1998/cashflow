@@ -42,7 +42,7 @@ public class RollingMLMState : GameState
 
         this.waitTime = 0;
 
-        mgm.gameStateDisplay.SetText(player.name + " is rolling his Multi Level Networking");
+        mgm.gameStateDisplay.SetText(player.name + " is rolling their Multi Level Networking");
 
     }
 
