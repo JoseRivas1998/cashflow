@@ -19,7 +19,7 @@ public class CameraTrack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(lookingAt == null)
         {
@@ -38,6 +38,11 @@ public class CameraTrack : MonoBehaviour
 
     public float SquareDistanceFromTarget { get { return targetTrans == null ? float.MaxValue : Vector3.SqrMagnitude(target - transform.position); } }
 
+    public bool TargetEquals(Transform transform)
+    {
+        return this.targetTrans == transform;
+    }
+
     public Vector3 CalculateTargetPos()
     {
         Vector3 originDiff = targetTrans.position - origin;
@@ -50,6 +55,7 @@ public class CameraTrack : MonoBehaviour
     {
         lookingAt = transform;
         targetTrans = transform;
+        target = CalculateTargetPos();
     }
 
 }
