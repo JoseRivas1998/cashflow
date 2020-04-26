@@ -178,7 +178,7 @@
       "smallDeal": true,
       "type": "House",
       "title": "You Find a Great Deal!",
-      "flavorText": "Comapny bought transferred-manager's 2/1 house. No current tenant, it has been on the market six months and it has just been reduced. Take out a loan if you must, but BUY THIS!",
+      "flavorText": "Company bought transferred-manager's 2/1 house. No current tenant, it has been on the market six months and it has just been reduced. Take out a loan if you must, but BUY THIS!",
       "cost": 45000,
       "mortgage": 43000,
       "downPayment": 2000,
@@ -334,7 +334,7 @@
   "gold": [
     {
       "title": "Coin Collector Liquidates",
-      "flavorText": "A coin collector needs cash quick to shore up a tax issue. Will sell you five (5) gold coiins, well below going rate.",
+      "flavorText": "A coin collector needs cash quick to shore up a tax issue. Will sell you five (5) gold coins, well below going rate.",
       "coins": 5,
       "cost": 1000
     },
