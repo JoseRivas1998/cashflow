@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PlayerTab : MonoBehaviour
 {
     public Text salaryText;
     public Text plusText;
@@ -114,16 +114,6 @@ public class PlayerTab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             transform.localPosition += Vector3.up * yOffset;
         }
         UpdateValues();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        targetY = -(GetComponent<RectTransform>().rect.height);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        targetY = pulledInTarget;
     }
 
     public void UpdatePlayerBalance(Player player)
