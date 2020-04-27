@@ -22,10 +22,13 @@ public class LoanState : GameState
         mgm.gameStateDisplay.gameObject.SetActive(false);
         done = false;
         loanDisplay = display.GetComponent<LoanDisplay>();
-        loanDisplay.cancelBtn.onClick.AddListener(() => {
-            if (!done) done = true;
+        loanDisplay.cancelButton.onClick.AddListener(() =>
+        {
+            if (done) return;
+            done = true;
         });
-        loanDisplay.confirmBtn.onClick.AddListener(() => {
+        loanDisplay.numberInput.confirmBtn.onClick.AddListener(() =>
+        {
             if (done) return;
             player.TakeOutLoan(loanDisplay.loanAmount);
             done = true;
@@ -34,7 +37,7 @@ public class LoanState : GameState
 
     public override GameState Update(MainGameManager mgm)
     {
-        if(done)
+        if (done)
         {
             Object.Destroy(loanDisplay.gameObject);
             return previousState;

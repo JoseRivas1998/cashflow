@@ -23,6 +23,7 @@ public class NumberInput : MonoBehaviour
     public bool isMoney;
     public int maxNumber = int.MaxValue;
     public int minNumber = 0;
+    public int increment = 1;
 
     public int Number { get; private set; }
 
@@ -42,14 +43,17 @@ public class NumberInput : MonoBehaviour
     {
         if(digit < 10)
         {
-            Number = Number * 10 + digit;
+            Number = Number * 10 + digit * increment;
             Number = Mathf.Min(Mathf.Max(Number, minNumber), maxNumber);
         }
     }
 
     public void Backspace()
     {
-        Number /= 10;
+        int num = Number / increment;
+        num /= 10;
+        num *= increment;
+        Number = num;
     }
 
 }
