@@ -9,6 +9,7 @@ public class MoneyAddition : MonoBehaviour
     public Text text;
     public Color additionColor;
     public Color subtractionColor;
+    public AnimationCurve interpolation;
 
     public float enterTime = 1f;
     public float sustainTime = 0.5f;
@@ -59,15 +60,15 @@ public class MoneyAddition : MonoBehaviour
         else if (stateTime > enterTime + sustainTime)
         {
             float timeLeft = (enterTime + sustainTime + exitTime) - stateTime;
-            float y = Mathf.Lerp(targetY, startY, 1 -  timeLeft / exitTime);
+            float y = Mathf.Lerp(targetY, startY, interpolation.Evaluate(1 - timeLeft / exitTime));
             transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
-            text.color = Color.Lerp(targetColor, startColor, 1 -  timeLeft / exitTime);
+            text.color = Color.Lerp(targetColor, startColor, interpolation.Evaluate(1 - timeLeft / exitTime));
         }
         else if (stateTime < enterTime)
         {
-            float y = Mathf.Lerp(startY, targetY, stateTime / enterTime);
+            float y = Mathf.Lerp(startY, targetY, interpolation.Evaluate(stateTime / enterTime));
             transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
-            text.color = Color.Lerp(startColor, targetColor, stateTime / enterTime);
+            text.color = Color.Lerp(startColor, targetColor, interpolation.Evaluate(stateTime / enterTime));
         }
         stateTime += Time.deltaTime;
     }
