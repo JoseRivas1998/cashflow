@@ -33,6 +33,9 @@ public class PlayerTab : MonoBehaviour
     private float targetY = 0;
     private Player player;
 
+    private bool locked = false;
+    private Queue<int> additions = new Queue<int>();
+
     public void Initialize(Player player)
     {
         this.player = player;
@@ -114,6 +117,7 @@ public class PlayerTab : MonoBehaviour
             transform.localPosition += Vector3.up * yOffset;
         }
         UpdateValues();
+        SpawnQueuedAddition();
     }
 
     public void UpdatePlayerBalance(Player player)
@@ -121,10 +125,32 @@ public class PlayerTab : MonoBehaviour
         int newBalance = player.ledger.GetCurretBalance();
         if(newBalance != playerBalance)
         {
-            GameObject additionObject = Instantiate(additionPrefab, this.transform);
-            additionObject.GetComponent<MoneyAddition>().Initialize(newBalance - playerBalance);
+            EnqueAddition(newBalance - playerBalance);
             playerBalance = newBalance;
         }
+    }
+
+    private void EnqueAddition(int amount)
+    {
+        additions.Enqueue(amount);
+    }
+
+    private void SpawnQueuedAddition()
+    {
+        if(!locked)
+        {
+            if(additions.Count > 0)
+            {
+                locked = true;
+                GameObject additionObject = Instantiate(additionPrefab, this.transform);
+                additionObject.GetComponent<MoneyAddition>().Initialize(additions.Dequeue());
+            }
+        }
+    }
+
+    public void Unlock()
+    {
+        this.locked = false;
     }
 
 }

@@ -53,6 +53,7 @@ public class MoneyAddition : MonoBehaviour
     {
         if (stateTime > enterTime + sustainTime + exitTime)
         {
+            GetComponentInParent<PlayerTab>().Unlock();
             Destroy(this.gameObject);
         } 
         else if (stateTime > enterTime + sustainTime)
