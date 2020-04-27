@@ -15,8 +15,7 @@ public class PayDebtScreen : MonoBehaviour
     [System.Serializable]
     public struct ArrowsAmount
     {
-        public Button subBtn;
-        public Button addBtn;
+        public Slider slider;
         public Text amount;
     }
 
@@ -59,26 +58,26 @@ public class PayDebtScreen : MonoBehaviour
             creditCardDebt.checkBox.button.interactable = false;
         }
         creditCardDebt.amount.text = Utility.FormatMoney(player.incomeStatement.creditCardDebt);
-
-        bankLoan.addBtn.interactable = false;
-        if (player.incomeStatement.bankLoan == 0)
-        {
-            bankLoan.subBtn.interactable = false;
-        }
-        bankLoan.addBtn.onClick.AddListener(() => LoanAmount += 1000);
-        bankLoan.subBtn.onClick.AddListener(() => LoanAmount -= 1000);
+        bankLoan.slider.minValue = 0;
+        bankLoan.slider.maxValue = player.incomeStatement.bankLoan / 1000;
+        bankLoan.slider.value = 0;
+        bankLoan.slider.wholeNumbers = true;
         minLoan = 0;
         maxLoan = player.incomeStatement.bankLoan;
-        LoanAmount = player.incomeStatement.bankLoan;
+        LoanAmount = 0;
         bankLoan.amount.text = Utility.FormatMoney(player.incomeStatement.bankLoan);
+        bankLoan.slider.onValueChanged.AddListener((value) =>
+        {
+            LoanAmount = (int)(value * 1000);
+        });
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        bankLoan.addBtn.interactable = LoanAmount < maxLoan;
-        bankLoan.subBtn.interactable = LoanAmount > minLoan;
+        //bankLoan.addBtn.interactable = LoanAmount < maxLoan;
+        //bankLoan.subBtn.interactable = LoanAmount > minLoan;
         bankLoan.amount.text = Utility.FormatMoney(LoanAmount);
     }
 
