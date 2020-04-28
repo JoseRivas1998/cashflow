@@ -33,7 +33,8 @@ public class DownsizedState : GameState
     {
         if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
         {
-            player.gamePiece.transform.position = Vector3.Lerp(startPos, targetPosition, mgm.playerMovementCurve.Evaluate(moveTime / moveTimer));
+            float step = (1f / moveTimer) * Time.deltaTime;
+            player.gamePiece.transform.position = Vector3.MoveTowards(player.gamePiece.transform.position, targetPosition, step);
             moveTime += Time.deltaTime;
         }
         else
