@@ -5,19 +5,13 @@ using System.Linq;
 
 public class GameDataTester : MonoBehaviour
 {
-    public GameObject marketCardPrefab;
-    public Canvas canvas;
 
-    private List<MarketCard> marketCards;
-    private int marketIndex;
-    private MarketCardGameObject marketCard;
+    public ProfessionCard card;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        marketCards = MarketCard.LoadMarketCards();
-        marketIndex = 0;
+        card.SetProfession(GameData.Instance.GetProfessions().professions[0]);
     }
 
     // Update is called once per frame
@@ -25,26 +19,19 @@ public class GameDataTester : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if(marketCard == null)
+            if (card.cardFlip.FlipReadyBack())
             {
-                GameObject card = Instantiate(marketCardPrefab, canvas.transform);
-                marketCard = card.GetComponent<MarketCardGameObject>();
-                marketCard.SetMarket(marketCards[0]);
+                card.cardFlip.BeginFlip();
             }
-            if (marketCard != null && marketCard.cardFlip.FlipReadyBack())
+            else if (card.cardFlip.FlipReadyFront())
             {
-                marketCard.cardFlip.BeginFlip();
-            }
-            else if (marketCard != null && marketCard.cardFlip.FlipReadyFront())
-            {
-                marketCard.cardFlip.BeginFlipBack();
+                card.cardFlip.BeginFlipBack();
             }
         }
-        if (marketCard != null && marketCard.cardFlip.FlipDone())
+        if (card.cardFlip.FlipDone())
         {
-            marketIndex = (marketIndex + 1) % marketCards.Count;
-            marketCard.cardFlip.ResetFlip();
-            marketCard.SetMarket(marketCards[marketIndex]);
+            card.cardFlip.ResetFlip();
+            card.SetProfession(GameData.Instance.GetProfessions().professions[0]);
         }
     }
 }

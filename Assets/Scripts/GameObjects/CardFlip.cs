@@ -22,7 +22,8 @@ public class CardFlip : MonoBehaviour
     public Texture cardFront;
     public GameObject cardDataContainer;
     public float flipTime = 2f;
-    public float degThreshold = 1.5f;
+
+    private float flipTimer = 0;
 
     private FlipState state;
     private float degPerSecond;
@@ -87,6 +88,8 @@ public class CardFlip : MonoBehaviour
         background.texture = cardBack;
         cardDataContainer.SetActive(false);
         state = FlipState.FlipReadyBack;
+
+        flipTimer = 0;
     }
 
     public void BeginFlip()
@@ -94,6 +97,7 @@ public class CardFlip : MonoBehaviour
         if (state == FlipState.FlipReadyBack && (canFlip == null || canFlip()))
         {
             this.state = FlipState.TurningBackAway;
+            flipTimer = 0;
         }
     }
 
@@ -102,6 +106,7 @@ public class CardFlip : MonoBehaviour
         if (state == FlipState.FlipReadyFront)
         {
             this.state = FlipState.TurningFrontAway;
+            flipTimer = 0;
         }
     }
 
@@ -117,51 +122,61 @@ public class CardFlip : MonoBehaviour
         return this.state;
     }
 
+    private float percent { get { return flipTimer / (flipTime / 2f); } }
+
     private FlipState TurnBackAway()
     {
-        if (rect.eulerAngles.y > 90)
+        if (flipTimer > (flipTime / 2f))
         {
             rect.eulerAngles = new Vector3(0, -90, 0);
             cardDataContainer.SetActive(true);
             background.texture = cardFront;
+            flipTimer = 0f;
             return FlipState.TurningFrontTowards;
         }
-        rect.Rotate(new Vector3(0, degPerSecond * Time.deltaTime));
+        flipTimer += Time.deltaTime;
+        rect.eulerAngles = new Vector3(rect.eulerAngles.x, Mathf.Lerp(0f, 90f, percent), rect.eulerAngles.z);
         return FlipState.TurningBackAway;
     }
 
     private FlipState TurnFrontTowards()
     {
-        if (rect.eulerAngles.y < 270)
+        if (flipTimer > (flipTime / 2f))
         {
             rect.eulerAngles = Vector3.zero;
+            flipTimer = 0f;
             return FlipState.FlipReadyFront;
         }
-        rect.Rotate(new Vector3(0, degPerSecond * Time.deltaTime));
+        flipTimer += Time.deltaTime;
+        rect.eulerAngles = new Vector3(rect.transform.eulerAngles.x, Mathf.Lerp(270f, 360f, percent), rect.transform.eulerAngles.z);
         return FlipState.TurningFrontTowards;
     }
 
     private FlipState TurnFrontAway()
     {
-        if (rect.eulerAngles.y > 180 && rect.eulerAngles.y < 270)
+        if (flipTimer > (flipTime / 2f))
         {
             rect.eulerAngles = new Vector3(0, 90, 0);
             cardDataContainer.SetActive(false);
             background.texture = cardBack;
+            flipTimer = 0f;
             return FlipState.TurningBackTowards;
         }
-        rect.Rotate(new Vector3(0, -degPerSecond * Time.deltaTime));
+        flipTimer += Time.deltaTime;
+        rect.eulerAngles = new Vector3(rect.transform.eulerAngles.x, Mathf.Lerp(270f, 360f, 1 - percent), rect.transform.eulerAngles.z);
         return FlipState.TurningFrontAway;
     }
 
     private FlipState TurnBackTowards()
     {
-        if (Mathf.Abs(rect.eulerAngles.y) < degThreshold)
+        if (flipTimer > (flipTime / 2f))
         {
             rect.eulerAngles = Vector3.zero;
+            flipTimer = 0f;
             return FlipState.FlipDone;
         }
-        rect.Rotate(new Vector3(0, -degPerSecond * Time.deltaTime));
+        flipTimer += Time.deltaTime;
+        rect.eulerAngles = new Vector3(rect.transform.eulerAngles.x, Mathf.Lerp(0f, 90f, 1 - percent), rect.transform.eulerAngles.z);
         return FlipState.TurningBackTowards;
     }
 }
