@@ -178,4 +178,10 @@ public class Player
         }
     }
 
+    public void DropOut()
+    {
+        this.tab.DropOut();
+        Object.Destroy(this.gamePiece.gameObject);
+    }
+
 }

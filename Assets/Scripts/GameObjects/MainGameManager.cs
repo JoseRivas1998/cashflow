@@ -210,7 +210,8 @@ public class MainGameManager : MonoBehaviour
 
     public void DropOutPlayer(int playerIndex)
     {
-        Object.Destroy(GetPlayer(playerIndex).gamePiece.gameObject);
+        GetPlayer(playerIndex).DropOut();
+        turnManager.DropOutPlayer(playerIndex);
     }
 
 }

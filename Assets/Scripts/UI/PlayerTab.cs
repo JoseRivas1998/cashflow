@@ -169,4 +169,13 @@ public class PlayerTab : MonoBehaviour
         this.locked = false;
     }
 
+    public void DropOut()
+    {
+        playerBalance = 0;
+        this.bg.color = new Color(0, 0, 0, 0.25f);
+        this.balanceText.color = Color.white;
+        this.playerNameText.color = Color.white;
+        this.playerNameText.text = $"{player.name} <color=#ff0000ff><i>BANKRUPT</i></color>";
+    }
+
 }

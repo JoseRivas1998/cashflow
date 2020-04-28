@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TurnManager 
 {
 
     private Stack<int> turnStack;
+    private bool[] outPlayers;
 
     private readonly int numPlayers;
     private int currentPlayer;
@@ -15,6 +17,11 @@ public class TurnManager
     public TurnManager(int numPlayers)
     {
         turnStack = new Stack<int>();
+        outPlayers = new bool[numPlayers];
+        for (int i = 0; i < outPlayers.Length; i++)
+        {
+            outPlayers[i] = false;
+        }
         this.numPlayers = numPlayers;
         currentPlayer = -1;
         startingPlayer = 1;
@@ -50,15 +57,28 @@ public class TurnManager
 
     public int NextPlayer()
     {
-        if(currentPlayer == -1)
+        do
         {
-            currentPlayer = startingPlayer;
-        } 
-        else
-        {
-            currentPlayer = (currentPlayer + 1) % numPlayers;
-        }
+            if (currentPlayer == -1)
+            {
+                currentPlayer = startingPlayer;
+            }
+            else
+            {
+                currentPlayer = (currentPlayer + 1) % numPlayers;
+            }
+        } while (outPlayers[currentPlayer]);
         return currentPlayer;
+    }
+
+    public void DropOutPlayer(int index)
+    {
+        outPlayers[index] = true;
+    }
+
+    public bool PlayerDroppedOut(int index)
+    {
+        return outPlayers[index];
     }
 
     public int GetCurrentPlayer()
@@ -75,6 +95,11 @@ public class TurnManager
             order[i] = player;
         }
         return order;
+    }
+
+    public int NumPlayersIn()
+    {
+        return outPlayers.Sum(outPlayer => outPlayer ? 0 : 1);
     }
 
 }

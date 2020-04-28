@@ -17,7 +17,7 @@ public class PaydayState : GameState
         this.payDays = payDays;
         Player player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
         int monthlyCashFlow = player.incomeStatement.MonthlyCashflow;
-        if (player.ledger.GetCurretBalance() + monthlyCashFlow < 0)
+        if (player.ledger.GetCurretBalance() + monthlyCashFlow * payDays < 0)
         {
             skip = true;
             return;

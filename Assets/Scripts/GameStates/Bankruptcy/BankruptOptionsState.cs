@@ -82,13 +82,10 @@ public class BankruptOptionsState : GameState
                     this.options.gameObject.SetActive(false);
                     return new BankruptSellingPropertiesState(mgm, this);
                 case Choices.DropOut:
-                    try
-                    {
-                        Object.Destroy(this.options.gameObject);
-                        mgm.DropOutPlayer(this.player.index);
-                    } catch(MissingReferenceException mre) { }
+                    Object.Destroy(this.options.gameObject);
+                    mgm.DropOutPlayer(this.player.index);
                     mgm.mainCamTracker.TrackObject(null);
-                    return this;
+                    return new PreTurn(mgm);
                 case Choices.CollectPayDay:
                     Object.Destroy(this.options.gameObject);
                     return new PaydayState(mgm, diceSum, payDays);
