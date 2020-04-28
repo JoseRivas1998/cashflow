@@ -43,6 +43,12 @@ public class PlayerProfessionRevealState : GameState
             if (playerIndex == mgm.NumPlayers - 1)
             {
                 mgm.playerProfessionReveal.gameObject.SetActive(false);
+                if(mgm.NumPlayers == 1)
+                {
+                    mgm.RegisterPlayerTurnRoll(0, 6);
+                    mgm.CreatePlayerTabs();
+                    return new PreTurn(mgm);
+                }
                 return new TurnOrderState(mgm);
             }
             cardFlip.ResetFlip();
