@@ -64,6 +64,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject bankruptOptionsPrefab;
 
+    public GameObject gameOverScreenPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;

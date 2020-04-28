@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PreTurn : GameState
 {
-
+    private readonly bool skip;
     public PreTurn(MainGameManager mgm)
     {
+        if (mgm.turnManager.NumPlayersIn() == 0)
+        {
+            skip = true;
+            return;
+        }
+        skip = false;
         int playerIndex = mgm.turnManager.NextPlayer();
         Player player = mgm.GetPlayer(playerIndex);
-        if(!player.GamePieceExists())
+        if (!player.GamePieceExists())
         {
             float angle = Random.Range(0, Mathf.PI * 2);
             Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 0.5f;
@@ -25,11 +31,15 @@ public class PreTurn : GameState
         mgm.financialStatementToggle.gameObject.SetActive(true);
         mgm.cashLedgerToggle.Close();
         mgm.cashLedgerToggle.gameObject.SetActive(true);
-    } 
+    }
 
     public override GameState Update(MainGameManager mgm)
     {
-        if(mgm.mainCamTracker.SquareDistanceFromTarget < 1)
+        if (skip)
+        {
+            return new GameOverState(mgm);
+        }
+        if (mgm.mainCamTracker.SquareDistanceFromTarget < 1)
         {
             int playerIndex = mgm.turnManager.GetCurrentPlayer();
             Player player = mgm.GetPlayer(playerIndex);
