@@ -208,4 +208,9 @@ public class MainGameManager : MonoBehaviour
         return marketCards.Pop();
     }
 
+    public void DropOutPlayer(int playerIndex)
+    {
+        Object.Destroy(GetPlayer(playerIndex).gamePiece.gameObject);
+    }
+
 }

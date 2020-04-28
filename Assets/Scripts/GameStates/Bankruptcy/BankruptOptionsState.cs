@@ -53,6 +53,13 @@ public class BankruptOptionsState : GameState
         });
 
 
+        this.options.dropOut.onClick.AddListener(() => 
+        {
+            if (selected) return;
+            selected = true;
+            choice = Choices.DropOut;
+        });
+
         selected = false;
         onOtherScreen = false;
 
@@ -75,7 +82,13 @@ public class BankruptOptionsState : GameState
                     this.options.gameObject.SetActive(false);
                     return new BankruptSellingPropertiesState(mgm, this);
                 case Choices.DropOut:
-                    break;
+                    try
+                    {
+                        Object.Destroy(this.options.gameObject);
+                        mgm.DropOutPlayer(this.player.index);
+                    } catch(MissingReferenceException mre) { }
+                    mgm.mainCamTracker.TrackObject(null);
+                    return this;
                 case Choices.CollectPayDay:
                     Object.Destroy(this.options.gameObject);
                     return new PaydayState(mgm, diceSum, payDays);

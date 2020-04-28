@@ -55,7 +55,7 @@ public class CameraTrack : MonoBehaviour
     {
         lookingAt = transform;
         targetTrans = transform;
-        target = CalculateTargetPos();
+        if (transform != null) target = CalculateTargetPos();
     }
 
 }
