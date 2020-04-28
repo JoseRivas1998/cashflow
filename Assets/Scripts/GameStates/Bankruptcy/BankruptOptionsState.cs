@@ -82,10 +82,9 @@ public class BankruptOptionsState : GameState
                     this.options.gameObject.SetActive(false);
                     return new BankruptSellingPropertiesState(mgm, this);
                 case Choices.DropOut:
-                    Object.Destroy(this.options.gameObject);
-                    mgm.DropOutPlayer(this.player.index);
-                    mgm.mainCamTracker.TrackObject(null);
-                    return new PreTurn(mgm);
+                    onOtherScreen = true;
+                    this.options.gameObject.SetActive(false);
+                    return new BankruptDropOutOptionsState(mgm, this.options, this);
                 case Choices.CollectPayDay:
                     Object.Destroy(this.options.gameObject);
                     return new PaydayState(mgm, diceSum, payDays);
