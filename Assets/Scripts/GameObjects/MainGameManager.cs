@@ -62,6 +62,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject payDebtScreenPrefab;
 
+    public GameObject bankruptOptionsPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
