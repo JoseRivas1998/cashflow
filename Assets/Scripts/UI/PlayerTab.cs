@@ -80,7 +80,15 @@ public class PlayerTab : MonoBehaviour
         if (balanceDisplay < playerBalance)
         {
             int diff = playerBalance - balanceDisplay;
-            if (diff > 100)
+            if (diff > 5000)
+            {
+                balanceDisplay += 5000;
+            }
+            else if (diff > 1000)
+            {
+                balanceDisplay += 1000;
+            }
+            else if (diff > 100)
             {
                 balanceDisplay += 100;
             }
@@ -97,7 +105,15 @@ public class PlayerTab : MonoBehaviour
         else if (balanceDisplay > playerBalance)
         {
             int diff = balanceDisplay - playerBalance;
-            if (diff > 100)
+            if (diff > 5000)
+            {
+                balanceDisplay -= 5000;
+            }
+            else if (diff > 1000)
+            {
+                balanceDisplay -= 1000;
+            }
+            else if (diff > 100)
             {
                 balanceDisplay -= 100;
             }
