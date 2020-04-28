@@ -168,4 +168,14 @@ public class Player
         }
     }
 
+    public void SellRealEstateToBank(List<RealEstateCard> realEstates)
+    {
+        int capitalGains = realEstates.Sum(realEstate => realEstate.downPayment / 2);
+        this.AddMoney(capitalGains);
+        foreach (RealEstateCard card in realEstates)
+        {
+            this.incomeStatement.RemoveRealEstate(card);
+        }
+    }
+
 }

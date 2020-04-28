@@ -31,17 +31,27 @@ public class BankruptOptionsState : GameState
         this.options = optionsObject.GetComponent<BankruptOptions>();
 
         this.options.collectPayday.interactable = false;
-        this.options.collectPayday.onClick.AddListener(() => {
+        this.options.collectPayday.onClick.AddListener(() =>
+        {
             if (selected) return;
             selected = true;
             choice = Choices.CollectPayDay;
         });
 
-        this.options.payDebt.onClick.AddListener(() => {
+        this.options.payDebt.onClick.AddListener(() =>
+        {
             if (selected) return;
             selected = true;
             choice = Choices.PayDebt;
         });
+
+        this.options.sellProperty.onClick.AddListener(() =>
+        {
+            if (selected) return;
+            selected = true;
+            choice = Choices.SellProperty;
+        });
+
 
         selected = false;
         onOtherScreen = false;
@@ -61,7 +71,9 @@ public class BankruptOptionsState : GameState
             switch (this.choice)
             {
                 case Choices.SellProperty:
-                    break;
+                    onOtherScreen = true;
+                    this.options.gameObject.SetActive(false);
+                    return new BankruptSellingPropertiesState(mgm, this);
                 case Choices.DropOut:
                     break;
                 case Choices.CollectPayDay:
