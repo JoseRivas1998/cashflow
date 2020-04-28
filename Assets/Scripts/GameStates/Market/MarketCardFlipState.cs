@@ -11,8 +11,6 @@ public class MarketCardFlipState : GameState
     private readonly MarketCardGameObject marketCardObject;
 
     private bool skip;
-    private float skipTime;
-    private readonly float skipTimer = 1f;
 
     public MarketCardFlipState(MainGameManager mgm)
     {
@@ -36,8 +34,7 @@ public class MarketCardFlipState : GameState
     {
         if(skip)
         {
-            skipTime += Time.deltaTime;
-            if (skipTime > skipTimer)
+            if (Input.GetMouseButtonUp(0))
             {
                 Object.Destroy(marketCardObject.gameObject);
                 return new PostTurnState(mgm);
@@ -95,6 +92,7 @@ public class MarketCardFlipState : GameState
                     if(this.player.incomeStatement.RealEstate().Count == 0)
                     {
                         skip = true;
+                        mgm.gameStateDisplay.SetText("You do not own property");
                         return this;
                     }
                     return new PayForDamageState(mgm, (DamageCard)this.marketCard, this.marketCardObject);
@@ -112,6 +110,7 @@ public class MarketCardFlipState : GameState
                         return new SellingGoldState(mgm, (GoldBuyerCard)marketCard, marketCardObject);
                     }
                     skip = true;
+                    mgm.gameStateDisplay.SetText("No one has gold");
                     return this;
                 case MarketType.Bonus:
                     BonusCard bonusCard = (BonusCard)this.marketCard;
@@ -127,6 +126,7 @@ public class MarketCardFlipState : GameState
                         this.player.incomeStatement.BoostBusinesses(bonusCard.cashFlowMax, bonusCard.cashFlowIncrease);
                     }
                     skip = true;
+                    mgm.gameStateDisplay.SetText("No one has this kind of property");
                     return this;
                 default:
                     break;
