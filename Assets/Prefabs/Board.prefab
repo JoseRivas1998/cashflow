@@ -225,6 +225,7 @@ MonoBehaviour:
   debugRatRaceDonut: 1
   debugRatRaceArcs: 1
   debugRatRaceCenters: 1
+  debugFastTrackCenters: 1
   ratRaceOuterRadius: 7.36
   ratRaceInnerRadius: 4.12
   ratRaceCenterOffset: {x: -0.1, y: 0, z: 0}
@@ -232,6 +233,20 @@ MonoBehaviour:
   ratRaceSpaceCenterThreshold: 0.31
   downSizedTurnOneDistance: 8.55
   downSizedTurnTwoDistance: 7.67
+  corner37:
+    dist: 16.6
+    theta: -0.53
+  corner9:
+    dist: 16.6
+    theta: -2.6
+  corner17:
+    dist: 16.27
+    theta: 2.59
+  corner29:
+    dist: 16.1
+    theta: 0.55
+  spaceWidth: 2.34
+  spaceHeight: 2.07
 --- !u!1 &4994944087272651876
 GameObject:
   m_ObjectHideFlags: 0

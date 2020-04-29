@@ -57,6 +57,7 @@ public class BoardManager : MonoBehaviour
     public bool debugRatRaceDonut;
     public bool debugRatRaceArcs;
     public bool debugRatRaceCenters;
+    public bool debugFastTrackCenters;
     public float ratRaceOuterRadius;
     public float ratRaceInnerRadius;
     public Vector3 ratRaceCenterOffset;
@@ -64,6 +65,12 @@ public class BoardManager : MonoBehaviour
     public float ratRaceSpaceCenterThreshold;
     public float downSizedTurnOneDistance;
     public float downSizedTurnTwoDistance;
+    public PolarPoint corner37;
+    public PolarPoint corner9;
+    public PolarPoint corner17;
+    public PolarPoint corner29;
+    public float spaceWidth;
+    public float spaceHeight;
     public float sqRatRaceSpaceCenterThreshold { get { return ratRaceSpaceCenterThreshold * ratRaceSpaceCenterThreshold; } }
 
     private const int DOWNSIZED_SPACE = 11;
@@ -118,6 +125,15 @@ public class BoardManager : MonoBehaviour
                 UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
                 center = DownSizedSpace(2);
                 UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
+            }
+            if (debugFastTrackCenters)
+            {
+                for (int i = 0; i < 40; i++)
+                {
+                    UnityEditor.Handles.color = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.25f);
+                    Vector3 center = FastTrackSpaceCenter(i);
+                    UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
+                }
             }
         }
     }
@@ -188,6 +204,55 @@ public class BoardManager : MonoBehaviour
     public RatRaceSpaceTypes GetSpaceType(int space)
     {
         return ratRaceSpaces[NormalizeSpace(space)];
+    }
+
+    private bool isCorner(int space)
+    {
+        return space == 37 || space == 9 || space == 17 || space == 29;
+    }
+
+    public Vector3 FastTrackSpaceCenter(int space)
+    {
+        if(isCorner(space)) {
+            switch(space)
+            {
+                case 37:
+                    return this.transform.position + ratRaceCenterOffset + corner37.toVector3XZ;
+                case 9:
+                    return this.transform.position + ratRaceCenterOffset + corner9.toVector3XZ;
+                case 17:
+                    return this.transform.position + ratRaceCenterOffset + corner17.toVector3XZ;
+                case 29:
+                    return this.transform.position + ratRaceCenterOffset + corner29.toVector3XZ;
+            }
+        }
+        int cornerSpace = space;
+        int spacesToCorner = 0;
+        while (!isCorner(cornerSpace))
+        {
+            cornerSpace = (cornerSpace + 39) % 40; // todo dont make this hard coded
+            spacesToCorner++;
+        }
+        Vector3 cornerCenter = FastTrackSpaceCenter(cornerSpace);
+        float xOffset = 0;
+        float zOffset = 0;
+        if (cornerSpace == 9)
+        {
+            zOffset = spaceHeight * spacesToCorner;
+        }
+        else if (cornerSpace == 17)
+        {
+            xOffset = spaceWidth * spacesToCorner;
+        }
+        else if (cornerSpace == 29)
+        {
+            zOffset = -(spaceHeight * spacesToCorner);
+        }
+        else if (cornerSpace == 37)
+        {
+            xOffset = -(spaceWidth * spacesToCorner);
+        }
+        return cornerCenter + new Vector3(xOffset, 0, zOffset);
     }
 
 }
