@@ -53,6 +53,65 @@ public class BoardManager : MonoBehaviour
         RatRaceSpaceTypes.Market
     };
 
+    private static readonly FastTrackSpace[] fastTrackSpaces = {
+        new FastTrackSpace(FastTrackSpaceType.HealthCare),
+        new FastTrackSpace(FastTrackSpaceType.Charity),
+        new BusinessInvestment("Burger Shop", 300000, 9500),
+        new BusinessInvestment("Heat and A/C Service", 200000, 10000),
+        new BusinessInvestment("Quick Food Market", 120000, 5000),
+        new BusinessInvestment("Assisted Living Center", 400000, 8000),
+        new FastTrackSpace(FastTrackSpaceType.Lawsuit),
+        new BusinessInvestment("Ticket Sales Company", 150000, 5000),
+        new BusinessInvestment("Hobby Supply Store", 100000, 3000),
+        new FastTrackSpace(FastTrackSpaceType.CashFlowDay),
+        new BusinessInvestment("Fried Chicken Restaurant", 300000, 10000),
+        new BusinessInvestment("Dry Dock Storage", 250000, 10000),
+        new BusinessInvestment("Beauty Salon", 250000, 10000),
+        new FastTrackSpace(FastTrackSpaceType.TaxAudit),
+        new BusinessInvestment("Auto Repair Shop", 150000, 6000),
+        new BusinessInvestment("Extreme Sports Equipment Rental", 150000, 5000),
+        new FastTrackSpace(FastTrackSpaceType.ForeignOilDeal),
+        new FastTrackSpace(FastTrackSpaceType.CashFlowDay),
+        new BusinessInvestment("Movie Theater", 150000, 6000),
+        new BusinessInvestment("Research Center for Diseases", 300000, 8000),
+        new FastTrackSpace(FastTrackSpaceType.BadPartner),
+        new BusinessInvestment("App Development Company", 150000, 5000),
+        new FastTrackSpace(FastTrackSpaceType.SoftwareCoIPO),
+        new BusinessInvestment("Coffee Shop", 120000, 5000),
+        new BusinessInvestment("400-Unit Apartment Building", 300000, 8000),
+        new BusinessInvestment("Island Vacation Rentals", 100000, 3000),
+        new FastTrackSpace(FastTrackSpaceType.Divorce),
+        new BusinessInvestment("Build Pro Golf Course", 150000, 6000),
+        new BusinessInvestment("Pizza Shop", 225000, 7000),
+        new FastTrackSpace(FastTrackSpaceType.CashFlowDay),
+        new BusinessInvestment("Collectibles Store", 100000, 3000),
+        new BusinessInvestment("Frozen Yogurt Shop", 120000, 5000),
+        new FastTrackSpace(FastTrackSpaceType.BioTecCoIPO),
+        new FastTrackSpace(FastTrackSpaceType.UnforeseenRepairs),
+        new BusinessInvestment("200-Unit Mini Storage", 200000, 6000),
+        new BusinessInvestment("Dry Cleaning Business", 100000, 3000),
+        new BusinessInvestment("Mobile Home Park", 400000, 9000),
+        new FastTrackSpace(FastTrackSpaceType.CashFlowDay),
+        new BusinessInvestment("Family Restaurant", 300000, 14000),
+        new BusinessInvestment("Private Wildlife Preserve", 120000, 5000)
+    };
+
+    private static readonly Dictionary<FastTrackSpaceType, Color> fastTrackTypeColors = new Dictionary<FastTrackSpaceType, Color>() 
+    {
+        { FastTrackSpaceType.CashFlowDay, new Color(254f/255f, 226f/255f, 84f/255f)},
+        { FastTrackSpaceType.BusinessInvestments, new Color(163f/255f, 186f/255f, 54f/255f)},
+        { FastTrackSpaceType.HealthCare, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.Charity, new Color(122f/255f, 41f/255f, 107f/255f)},
+        { FastTrackSpaceType.TaxAudit, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.Divorce, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.Lawsuit, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.BadPartner, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.UnforeseenRepairs, new Color(214f/255f, 62f/255f, 48f/255f)},
+        { FastTrackSpaceType.ForeignOilDeal, new Color(163f/255f, 186f/255f, 54f/255f)},
+        { FastTrackSpaceType.SoftwareCoIPO, new Color(163f/255f, 186f/255f, 54f/255f)},
+        { FastTrackSpaceType.BioTecCoIPO, new Color(163f/255f, 186f/255f, 54f/255f)},
+    };
+
     public bool debug;
     public bool debugRatRaceDonut;
     public bool debugRatRaceArcs;
@@ -128,9 +187,11 @@ public class BoardManager : MonoBehaviour
             }
             if (debugFastTrackCenters)
             {
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < fastTrackSpaces.Length; i++)
                 {
-                    UnityEditor.Handles.color = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.25f);
+                    FastTrackSpaceType space = fastTrackSpaces[i].type;
+                    Color c = fastTrackTypeColors[space];
+                    UnityEditor.Handles.color = new Color(c.r, c.g, c.b, 0.5f);
                     Vector3 center = FastTrackSpaceCenter(i);
                     UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
                 }
@@ -230,7 +291,7 @@ public class BoardManager : MonoBehaviour
         int spacesToCorner = 0;
         while (!isCorner(cornerSpace))
         {
-            cornerSpace = (cornerSpace + 39) % 40; // todo dont make this hard coded
+            cornerSpace = (cornerSpace + fastTrackSpaces.Length - 1) % fastTrackSpaces.Length; // todo dont make this hard coded
             spacesToCorner++;
         }
         Vector3 cornerCenter = FastTrackSpaceCenter(cornerSpace);
