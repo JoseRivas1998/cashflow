@@ -66,6 +66,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject gameOverScreenPrefab;
 
+    public GameObject enterFastTrackOptionPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
