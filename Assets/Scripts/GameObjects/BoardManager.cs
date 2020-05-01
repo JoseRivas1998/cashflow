@@ -112,6 +112,11 @@ public class BoardManager : MonoBehaviour
         { FastTrackSpaceType.BioTecCoIPO, new Color(163f/255f, 186f/255f, 54f/255f)},
     };
 
+    private static readonly Dictionary<int, int> dieRollStartSpaces = new Dictionary<int, int>()
+    {
+        {1, 0}, {2, 6}, {3, 13}, {4, 20}, {5, 26}, {6, 33}
+    };
+
     public bool debug;
     public bool debugRatRaceDonut;
     public bool debugRatRaceArcs;
@@ -314,6 +319,11 @@ public class BoardManager : MonoBehaviour
             xOffset = -(spaceWidth * spacesToCorner);
         }
         return cornerCenter + new Vector3(xOffset, 0, zOffset);
+    }
+
+    public int FastTractStartSpace(int dieRoll)
+    {
+        return dieRollStartSpaces[dieRoll];
     }
 
 }
