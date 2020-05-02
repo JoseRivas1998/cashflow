@@ -47,7 +47,6 @@ public class MoneyAddition : MonoBehaviour
         Vector3[] worlds = new Vector3[4];
         rect.GetLocalCorners(worlds);
         targetY = transform.localPosition.y - Mathf.Abs(worlds[0].y - worlds[1].y);
-        Debug.Log(startY + " " + targetY);
     }
 
     // Update is called once per frame

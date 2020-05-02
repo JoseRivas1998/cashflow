@@ -191,7 +191,7 @@ public class Player
     {
         this.FastTrack = true;
         this.gamePiece.onFastTrack = true;
-        this.gamePiece.fastTrackSpace = fastTrackSpace;
+        this.gamePiece.SetFastTrackSpace(fastTrackSpace);
     }
 
 }

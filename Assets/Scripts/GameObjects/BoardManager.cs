@@ -326,4 +326,25 @@ public class BoardManager : MonoBehaviour
         return dieRollStartSpaces[dieRoll];
     }
 
+    public static int FastTrackSpaceAngle(int space)
+    {
+        if (space >= 37)
+        {
+            return 0;
+        }
+        if (space >= 29)
+        {
+            return 270;
+        }
+        if (space >= 17)
+        {
+            return 180;
+        }
+        if (space >= 9)
+        {
+            return 90;
+        }
+        return 0;
+    }
+
 }
