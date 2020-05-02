@@ -25,6 +25,8 @@ public class DiceRoller : MonoBehaviour
     private RollState state;
     private Vector3 shakeCenter;
 
+    private float stillTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class DiceRoller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (state)
         {
@@ -116,6 +118,18 @@ public class DiceRoller : MonoBehaviour
         if (rb.IsSleeping())
         {
             state = RollState.RollComplete;
+        }
+        else if (rb.velocity.sqrMagnitude < 0.12f && rb.angularVelocity.sqrMagnitude < 0.12f)
+        {
+            stillTime += Time.fixedDeltaTime;
+            if (stillTime > 5)
+            {
+                state = RollState.RollComplete;
+            }
+        }
+        else
+        {
+            stillTime = 0;
         }
     }
 

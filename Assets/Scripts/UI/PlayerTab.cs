@@ -6,20 +6,13 @@ using UnityEngine.EventSystems;
 
 public class PlayerTab : MonoBehaviour
 {
-    public Text salaryText;
-    public Text plusText;
-    public Text passiveIncomeText;
-    public Text totalIncomeText;
-    public Text equals1;
-    public Text minus;
-    public Text totalExpensesText;
-    public Text cashFlowText;
-    public Text equals2;
 
     public Text playerNameText;
     public Text balanceText;
     public Text balanceLabel;
     public Image bg;
+
+    public Slider progressBar;
 
     [Range(0f, 1f)]
     public float luminanceThreshold = 0.4f;
@@ -45,15 +38,6 @@ public class PlayerTab : MonoBehaviour
         UpdateValues();
         if (luminance < luminanceThreshold)
         {
-            salaryText.color = Color.white;
-            plusText.color = Color.white;
-            passiveIncomeText.color = Color.white;
-            totalIncomeText.color = Color.white;
-            equals1.color = Color.white;
-            minus.color = Color.white;
-            totalExpensesText.color = Color.white;
-            cashFlowText.color = Color.white;
-            equals2.color = Color.white;
             playerNameText.color = Color.white;
             balanceText.color = Color.white;
             balanceLabel.color = Color.white;
@@ -67,11 +51,7 @@ public class PlayerTab : MonoBehaviour
     private void UpdateValues()
     {
         if (player == null) return;
-        salaryText.text = Utility.FormatMoney(player.incomeStatement.salary);
-        passiveIncomeText.text = Utility.FormatMoney(player.incomeStatement.PassiveIncome);
-        totalIncomeText.text = Utility.FormatMoney(player.incomeStatement.TotalIncome);
-        totalExpensesText.text = Utility.FormatMoney(player.incomeStatement.TotalExpenses);
-        cashFlowText.text = Utility.FormatMoney(player.incomeStatement.MonthlyCashflow);
+        progressBar.value = Mathf.Clamp((float) player.incomeStatement.PassiveIncome / player.incomeStatement.TotalExpenses, 0f, 1f);
     }
 
     // Update is called once per frame

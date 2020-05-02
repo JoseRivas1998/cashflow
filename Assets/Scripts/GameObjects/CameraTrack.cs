@@ -19,7 +19,7 @@ public class CameraTrack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         if(lookingAt == null)
         {
@@ -32,7 +32,7 @@ public class CameraTrack : MonoBehaviour
         if(targetTrans != null)
         {
             target = CalculateTargetPos();
-            transform.position += (target - transform.position) / smoothing;
+            transform.position += ((target - transform.position) / smoothing) * Time.deltaTime;
         }
     }
 

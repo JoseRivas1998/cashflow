@@ -12,10 +12,10 @@ public class PlayerMoving : GameState
     private bool downsizeLoan;
     private int downsizeCost;
 
-    private float moveTime;
-    private readonly float moveTimer = 0.4f;
+    private const float moveTimer = 0.4f;
 
-    private Vector3 startPos;
+    private bool moving;
+    private bool atDestination;
 
     public PlayerMoving(MainGameManager mgm, int dieCount)
     {
@@ -27,8 +27,8 @@ public class PlayerMoving : GameState
         mgm.gameStateDisplay.SetText("Moving " + dieCount + " space" + (dieCount > 1 ? "s" : ""));
         downsizeLoan = false;
         downsizeCost = 0;
-        moveTime = 0;
-        startPos = player.gamePiece.transform.position;
+        moving = false;
+        atDestination = false;
     }
 
     public override GameState Update(MainGameManager mgm)
@@ -42,16 +42,17 @@ public class PlayerMoving : GameState
             }
             return new LoanState(mgm, this);
         } 
-        if (Vector3.SqrMagnitude(player.gamePiece.transform.position - targetPosition) > mgm.board.sqRatRaceSpaceCenterThreshold)
+        if (!moving && !atDestination)
         {
-            float step = (1f / moveTimer) * Time.deltaTime;
-            player.gamePiece.transform.position = Vector3.MoveTowards(player.gamePiece.transform.position, targetPosition, step);
-            moveTime += Time.deltaTime;
+            LeanTween.move(player.gamePiece.gameObject, targetPosition, moveTimer).setEase(LeanTweenType.easeInOutSine).setOnComplete(() => {
+                moving = false;
+                atDestination = true;
+            });
+            moving = true;
         }
-        else
+        else if (atDestination)
         {
-            moveTime = 0;
-            startPos = player.gamePiece.transform.position;
+            atDestination = false;
             currentSpace = mgm.board.NormalizeSpace(currentSpace + 1);
             if (currentSpace == targetSpace)
             {
