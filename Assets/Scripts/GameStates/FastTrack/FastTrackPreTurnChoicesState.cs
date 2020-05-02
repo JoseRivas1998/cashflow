@@ -24,7 +24,8 @@ public class FastTrackPreTurnChoicesState : GameState
         if (done)
         {
             Object.Destroy(choices.gameObject);
-            return new PreTurn(mgm);
+            // TODO handle charity
+            return new FastTrackRollingState(mgm, 1);
         }
         return this;
     }
