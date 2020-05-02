@@ -29,7 +29,8 @@ public class BuySellRealEstateState : GameState
         GameObject optionsObject = Object.Instantiate(mgm.buyPropertyOptionsPrefab, mgm.mainUICanvas.transform);
         optionsObject.transform.SetSiblingIndex(dealCard.transform.GetSiblingIndex() + 1);
         this.options = optionsObject.GetComponent<BuyPropertyOptions>();
-        this.options.sellBtn.interactable = mgm.turnManager.NumPlayersIn() > 1;
+        
+        this.options.sellBtn.interactable = mgm.turnManager.NumPlayersIn() - mgm.NumPlayersFastTrack > 1;
         this.options.buyBtn.interactable = originalBuyer.ledger.GetCurretBalance() >= realEstateCard.downPayment;
         this.selected = false;
         this.isTakingLoan = false;

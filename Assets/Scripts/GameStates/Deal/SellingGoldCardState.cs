@@ -26,7 +26,7 @@ public class SellingGoldCardState : GameState
         buttons = new Dictionary<int, PlayerSelectButton>();
         for (int i = 0; i < mgm.NumPlayers; i++)
         {
-            if (i != currentPlayer && !mgm.turnManager.PlayerDroppedOut(i))
+            if (i != currentPlayer && !mgm.turnManager.PlayerDroppedOut(i) && !mgm.GetPlayer(i).FastTrack)
             {
                 GameObject buttonObject = Object.Instantiate(options.playerButtonPrefab, options.buyerButtons.transform);
                 PlayerSelectButton button = buttonObject.GetComponent<PlayerSelectButton>();

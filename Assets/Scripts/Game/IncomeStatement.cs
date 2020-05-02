@@ -283,4 +283,13 @@ public class IncomeStatement
         this.bankLoan = Mathf.Max(this.bankLoan - amount, 0);
     }
 
+    public void Clear()
+    {
+        this.bankLoan = 0;
+        this.stockEntries.Clear();
+        this.realEstate.Clear();
+        this.mlms.Clear();
+        this.goldCoins = 0;
+    }
+
 }

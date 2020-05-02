@@ -198,6 +198,7 @@ public class Player
         this.fastTrackIncomeStatement = new FastTrackIncomeStatement(this.incomeStatement);
         this.charityTurnsLeft = 0;
         this.space = fastTrackSpace;
+        this.incomeStatement.Clear();
         this.FastTrack = true;
     }
 

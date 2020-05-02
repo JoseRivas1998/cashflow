@@ -51,7 +51,14 @@ public class PlayerTab : MonoBehaviour
     private void UpdateValues()
     {
         if (player == null) return;
-        progressBar.value = Mathf.Clamp((float) player.incomeStatement.PassiveIncome / player.incomeStatement.TotalExpenses, 0f, 1f);
+        if (player.FastTrack)
+        {
+            progressBar.value = Mathf.Clamp((float)player.fastTrackIncomeStatement.CashFlowDayIncome / player.fastTrackIncomeStatement.CashFlowDayGoal, 0f, 1f);
+        }
+        else
+        {
+            progressBar.value = Mathf.Clamp((float)player.incomeStatement.PassiveIncome / player.incomeStatement.TotalExpenses, 0f, 1f);
+        }
     }
 
     // Update is called once per frame

@@ -234,4 +234,6 @@ public class MainGameManager : MonoBehaviour
         return uiObject;
     }
 
+    public int NumPlayersFastTrack { get { return this.players.Sum(player => player.FastTrack ? 1 : 0); } }
+
 }

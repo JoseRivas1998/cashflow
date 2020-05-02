@@ -31,7 +31,7 @@ public class BuySellGoldState : GameState
         optionsObject.transform.SetSiblingIndex(dealCard.transform.GetSiblingIndex() + 1);
         options = optionsObject.GetComponent<BuyPropertyOptions>();
 
-        options.sellBtn.interactable = mgm.turnManager.NumPlayersIn() > 1;
+        options.sellBtn.interactable = mgm.turnManager.NumPlayersIn() - mgm.NumPlayersFastTrack > 1;
         options.sellBtn.onClick.AddListener(() =>
         {
             if (selected) return;
