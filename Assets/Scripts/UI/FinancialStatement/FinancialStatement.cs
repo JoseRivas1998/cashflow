@@ -43,6 +43,24 @@ public class FinancialStatement : MonoBehaviour
     public StockList stockList;
     public RealEstateLists realEstateLists;
 
+    public RawImage image;
+    public Texture ratRaceTexture;
+    public Texture fastTrackTexture;
+
+    public GameObject ratRaceData;
+    public GameObject fastTrackData;
+
+    [System.Serializable]
+    public struct FastTrackData
+    {
+        public Text PassiveIncome;
+        public Text StartingCashFlowDayIncome1;
+        public Text CashFlowDayGoal;
+        public Text StartingCashFlowDayIncome2;
+    }
+
+    public FastTrackData fastTrackDataContainer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,10 +83,37 @@ public class FinancialStatement : MonoBehaviour
     public void UpdateToCurrentPlayer()
     {
         int playerIndex = mainGameManager.turnManager.GetCurrentPlayer();
-        int auditorIndex = (playerIndex + (mainGameManager.NumPlayers - 1)) % mainGameManager.NumPlayers;
-        Auditor.text = mainGameManager.GetPlayer(auditorIndex).name;
 
         Player player = mainGameManager.GetPlayer(playerIndex);
+        if (player.FastTrack)
+        {
+            UpdateFastTrack(player);
+        }
+        else
+        {
+            UpdateRatRace(player);
+        }
+    }
+
+    private void UpdateFastTrack(Player player)
+    {
+        image.texture = fastTrackTexture;
+        ratRaceData.SetActive(false);
+        fastTrackData.SetActive(true);
+        fastTrackDataContainer.PassiveIncome.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.StartingPassiveIncome);
+        fastTrackDataContainer.StartingCashFlowDayIncome1.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.StartingCashFlowDayIncome);
+        fastTrackDataContainer.StartingCashFlowDayIncome2.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.StartingCashFlowDayIncome);
+        fastTrackDataContainer.CashFlowDayGoal.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.CashFlowDayGoal);
+    }
+
+    private void UpdateRatRace(Player player)
+    {
+        ratRaceData.SetActive(true);
+        fastTrackData.SetActive(false);
+        image.texture = ratRaceTexture;
+        int auditorIndex = (player.index + (mainGameManager.NumPlayers - 1)) % mainGameManager.NumPlayers;
+        Auditor.text = mainGameManager.GetPlayer(auditorIndex).name;
+
         Dream.text = player.dream;
         Profession.text = player.profession.name;
         SetAmountText(SalaryRight, player.incomeStatement.salary, false);

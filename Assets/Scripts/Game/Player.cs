@@ -24,6 +24,8 @@ public class Player
 
     public bool FastTrack { get; private set; }
 
+    public FastTrackIncomeStatement fastTrackIncomeStatement { get; private set; }
+
     public Player(int index, string name, string dream, Color color, Professions.Profession profession)
     {
         this.index = index;
@@ -39,6 +41,7 @@ public class Player
         this.downsizedTurns = 0;
         this.charityTurnsLeft = 0;
         this.FastTrack = false;
+        this.fastTrackIncomeStatement = null;
     }
 
     public override string ToString()
@@ -189,9 +192,11 @@ public class Player
 
     public void EnterFastTrack(int fastTrackSpace)
     {
-        this.FastTrack = true;
         this.gamePiece.onFastTrack = true;
         this.gamePiece.SetFastTrackSpace(fastTrackSpace);
+        this.AddMoney(Utility.RoundToNearestPowerOfTen(this.incomeStatement.PassiveIncome * 100, 3));
+        this.fastTrackIncomeStatement = new FastTrackIncomeStatement(this.incomeStatement);
+        this.FastTrack = true;
     }
 
 }
