@@ -22,6 +22,8 @@ public class Player
     public int downsizedTurns;
     public int charityTurnsLeft { get; private set; }
 
+    public bool FastTrack { get; private set; }
+
     public Player(int index, string name, string dream, Color color, Professions.Profession profession)
     {
         this.index = index;
@@ -36,6 +38,7 @@ public class Player
         this.downsized = false;
         this.downsizedTurns = 0;
         this.charityTurnsLeft = 0;
+        this.FastTrack = false;
     }
 
     public override string ToString()
@@ -182,6 +185,13 @@ public class Player
     {
         this.tab.DropOut();
         Object.Destroy(this.gamePiece.gameObject);
+    }
+
+    public void EnterFastTrack(int fastTrackSpace)
+    {
+        this.FastTrack = true;
+        this.gamePiece.onFastTrack = true;
+        this.gamePiece.fastTrackSpace = fastTrackSpace;
     }
 
 }

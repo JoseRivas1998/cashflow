@@ -243,8 +243,8 @@ MonoBehaviour:
     dist: 16.27
     theta: 2.59
   corner29:
-    dist: 16.1
-    theta: 0.55
+    dist: 16.25
+    theta: 0.54
   spaceWidth: 2.34
   spaceHeight: 2.07
 --- !u!1 &4994944087272651876

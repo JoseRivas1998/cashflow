@@ -35,4 +35,10 @@ public class Utility
         return Random.Range(0f, 1f) < 0.5 ? 1 : -1;
     }
 
+    public static int RoundToNearestPowerOfTen(int n, int pow)
+    {
+        int power = (int)Mathf.Pow(10, pow);
+        return n % power >= (power / 2) ? n + power - n % power : n - n % power;
+    }
+
 }

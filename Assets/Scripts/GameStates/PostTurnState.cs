@@ -65,8 +65,7 @@ public class PostTurnState : GameState
                     Object.Destroy(choices.gameObject);
                     if(player.incomeStatement.PassiveIncome > player.incomeStatement.TotalExpenses)
                     {
-                        Debug.Log("FAST TRACK");
-                        return new LoopState();
+                        return new EnterFastTrackOptionsState(mgm);
                     }
                     return new PreTurn(mgm);
                 case Choices.Debt:
