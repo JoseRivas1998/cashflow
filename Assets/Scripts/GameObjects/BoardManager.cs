@@ -234,6 +234,11 @@ public class BoardManager : MonoBehaviour
         return space % ratRaceSpaces.Length;
     }
 
+    public int NormalizeFastTrackSpace(int space)
+    {
+        return space % fastTrackSpaces.Length;
+    }
+
     public int PayDays(int startingSpace, int numSpaces)
     {
         int sum = 0;

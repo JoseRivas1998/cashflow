@@ -14,7 +14,8 @@ public class FastTrackRollingState : GameState
     public FastTrackRollingState(MainGameManager mgm, int numDice)
     {
         player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
-        dice = mgm.SpawnDice(numDice);
+        dice = mgm.SpawnDice(numDice, true);
+        mgm.mainCamTracker.TrackObject(dice[0].transform);
         currentSpace = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer()).space;
         ResetAll();
         FreezeAll();
@@ -22,8 +23,9 @@ public class FastTrackRollingState : GameState
 
     public override GameState Update(MainGameManager mgm)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && dice[0].roller.RollReady())
         {
+            mgm.mainCamTracker.TrackObject(null);
             UnFreezeAll();
             ShakeAll();
         }
@@ -42,7 +44,7 @@ public class FastTrackRollingState : GameState
                 {
                     Object.Destroy(die.gameObject);
                 }
-                return new PreTurn(mgm);
+                return new FastTrackMoveState(mgm, sum);
             }
         }
         return this;

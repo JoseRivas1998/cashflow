@@ -177,12 +177,19 @@ public class MainGameManager : MonoBehaviour
         currentState = currentState.Update(this);
     }
 
-    public DiceContainer[] SpawnDice(int n)
+    public DiceContainer[] SpawnDice(int n, bool spawnAboutCenter = false)
     {
         DiceContainer[] dice = new DiceContainer[n];
         Transform camTransform = mainCam.transform;
         float mid = (n - 1) / 2f;
         Vector3 center = camTransform.position + camTransform.forward * diceSpawnDistance;
+        if(spawnAboutCenter)
+        {
+            Vector3 origin = Vector3.up * center.y;
+            Vector3 diffAngle = (origin - camTransform.transform.position).normalized;
+            diffAngle.y = 0;
+            center = origin - diffAngle * diceSpawnDistance;
+        }
         for (int i = 0; i < n; i++)
         {
             float distToMid = i - mid;
