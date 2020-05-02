@@ -10,18 +10,25 @@ public class GamePiece : MonoBehaviour
 
     private float targetAngle;
 
+    public bool onFastTrack;
+    public int fastTrackSpace;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        onFastTrack = false;
+        fastTrackSpace = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 diff = transform.position - origin;
-        targetAngle = (Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg + 180);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, targetAngle, transform.eulerAngles.z);
+        if (!onFastTrack)
+        {
+            Vector3 diff = transform.position - origin;
+            targetAngle = (Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg + 180);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, targetAngle, transform.eulerAngles.z);
+        }
     }
 
     public void SetColor(Color color)
