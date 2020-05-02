@@ -68,6 +68,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject enterFastTrackOptionPrefab;
 
+    public GameObject fastTrackPreTurnChoicesPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
@@ -216,6 +218,13 @@ public class MainGameManager : MonoBehaviour
     {
         GetPlayer(playerIndex).DropOut();
         turnManager.DropOutPlayer(playerIndex);
+    }
+
+    public GameObject SpawnUIObjectBehindCashToggle(GameObject gameObject)
+    {
+        GameObject uiObject = Instantiate(gameObject, mainUICanvas.transform);
+        uiObject.transform.SetSiblingIndex(cashLedgerToggle.transform.GetSiblingIndex());
+        return uiObject;
     }
 
 }

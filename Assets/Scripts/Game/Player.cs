@@ -196,6 +196,7 @@ public class Player
         this.gamePiece.SetFastTrackSpace(fastTrackSpace);
         this.AddMoney(Utility.RoundToNearestPowerOfTen(this.incomeStatement.PassiveIncome * 100, 3));
         this.fastTrackIncomeStatement = new FastTrackIncomeStatement(this.incomeStatement);
+        this.charityTurnsLeft = 0;
         this.FastTrack = true;
     }
 

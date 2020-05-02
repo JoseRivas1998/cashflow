@@ -43,6 +43,10 @@ public class PreTurn : GameState
         {
             int playerIndex = mgm.turnManager.GetCurrentPlayer();
             Player player = mgm.GetPlayer(playerIndex);
+            if (player.FastTrack)
+            {
+                return new FastTrackPreTurnChoicesState(mgm);
+            }
             if (player.downsized)
             {
                 return new DownsizedState(mgm);

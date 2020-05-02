@@ -35,6 +35,10 @@ public class MovingToFastTrackStartingSpaceState : GameState
         if(done)
         {
             doneTime += Time.deltaTime;
+            if (doneTime > doneTimer)
+            {
+                return new PreTurn(mgm);
+            }
         }
         else
         {
