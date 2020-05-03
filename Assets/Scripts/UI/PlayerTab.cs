@@ -53,7 +53,8 @@ public class PlayerTab : MonoBehaviour
         if (player == null) return;
         if (player.FastTrack)
         {
-            progressBar.value = Mathf.Clamp((float)player.fastTrackIncomeStatement.CashFlowDayIncome / player.fastTrackIncomeStatement.CashFlowDayGoal, 0f, 1f);
+            int diff = player.fastTrackIncomeStatement.CashFlowDayGoal - player.fastTrackIncomeStatement.CashFlowDayIncome;
+            progressBar.value = Mathf.Clamp(1 - ((float)diff / 50000), 0f, 1f);
         }
         else
         {
