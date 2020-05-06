@@ -2013,6 +2013,7 @@ GameObject:
   - component: {fileID: 1687113847}
   - component: {fileID: 1687113846}
   - component: {fileID: 1687113845}
+  - component: {fileID: 1687113848}
   m_Layer: 5
   m_Name: HowToPlay
   m_TagString: Untagged
@@ -2119,6 +2120,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687113843}
   m_CullTransparentMesh: 0
+--- !u!114 &1687113848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687113843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76299c4acd0c5c54cbfcf73fb6687fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 136649928920315162}
+  loadingPanel: {fileID: 2049181409}
+  sceneToLoad: HowToPlay
 --- !u!1 &1724774513
 GameObject:
   m_ObjectHideFlags: 0
