@@ -10,6 +10,7 @@ public class Jukebox : MonoBehaviour
     public struct Song
     {
         public string title;
+        public string artist;
         public AudioClip audio;
     }
 
@@ -32,7 +33,7 @@ public class Jukebox : MonoBehaviour
         playing = true;
         currentSong = musicStack.Pop();
         audioSource.clip = currentSong.audio;
-        title.text = currentSong.title;
+        title.text = currentSong.title + " - " + currentSong.artist;
         audioSource.Play();
         UpdateVolume(1f);
     }
@@ -69,7 +70,7 @@ public class Jukebox : MonoBehaviour
         currentSong = musicStack.Pop();
         audioSource.clip = currentSong.audio;
         audioSource.Play();
-        title.text = currentSong.title;
+        title.text = currentSong.title + " - " + currentSong.artist;
         playing = true;
         playPauseImage.texture = pauseButton;
     }

@@ -275,21 +275,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music:
   - title: A New Beginning
+    artist: Bensound
     audio: {fileID: 8300000, guid: 6935bb965438f8c40b517a8cd83444d2, type: 3}
   - title: Creative Minds
+    artist: Bensound
     audio: {fileID: 8300000, guid: 0e9ba6e9c3eaea44a9b4fa86de0bb39d, type: 3}
   - title: Happy Rock
+    artist: Bensound
     audio: {fileID: 8300000, guid: 264cc5351a1d27a42a037729d48ebcbd, type: 3}
   - title: Hey
+    artist: Bensound
     audio: {fileID: 8300000, guid: 90da915f5bca27544810bda8feac53cd, type: 3}
   - title: Jazzy Frenchy
+    artist: Bensound
     audio: {fileID: 8300000, guid: 16aa66be361d51c43985c84c232d9838, type: 3}
   - title: Litttle Idea
+    artist: Bensound
     audio: {fileID: 8300000, guid: 33252fbe79382804a9a84704e7f960f6, type: 3}
   - title: Summer
+    artist: Bensound
     audio: {fileID: 8300000, guid: 34e58968f5cd8cb44bcfc57b60ab5f53, type: 3}
   - title: Ukulele
+    artist: Bensound
     audio: {fileID: 8300000, guid: deccb5c256f46554b8cf2861f42cf038, type: 3}
+  - title: Ponies and Balloons
+    artist: The Green Orbs
+    audio: {fileID: 8300000, guid: 28cbbeddda4ef174ea0cdeefcfd17428, type: 3}
+  - title: Splashing Around
+    artist: The Green Orbs
+    audio: {fileID: 8300000, guid: 77433359d08fe054db7bd67740ee00ff, type: 3}
+  - title: Bike Rides
+    artist: The Green Orbs
+    audio: {fileID: 8300000, guid: db9aa6fd787ebe942842a48ff18eb4ae, type: 3}
+  - title: Hold on a Minute
+    artist: Silent Partnet
+    audio: {fileID: 8300000, guid: 298fc3bdb1865f0418950c6dcd692fe8, type: 3}
   audioSource: {fileID: 57356223}
   maxVolume: 0.5
   title: {fileID: 642553058}
@@ -4459,7 +4479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1358265272
 RectTransform:
   m_ObjectHideFlags: 0
