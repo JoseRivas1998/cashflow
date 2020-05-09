@@ -64,13 +64,13 @@ public class FinancialStatement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public float GetWidth()
@@ -80,11 +80,20 @@ public class FinancialStatement : MonoBehaviour
         return worlds[2].x - worlds[0].x;
     }
 
-    public void UpdateToCurrentPlayer()
+    public void UpdateToCurrentPlayer(in Player thePlayer = null)
     {
-        int playerIndex = mainGameManager.turnManager.GetCurrentPlayer();
+        Player player;
+        if (mainGameManager == null)
+        {
+            player = thePlayer;
+        }
+        else
+        {
+            int playerIndex = mainGameManager.turnManager.GetCurrentPlayer();
 
-        Player player = mainGameManager.GetPlayer(playerIndex);
+            player = mainGameManager.GetPlayer(playerIndex);
+        }
+        if (player == null) return;
         if (player.FastTrack)
         {
             UpdateFastTrack(player);
@@ -111,8 +120,15 @@ public class FinancialStatement : MonoBehaviour
         ratRaceData.SetActive(true);
         fastTrackData.SetActive(false);
         image.texture = ratRaceTexture;
-        int auditorIndex = (player.index + (mainGameManager.NumPlayers - 1)) % mainGameManager.NumPlayers;
-        Auditor.text = mainGameManager.GetPlayer(auditorIndex).name;
+        if (mainGameManager)
+        {
+            int auditorIndex = (player.index + (mainGameManager.NumPlayers - 1)) % mainGameManager.NumPlayers;
+            Auditor.text = mainGameManager.GetPlayer(auditorIndex).name;
+        }
+        else
+        {
+            Auditor.text = "Jane";
+        }
 
         Dream.text = player.dream;
         Profession.text = player.profession.name;

@@ -14,6 +14,9 @@ public class TutorialManager : MonoBehaviour
         public string intro2;
         public string gamePiece;
         public string profession;
+        public string startingBalance;
+        public string financialStatement;
+        public string cashLedger;
     }
 
     [System.Serializable]
@@ -29,10 +32,9 @@ public class TutorialManager : MonoBehaviour
         Loading, Open, Intro1, Intro2, GamePiece,
         Profession, StartingBalance, FinancialStatement, CashLedger, StartOfTurn,
         ShowDie, RollDie, Spaces, PayDay, Income, Expenses, 
-        Lose, Deal, DealTypes, RealEstate, SellCard, AddProperty, Stock,
-        AddStock, SellStock, Coins, AddCoins, Gamble, Doodad, 
-        Market, MarketTypes, RealEstateMarket, SellProperty, StockSplit, Damage, GoldBuyer,
-        Charity, Baby, Downsize, TakeLoans, PayDabt, 
+        Lose, Deal, DealTypes, Doodad, 
+        Market, MarketTypes, 
+        Charity, Baby, Downsize, TakeLoans, PayDebt, 
         PayLoans, FastTrackCondition, EnterFastTrack, EndTutorial
     }
 
@@ -50,6 +52,12 @@ public class TutorialManager : MonoBehaviour
 
     public GamePiece gamePiece;
     public ProfessionCard professionCard;
+
+    public PlayerTab tab;
+    public FinancialStatementToggle financialStatementToggle;
+    public FinancialStatement financialStatement;
+    public CashLedgerToggle cashLedgerToggle;
+    public CashLedger ledger;
 
     private TutorialContent content;
     private Coroutine setTextRoutine;
@@ -117,7 +125,8 @@ public class TutorialManager : MonoBehaviour
     {
         this.state = TutorialState.Intro2;
         StopSetText();
-        yield return StartCoroutine(SetDialogueText(content.intro2));
+        setTextRoutine = StartCoroutine(SetDialogueText(content.intro2));
+        yield return setTextRoutine;
     }
 
     public IEnumerator GamePiece()
@@ -133,7 +142,8 @@ public class TutorialManager : MonoBehaviour
         }
         StopSetText();
         nextBtn.interactable = true;
-        yield return StartCoroutine(SetDialogueText(content.gamePiece));
+        setTextRoutine = StartCoroutine(SetDialogueText(content.gamePiece));
+        yield return setTextRoutine;
     }
 
     public IEnumerator Profession()
@@ -152,7 +162,37 @@ public class TutorialManager : MonoBehaviour
         professionCard.cardFlip.cardDataContainer.SetActive(true);
         StopSetText();
         nextBtn.interactable = true;
-        yield return StartCoroutine(SetDialogueText(content.profession));
+        setTextRoutine = StartCoroutine(SetDialogueText(content.profession));
+        yield return setTextRoutine;
+    }
+
+    public IEnumerator StartingBalance()
+    {
+        this.state = TutorialState.StartingBalance;
+        tab.Initialize(player);
+        tab.gameObject.SetActive(true);
+        StopSetText();
+        setTextRoutine = StartCoroutine(SetDialogueText(content.startingBalance));
+        yield return setTextRoutine;
+    }
+
+    public IEnumerator FinalncialStatement()
+    {
+        this.state = TutorialState.FinancialStatement;
+        this.financialStatementToggle.gameObject.SetActive(true);
+        this.professionCard.gameObject.SetActive(false);
+        StopSetText();
+        setTextRoutine = StartCoroutine(SetDialogueText(content.financialStatement));
+        yield return setTextRoutine;
+    }
+
+    public IEnumerator CashLedger()
+    {
+        this.state = TutorialState.CashLedger;
+        this.cashLedgerToggle.gameObject.SetActive(true);
+        StopSetText();
+        setTextRoutine = StartCoroutine(SetDialogueText(content.cashLedger));
+        yield return setTextRoutine;
     }
 
     public void Next()
@@ -169,10 +209,13 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(Profession());
                 break;
             case TutorialState.Profession:
+                StartCoroutine(StartingBalance());
                 break;
             case TutorialState.StartingBalance:
+                StartCoroutine(FinalncialStatement());
                 break;
             case TutorialState.FinancialStatement:
+                StartCoroutine(CashLedger());
                 break;
             case TutorialState.CashLedger:
                 break;
@@ -196,39 +239,11 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialState.DealTypes:
                 break;
-            case TutorialState.RealEstate:
-                break;
-            case TutorialState.SellCard:
-                break;
-            case TutorialState.AddProperty:
-                break;
-            case TutorialState.Stock:
-                break;
-            case TutorialState.AddStock:
-                break;
-            case TutorialState.SellStock:
-                break;
-            case TutorialState.Coins:
-                break;
-            case TutorialState.AddCoins:
-                break;
-            case TutorialState.Gamble:
-                break;
             case TutorialState.Doodad:
                 break;
             case TutorialState.Market:
                 break;
             case TutorialState.MarketTypes:
-                break;
-            case TutorialState.RealEstateMarket:
-                break;
-            case TutorialState.SellProperty:
-                break;
-            case TutorialState.StockSplit:
-                break;
-            case TutorialState.Damage:
-                break;
-            case TutorialState.GoldBuyer:
                 break;
             case TutorialState.Charity:
                 break;
@@ -238,7 +253,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialState.TakeLoans:
                 break;
-            case TutorialState.PayDabt:
+            case TutorialState.PayDebt:
                 break;
             case TutorialState.PayLoans:
                 break;
@@ -251,6 +266,16 @@ public class TutorialManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void SetFinanicalStateMentToCurrentPlayer()
+    {
+        this.financialStatement.UpdateToCurrentPlayer(player);
+    }
+
+    public void SetCashLedgerToCurrentPlayer()
+    {
+        this.ledger.BeginUpdatingToPlayer(this.player);
     }
 
     private void StopSetText()

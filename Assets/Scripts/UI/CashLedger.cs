@@ -35,8 +35,18 @@ public class CashLedger : MonoBehaviour
         }   
     }
 
-    public void BeginUpdatingToPlayer()
+    public void BeginUpdatingToPlayer(in Player thePlayer = null)
     {
+        player = null;
+        if (mgm == null)
+        {
+            player = thePlayer;
+        }
+        else
+        {
+            player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
+        }
+        if (player == null) return;
         foreach (LedgerEntry entry in ledgerEntries)
         {
             Destroy(entry.gameObject);
@@ -47,7 +57,6 @@ public class CashLedger : MonoBehaviour
             Destroy(divider);
         }
         dividers.Clear();
-        player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
         startingBalance.text = "Starting Balance: " + Utility.FormatMoney(player.ledger.startingBalance);
         currentBalance.amountText.text = Utility.FormatMoney(player.ledger.GetCurretBalance());
         AddMissingEntries();
@@ -62,6 +71,7 @@ public class CashLedger : MonoBehaviour
 
     private void AddMissingEntries()
     {
+        if (player == null || player.ledger == null) return;
         int numEntries = player.ledger.NumEntries;
         if (numEntries <= ledgerEntries.Count) return;
         currentBalance.amountText.text = Utility.FormatMoney(player.ledger.GetCurretBalance());
