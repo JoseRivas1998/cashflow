@@ -254,6 +254,21 @@ public class BoardManager : MonoBehaviour
         return sum;
     }
 
+    public int CashFlowDays(int startingSpace, int numSpaces)
+    {
+        int sum = 0;
+        for (int i = 1; i <= numSpaces; i++)
+        {
+            int spaceIndex = NormalizeFastTrackSpace(startingSpace + i);
+            FastTrackSpace space = fastTrackSpaces[spaceIndex];
+            if (space.type == FastTrackSpaceType.CashFlowDay)
+            {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
     public Vector3 DownSizedSpace(int downSizedTurn)
     {
         float dist;

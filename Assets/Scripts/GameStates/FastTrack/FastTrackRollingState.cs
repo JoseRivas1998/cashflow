@@ -44,7 +44,12 @@ public class FastTrackRollingState : GameState
                 {
                     Object.Destroy(die.gameObject);
                 }
-                return new FastTrackMoveState(mgm, sum);
+                int cashFlowDays = mgm.board.CashFlowDays(currentSpace, sum);
+                if (cashFlowDays == 0)
+                {
+                    return new FastTrackMoveState(mgm, sum);
+                }
+                return new CashflowDayState(mgm, sum, cashFlowDays);
             }
         }
         return this;

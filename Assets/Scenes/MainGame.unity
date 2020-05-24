@@ -2926,6 +2926,8 @@ MonoBehaviour:
     type: 3}
   fastTrackPreTurnChoicesPrefab: {fileID: 1310425906852281587, guid: a33c87b8b2c4d1c4c98577a03532f1ca,
     type: 3}
+  cashflowDayAnimation: {fileID: 5904604203761781058, guid: 2d7072f2612e6fc40bdc7eda18c7b780,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,6 +70,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject fastTrackPreTurnChoicesPrefab;
 
+    public GameObject cashflowDayAnimation;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
