@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 4994944087205267233}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 3.079125, y: 15.395625, z: 2.0014312}
+  m_LocalScale: {x: 3.2343128, y: 16.171564, z: 2.1023033}
   m_Children:
   - {fileID: 4994944087272651883}
   - {fileID: 4994944086050099761}
@@ -226,25 +226,25 @@ MonoBehaviour:
   debugRatRaceArcs: 1
   debugRatRaceCenters: 1
   debugFastTrackCenters: 1
-  ratRaceOuterRadius: 7.36
-  ratRaceInnerRadius: 4.12
-  ratRaceCenterOffset: {x: -0.1, y: 0, z: 0}
+  ratRaceOuterRadius: 7.78
+  ratRaceInnerRadius: 4.6
+  ratRaceCenterOffset: {x: 0.07, y: 0, z: 0.03}
   ratRaceStartSpaceAngleOffset: 225
   ratRaceSpaceCenterThreshold: 0.31
-  downSizedTurnOneDistance: 8.55
-  downSizedTurnTwoDistance: 7.67
+  downSizedTurnOneDistance: 9.04
+  downSizedTurnTwoDistance: 8.27
   corner37:
-    dist: 16.6
-    theta: -0.53
+    dist: 16.64
+    theta: -0.59
   corner9:
-    dist: 16.6
-    theta: -2.6
+    dist: 16.88
+    theta: -2.63
   corner17:
-    dist: 16.27
+    dist: 16.7
     theta: 2.59
   corner29:
-    dist: 16.25
-    theta: 0.54
+    dist: 16.8
+    theta: 0.51
   spaceWidth: 2.34
   spaceHeight: 2.07
 --- !u!1 &4994944087272651876

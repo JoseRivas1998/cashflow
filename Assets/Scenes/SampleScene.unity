@@ -755,6 +755,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
+    - target: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: debugRatRaceArcs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: debugRatRaceDonut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: debugFastTrackCenters
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994944087205267236, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
+        type: 3}
+      propertyPath: debugRatRaceCenters
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4994944087205267237, guid: 134d966bd2b13cc4c94ee1aa5fe6ee17,
         type: 3}
       propertyPath: m_LocalPosition.x
