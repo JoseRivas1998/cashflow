@@ -22,6 +22,7 @@ public class LoseHalfCashState : GameState
                 animation.SetAnimationType(FastTrackAnimation.FastTrackAnimationType.TaxAudit);
                 break;
             case FastTrackSpaceType.Divorce:
+                animation.SetAnimationType(FastTrackAnimation.FastTrackAnimationType.Divorce);
                 break;
             default:
                 break;
