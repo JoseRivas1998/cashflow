@@ -1,14 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CashflowDayAnimation : MonoBehaviour
+public class FastTrackAnimation : MonoBehaviour
 {
     public float openCloseTime = 0.5f;
     public float sustainTime = 2f;
     public float endWaitTime = 0.25f;
 
+    public Image image;
+
+    public Sprite cashflowDay;
+
     public bool Done { get; private set; }
+
+    public enum FastTrackAnimationType
+    {
+        CashflowDay
+    }
+
+    public void SetAnimationType(FastTrackAnimationType type)
+    {
+        switch (type)
+        {
+            case FastTrackAnimationType.CashflowDay:
+                image.sprite = cashflowDay;
+                break;
+            default:
+                image.sprite = cashflowDay; // cashflow day by default
+                break;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

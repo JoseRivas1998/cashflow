@@ -70,7 +70,7 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject fastTrackPreTurnChoicesPrefab;
 
-    public GameObject cashflowDayAnimation;
+    public GameObject fastTrackAnimation;
 
     private GameState currentState;
     private Player[] players;

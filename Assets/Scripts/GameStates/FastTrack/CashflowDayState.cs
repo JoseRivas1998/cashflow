@@ -5,7 +5,7 @@ using UnityEngine;
 public class CashflowDayState : GameState
 {
 
-    private readonly CashflowDayAnimation animation;
+    private readonly FastTrackAnimation animation;
     private readonly int diceSum;
 
     public CashflowDayState(MainGameManager mgm, int diceSum, int cashflowDays)
@@ -17,7 +17,8 @@ public class CashflowDayState : GameState
         {
             player.AddMoney(cashflowDayIncome);
         }
-        animation = GameObject.Instantiate(mgm.cashflowDayAnimation, mgm.mainUICanvas.transform).GetComponent<CashflowDayAnimation>();
+        animation = GameObject.Instantiate(mgm.fastTrackAnimation, mgm.mainUICanvas.transform).GetComponent<FastTrackAnimation>();
+        animation.SetAnimationType(FastTrackAnimation.FastTrackAnimationType.CashflowDay);
     }
 
     public override GameState Update(MainGameManager mgm)
