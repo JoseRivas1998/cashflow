@@ -47,7 +47,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.Divorce:
                     break;
                 case FastTrackSpaceType.Lawsuit:
-                    break;
+                    return new LawsuitState(mgm);
                 case FastTrackSpaceType.BadPartner:
                     break;
                 case FastTrackSpaceType.ForeignOilDeal:
