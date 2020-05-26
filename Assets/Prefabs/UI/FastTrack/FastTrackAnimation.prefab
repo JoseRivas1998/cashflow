@@ -107,6 +107,7 @@ MonoBehaviour:
   endWaitTime: 0.25
   image: {fileID: 5904604203761781118}
   ratioFitter: {fileID: 5904604203761781119}
+  audioSrc: {fileID: 2999121573310729932}
   cashflowDay: {fileID: 21300000, guid: 360efd935d1341943843091b72ae6512, type: 3}
   healthCare: {fileID: 21300000, guid: 869a6ca3fbce06644ab33ce23307022d, type: 3}
   lawsuit: {fileID: 21300000, guid: 6d4fc10fd8ae5124bb00d922359b5a68, type: 3}
@@ -121,7 +122,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d1935d16124f6947bc57b1e7154dff9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

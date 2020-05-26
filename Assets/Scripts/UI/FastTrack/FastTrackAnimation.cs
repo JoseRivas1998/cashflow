@@ -13,11 +13,15 @@ public class FastTrackAnimation : MonoBehaviour
 
     public AspectRatioFitter ratioFitter;
 
+    public AudioSource audioSrc;
+
     public Sprite cashflowDay;
     public Sprite healthCare;
     public Sprite lawsuit;
 
     public bool Done { get; private set; }
+
+    private bool playAudio;
 
     public enum FastTrackAnimationType
     {
@@ -28,10 +32,12 @@ public class FastTrackAnimation : MonoBehaviour
 
     public void SetAnimationType(FastTrackAnimationType type)
     {
+        playAudio = false;
         switch (type)
         {
             case FastTrackAnimationType.CashflowDay:
                 image.sprite = cashflowDay;
+                playAudio = true;
                 break;
             case FastTrackAnimationType.HealthCare:
                 image.sprite = healthCare;
@@ -56,6 +62,7 @@ public class FastTrackAnimation : MonoBehaviour
     IEnumerator Animate()
     {
         Done = false;
+        if (playAudio) audioSrc.Play();
         var scale = LeanTween.scale(gameObject, Vector3.one, openCloseTime).setEase(LeanTweenType.easeOutBack);
         var rotate = LeanTween.rotate(gameObject, Vector3.zero, openCloseTime).setEase(LeanTweenType.easeOutBack);
         while (LeanTween.isTweening(scale.id) || LeanTween.isTweening(rotate.id))
