@@ -43,7 +43,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.Charity:
                     break;
                 case FastTrackSpaceType.TaxAudit:
-                    break;
+                    return new LoseHalfCashState(mgm, FastTrackSpaceType.TaxAudit);
                 case FastTrackSpaceType.Divorce:
                     break;
                 case FastTrackSpaceType.Lawsuit:
