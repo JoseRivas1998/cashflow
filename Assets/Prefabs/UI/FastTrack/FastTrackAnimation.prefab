@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 1
-  m_AspectRatio: 1.9171975
+  m_AspectRatio: 1
 --- !u!114 &5904604203761781116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,9 @@ MonoBehaviour:
   sustainTime: 1
   endWaitTime: 0.25
   image: {fileID: 5904604203761781118}
+  ratioFitter: {fileID: 5904604203761781119}
   cashflowDay: {fileID: 21300000, guid: 360efd935d1341943843091b72ae6512, type: 3}
+  healthCare: {fileID: 21300000, guid: 869a6ca3fbce06644ab33ce23307022d, type: 3}
 --- !u!82 &2999121573310729932
 AudioSource:
   m_ObjectHideFlags: 0

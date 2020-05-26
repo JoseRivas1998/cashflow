@@ -96,7 +96,7 @@ public class BoardManager : MonoBehaviour
         new BusinessInvestment("Private Wildlife Preserve", 120000, 5000)
     };
 
-    private static readonly Dictionary<FastTrackSpaceType, Color> fastTrackTypeColors = new Dictionary<FastTrackSpaceType, Color>() 
+    private static readonly Dictionary<FastTrackSpaceType, Color> fastTrackTypeColors = new Dictionary<FastTrackSpaceType, Color>()
     {
         { FastTrackSpaceType.CashFlowDay, new Color(254f/255f, 226f/255f, 84f/255f)},
         { FastTrackSpaceType.BusinessInvestments, new Color(163f/255f, 186f/255f, 54f/255f)},
@@ -157,7 +157,7 @@ public class BoardManager : MonoBehaviour
     {
         if (debug)
         {
-            if(debugRatRaceDonut)
+            if (debugRatRaceDonut)
             {
                 UnityEditor.Handles.color = new Color(0, 0, 1, 0.25f);
                 UnityEditor.Handles.DrawSolidDisc(transform.position + ratRaceCenterOffset, Vector3.up, ratRaceOuterRadius);
@@ -166,7 +166,7 @@ public class BoardManager : MonoBehaviour
             }
             for (int i = 0; i < ratRaceSpaces.Length; i++)
             {
-                
+
                 RatRaceSpaceTypes space = ratRaceSpaces[i];
                 Color c = ratRaceSpaceColors[space];
                 UnityEditor.Handles.color = new Color(c.r, c.g, c.b, 0.5f);
@@ -176,13 +176,13 @@ public class BoardManager : MonoBehaviour
                     Vector3 from = new Vector3(Mathf.Cos(fromAngle), 0, Mathf.Sin(fromAngle));
                     UnityEditor.Handles.DrawSolidArc(transform.position + ratRaceCenterOffset, Vector3.up, from, SpaceArcAngleDeg(), ratRaceOuterRadius);
                 }
-                if(debugRatRaceCenters)
+                if (debugRatRaceCenters)
                 {
                     Vector3 center = SpaceCenter(i);
                     UnityEditor.Handles.DrawSolidDisc(center, Vector3.up, ratRaceSpaceCenterThreshold);
                 }
             }
-            if(debugRatRaceCenters)
+            if (debugRatRaceCenters)
             {
                 UnityEditor.Handles.color = new Color(1f, 0f, 1f, 0.25f);
                 Vector3 center = DownSizedSpace(1);
@@ -246,7 +246,7 @@ public class BoardManager : MonoBehaviour
         {
             int spaceIndex = NormalizeSpace(startingSpace + i);
             RatRaceSpaceTypes space = ratRaceSpaces[spaceIndex];
-            if(space == RatRaceSpaceTypes.Payday)
+            if (space == RatRaceSpaceTypes.Payday)
             {
                 sum++;
             }
@@ -272,15 +272,15 @@ public class BoardManager : MonoBehaviour
     public Vector3 DownSizedSpace(int downSizedTurn)
     {
         float dist;
-        if(downSizedTurn == 1)
+        if (downSizedTurn == 1)
         {
             dist = downSizedTurnOneDistance;
-        } 
+        }
         else if (downSizedTurn == 2)
         {
             dist = downSizedTurnTwoDistance;
-        } 
-        else 
+        }
+        else
         {
             dist = ratRaceInnerRadius + (SpaceLength() * 0.5f);
         }
@@ -292,6 +292,11 @@ public class BoardManager : MonoBehaviour
         return ratRaceSpaces[NormalizeSpace(space)];
     }
 
+    public FastTrackSpaceType GetFastTrackSpaceType(int space)
+    {
+        return fastTrackSpaces[NormalizeFastTrackSpace(space)].type;
+    }
+
     private bool isCorner(int space)
     {
         return space == 37 || space == 9 || space == 17 || space == 29;
@@ -299,8 +304,9 @@ public class BoardManager : MonoBehaviour
 
     public Vector3 FastTrackSpaceCenter(int space)
     {
-        if(isCorner(space)) {
-            switch(space)
+        if (isCorner(space))
+        {
+            switch (space)
             {
                 case 37:
                     return this.transform.position + ratRaceCenterOffset + corner37.toVector3XZ;

@@ -34,6 +34,34 @@ public class FastTrackMoveState : GameState
         if(atDestination)
         {
             player.space = targetSpace;
+            switch (mgm.board.GetFastTrackSpaceType(player.space))
+            {
+                case FastTrackSpaceType.BusinessInvestments:
+                    break;
+                case FastTrackSpaceType.HealthCare:
+                    return new HealthCareState(mgm);
+                case FastTrackSpaceType.Charity:
+                    break;
+                case FastTrackSpaceType.TaxAudit:
+                    break;
+                case FastTrackSpaceType.Divorce:
+                    break;
+                case FastTrackSpaceType.Lawsuit:
+                    break;
+                case FastTrackSpaceType.BadPartner:
+                    break;
+                case FastTrackSpaceType.ForeignOilDeal:
+                    break;
+                case FastTrackSpaceType.SoftwareCoIPO:
+                    break;
+                case FastTrackSpaceType.BioTecCoIPO:
+                    break;
+                case FastTrackSpaceType.UnforeseenRepairs:
+                    break;
+                case FastTrackSpaceType.CashFlowDay:
+                default:
+                    break;
+            }
             return new FastTrackPostTurnState(mgm);
         }
         return this;

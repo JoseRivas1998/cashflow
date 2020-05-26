@@ -11,13 +11,17 @@ public class FastTrackAnimation : MonoBehaviour
 
     public Image image;
 
+    public AspectRatioFitter ratioFitter;
+
     public Sprite cashflowDay;
+    public Sprite healthCare;
 
     public bool Done { get; private set; }
 
     public enum FastTrackAnimationType
     {
-        CashflowDay
+        CashflowDay,
+        HealthCare
     }
 
     public void SetAnimationType(FastTrackAnimationType type)
@@ -27,10 +31,14 @@ public class FastTrackAnimation : MonoBehaviour
             case FastTrackAnimationType.CashflowDay:
                 image.sprite = cashflowDay;
                 break;
+            case FastTrackAnimationType.HealthCare:
+                image.sprite = healthCare;
+                break;
             default:
                 image.sprite = cashflowDay; // cashflow day by default
                 break;
         }
+        ratioFitter.aspectRatio = ((float)image.sprite.texture.width) / ((float)image.sprite.texture.height);
     }
 
     // Start is called before the first frame update
