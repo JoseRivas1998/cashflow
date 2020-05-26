@@ -72,6 +72,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject fastTrackAnimation;
 
+    public GameObject fastTrackPostTurnChoicesPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;

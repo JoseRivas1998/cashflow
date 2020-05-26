@@ -34,7 +34,7 @@ public class FastTrackMoveState : GameState
         if(atDestination)
         {
             player.space = targetSpace;
-            return new PreTurn(mgm);
+            return new FastTrackPostTurnState(mgm);
         }
         return this;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FastTrackPreTurnChoices : MonoBehaviour
+public class FastTrackSingleButton : MonoBehaviour
 {
     public Button btn;
 }

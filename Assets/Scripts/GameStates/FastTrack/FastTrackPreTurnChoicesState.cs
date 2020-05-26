@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FastTrackPreTurnChoicesState : GameState
 {
-    private readonly FastTrackPreTurnChoices choices;
+    private readonly FastTrackSingleButton choices;
 
     private bool done;
 
     public FastTrackPreTurnChoicesState(MainGameManager mgm)
     {
-        choices = mgm.SpawnUIObjectBehindCashToggle(mgm.fastTrackPreTurnChoicesPrefab).GetComponent<FastTrackPreTurnChoices>();
+        choices = mgm.SpawnUIObjectBehindCashToggle(mgm.fastTrackPreTurnChoicesPrefab).GetComponent<FastTrackSingleButton>();
         choices.btn.onClick.AddListener(() =>
         {
             if (done) return;
