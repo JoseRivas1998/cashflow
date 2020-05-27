@@ -31,7 +31,7 @@ public class FastTrackMoveState : GameState
 
     public override GameState Update(MainGameManager mgm)
     {
-        if(atDestination)
+        if (atDestination)
         {
             player.space = targetSpace;
             switch (mgm.board.GetFastTrackSpaceType(player.space))
@@ -41,7 +41,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.HealthCare:
                     return new HealthCareState(mgm);
                 case FastTrackSpaceType.Charity:
-                    break;
+                    return new FastTrackCharityState(mgm);
                 case FastTrackSpaceType.TaxAudit:
                     return new LoseHalfCashState(mgm, FastTrackSpaceType.TaxAudit);
                 case FastTrackSpaceType.Divorce:
@@ -70,7 +70,7 @@ public class FastTrackMoveState : GameState
     private void NextSpace(MainGameManager mgm)
     {
         currentSpace = mgm.board.NormalizeFastTrackSpace(currentSpace + 1);
-        if(currentSpace == targetSpace)
+        if (currentSpace == targetSpace)
         {
             atDestination = true;
             return;

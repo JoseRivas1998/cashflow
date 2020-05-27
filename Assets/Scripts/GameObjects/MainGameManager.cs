@@ -74,6 +74,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject fastTrackPostTurnChoicesPrefab;
 
+    public GameObject fastTrackCharityOptionsPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;
@@ -236,6 +238,11 @@ public class MainGameManager : MonoBehaviour
         GameObject uiObject = Instantiate(gameObject, mainUICanvas.transform);
         uiObject.transform.SetSiblingIndex(cashLedgerToggle.transform.GetSiblingIndex());
         return uiObject;
+    }
+
+    public T SpawnUIObjectBehindCashToggle<T>(GameObject gameObject)
+    {
+        return SpawnUIObjectBehindCashToggle(gameObject).GetComponent<T>();
     }
 
     public int NumPlayersFastTrack { get { return this.players.Sum(player => player.FastTrack ? 1 : 0); } }

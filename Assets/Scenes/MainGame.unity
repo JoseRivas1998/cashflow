@@ -2925,6 +2925,8 @@ MonoBehaviour:
     type: 3}
   fastTrackPostTurnChoicesPrefab: {fileID: 5020201094960435155, guid: 03a009395a11ac445adbea825b94f75e,
     type: 3}
+  fastTrackCharityOptionsPrefab: {fileID: 7839777602014785355, guid: 14b74a821927fcb46a8c80b400303443,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
