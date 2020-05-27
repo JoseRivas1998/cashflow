@@ -284,6 +284,10 @@ MonoBehaviour:
   turnsLeft: {fileID: 1436598165419063685}
   oneBtn: {fileID: 5588480271602612296}
   twoBtn: {fileID: 326575582401846093}
+  fastTrackBackground: {fileID: 21300000, guid: 3aeb5d08cee12ae4380c1c6268501227,
+    type: 3}
+  oneImage: {fileID: 2769912461996157578}
+  twoImage: {fileID: 7831846432530342528}
 --- !u!1 &1558287521611507865
 GameObject:
   m_ObjectHideFlags: 0

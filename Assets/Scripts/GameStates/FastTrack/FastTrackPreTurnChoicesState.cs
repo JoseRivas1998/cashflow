@@ -7,6 +7,7 @@ public class FastTrackPreTurnChoicesState : GameState
     private readonly FastTrackSingleButton choices;
 
     private bool done;
+    private readonly Player player;
 
     public FastTrackPreTurnChoicesState(MainGameManager mgm)
     {
@@ -17,6 +18,7 @@ public class FastTrackPreTurnChoicesState : GameState
             done = true;
         });
         done = false;
+        player = mgm.GetPlayer(mgm.turnManager.GetCurrentPlayer());
     }
 
     public override GameState Update(MainGameManager mgm)
@@ -24,7 +26,10 @@ public class FastTrackPreTurnChoicesState : GameState
         if (done)
         {
             Object.Destroy(choices.gameObject);
-            // TODO handle charity
+            if (player.charityTurnsLeft > 0)
+            {
+                return new FastTrackDiceSelectState(mgm);
+            }
             return new FastTrackRollingState(mgm, 1);
         }
         return this;
