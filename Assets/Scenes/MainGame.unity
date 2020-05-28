@@ -2927,6 +2927,8 @@ MonoBehaviour:
     type: 3}
   fastTrackCharityOptionsPrefab: {fileID: 7839777602014785355, guid: 14b74a821927fcb46a8c80b400303443,
     type: 3}
+  businessInvestmentOptionsPrefab: {fileID: 8777206781392258725, guid: 52f10a43c93291345a2400e4b4cbcb1c,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class FastTrackMoveState : GameState
             switch (mgm.board.GetFastTrackSpaceType(player.space))
             {
                 case FastTrackSpaceType.BusinessInvestments:
-                    break;
+                    return new BusinessInvestmentState(mgm, (BusinessInvestment)mgm.board.GetFastTrackSpace(player.space));
                 case FastTrackSpaceType.HealthCare:
                     return new HealthCareState(mgm);
                 case FastTrackSpaceType.Charity:

@@ -69,12 +69,10 @@ public class MainGameManager : MonoBehaviour
     public GameObject enterFastTrackOptionPrefab;
 
     public GameObject fastTrackPreTurnChoicesPrefab;
-
     public GameObject fastTrackAnimation;
-
     public GameObject fastTrackPostTurnChoicesPrefab;
-
     public GameObject fastTrackCharityOptionsPrefab;
+    public GameObject businessInvestmentOptionsPrefab;
 
     private GameState currentState;
     private Player[] players;
@@ -132,11 +130,11 @@ public class MainGameManager : MonoBehaviour
 
     public void SetNumPlayers(int numPlayers)
     {
-        if(players == null)
+        if (players == null)
         {
             players = new Player[numPlayers];
             turnManager = new TurnManager(numPlayers);
-        } 
+        }
         else
         {
             throw new System.Exception("The player count was already set!");
@@ -145,7 +143,7 @@ public class MainGameManager : MonoBehaviour
 
     public void RegisterPlayer(int index, string name, string dream, Color color)
     {
-        if(professions.Count == 0)
+        if (professions.Count == 0)
         {
             throw new System.Exception("No more professions!");
         }
@@ -189,7 +187,7 @@ public class MainGameManager : MonoBehaviour
         Transform camTransform = mainCam.transform;
         float mid = (n - 1) / 2f;
         Vector3 center = camTransform.position + camTransform.forward * diceSpawnDistance;
-        if(spawnAboutCenter)
+        if (spawnAboutCenter)
         {
             Vector3 origin = Vector3.up * center.y;
             Vector3 diffAngle = (origin - camTransform.transform.position).normalized;
