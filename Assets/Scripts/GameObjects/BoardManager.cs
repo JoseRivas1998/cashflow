@@ -65,7 +65,7 @@ public class BoardManager : MonoBehaviour
         new BusinessInvestment("Hobby Supply Store", 100000, 3000),
         new FastTrackSpace(FastTrackSpaceType.CashFlowDay),
         new BusinessInvestment("Fried Chicken Restaurant", 300000, 10000),
-        new BusinessInvestment("Dry Dock Storage", 250000, 10000),
+        new BusinessInvestment("Dry Dock Storage", 100000, 3000),
         new BusinessInvestment("Beauty Salon", 250000, 10000),
         new FastTrackSpace(FastTrackSpaceType.TaxAudit),
         new BusinessInvestment("Auto Repair Shop", 150000, 6000),
@@ -295,6 +295,11 @@ public class BoardManager : MonoBehaviour
     public FastTrackSpaceType GetFastTrackSpaceType(int space)
     {
         return fastTrackSpaces[NormalizeFastTrackSpace(space)].type;
+    }
+
+    public FastTrackSpace GetFastTrackSpace(int space)
+    {
+        return fastTrackSpaces[NormalizeFastTrackSpace(space)];
     }
 
     private bool isCorner(int space)

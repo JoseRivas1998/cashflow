@@ -6,12 +6,16 @@ using System.Linq;
 public class GameDataTester : MonoBehaviour
 {
 
-    public ProfessionCard card;
+    public BoardManager board;
+    public BusinessInvestmentDisplay investmentDisplay;
+
+    private int currentSpace;
 
     // Start is called before the first frame update
     void Start()
     {
-        card.SetProfession(GameData.Instance.GetProfessions().professions[0]);
+        currentSpace = -1;
+        NextSpace();
     }
 
     // Update is called once per frame
@@ -19,19 +23,17 @@ public class GameDataTester : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (card.cardFlip.FlipReadyBack())
-            {
-                card.cardFlip.BeginFlip();
-            }
-            else if (card.cardFlip.FlipReadyFront())
-            {
-                card.cardFlip.BeginFlipBack();
-            }
-        }
-        if (card.cardFlip.FlipDone())
-        {
-            card.cardFlip.ResetFlip();
-            card.SetProfession(GameData.Instance.GetProfessions().professions[0]);
+            NextSpace();
         }
     }
+
+    void NextSpace()
+    {
+        do
+        {
+            currentSpace = board.NormalizeFastTrackSpace(currentSpace + 1);
+        } while (board.GetFastTrackSpaceType(currentSpace) != FastTrackSpaceType.BusinessInvestments);
+        investmentDisplay.SetInvestment(board.GetFastTrackSpace(currentSpace));
+    }
+
 }
