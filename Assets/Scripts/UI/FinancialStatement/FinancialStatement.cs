@@ -57,6 +57,7 @@ public class FinancialStatement : MonoBehaviour
         public Text StartingCashFlowDayIncome1;
         public Text CashFlowDayGoal;
         public Text StartingCashFlowDayIncome2;
+        public BusinessInvestmentList businessInvestmentList;
     }
 
     public FastTrackData fastTrackDataContainer;
@@ -113,6 +114,7 @@ public class FinancialStatement : MonoBehaviour
         fastTrackDataContainer.StartingCashFlowDayIncome1.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.StartingCashFlowDayIncome);
         fastTrackDataContainer.StartingCashFlowDayIncome2.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.StartingCashFlowDayIncome);
         fastTrackDataContainer.CashFlowDayGoal.text = Utility.FormatNumberCommas(player.fastTrackIncomeStatement.CashFlowDayGoal);
+        fastTrackDataContainer.businessInvestmentList.ResetPlayer(player);
     }
 
     private void UpdateRatRace(Player player)

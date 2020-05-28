@@ -43,6 +43,7 @@ public class BusinessInvestmentState : GameState
             willInvest = false;
         });
 
+        mgm.gameStateDisplay.gameObject.SetActive(false);
     }
 
     public override GameState Update(MainGameManager mgm)
@@ -55,6 +56,8 @@ public class BusinessInvestmentState : GameState
                 player.fastTrackIncomeStatement.AddEntry(businessInvestment.name, businessInvestment.cashFlow);
             }
             Object.Destroy(options.gameObject);
+            mgm.financialStatementToggle.Close();
+            mgm.cashLedgerToggle.Close();
             return new FastTrackPostTurnState(mgm);
         }
         return this;
