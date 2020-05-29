@@ -20,6 +20,7 @@ public class FastTrackAnimation : MonoBehaviour
     public Sprite lawsuit;
     public Sprite taxAudit;
     public Sprite divorce;
+    public Sprite badPartner;
 
     public bool Done { get; private set; }
 
@@ -31,7 +32,8 @@ public class FastTrackAnimation : MonoBehaviour
         HealthCare,
         Lawsuit,
         TaxAudit,
-        Divorce
+        Divorce,
+        badPartner
     }
 
     public void SetAnimationType(FastTrackAnimationType type)
@@ -54,6 +56,9 @@ public class FastTrackAnimation : MonoBehaviour
                 break;
             case FastTrackAnimationType.Divorce:
                 image.sprite = divorce;
+                break;
+            case FastTrackAnimationType.badPartner:
+                image.sprite = badPartner;
                 break;
             default:
                 image.sprite = cashflowDay; // cashflow day by default

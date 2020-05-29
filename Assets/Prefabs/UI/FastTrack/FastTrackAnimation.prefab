@@ -113,6 +113,7 @@ MonoBehaviour:
   lawsuit: {fileID: 21300000, guid: 6d4fc10fd8ae5124bb00d922359b5a68, type: 3}
   taxAudit: {fileID: 21300000, guid: 211e3c38b80ff9d44aabbe1fe64ca48d, type: 3}
   divorce: {fileID: 21300000, guid: d4cf40fb81a796f4aa5d49adb3ecd4e5, type: 3}
+  badPartner: {fileID: 21300000, guid: a2cbd3ee70bb52c469a2b7ee147c5ea7, type: 3}
 --- !u!82 &2999121573310729932
 AudioSource:
   m_ObjectHideFlags: 0

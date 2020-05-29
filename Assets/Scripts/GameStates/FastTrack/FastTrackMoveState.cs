@@ -49,7 +49,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.Lawsuit:
                     return new LoseHalfCashState(mgm, FastTrackSpaceType.Lawsuit);
                 case FastTrackSpaceType.BadPartner:
-                    break;
+                    return new BadPartnerState(mgm);
                 case FastTrackSpaceType.ForeignOilDeal:
                     break;
                 case FastTrackSpaceType.SoftwareCoIPO:
