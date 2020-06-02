@@ -2929,6 +2929,8 @@ MonoBehaviour:
     type: 3}
   businessInvestmentOptionsPrefab: {fileID: 8777206781392258725, guid: 52f10a43c93291345a2400e4b4cbcb1c,
     type: 3}
+  unforeseenRepairsOPtionsPrefab: {fileID: 671683589073324121, guid: 51792f15eda8bf348ba88afa121f6c24,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0

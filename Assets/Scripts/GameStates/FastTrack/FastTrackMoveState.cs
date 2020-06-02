@@ -57,7 +57,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.BioTecCoIPO:
                     break;
                 case FastTrackSpaceType.UnforeseenRepairs:
-                    break;
+                    return new UnforeseenRepairsState(mgm);
                 case FastTrackSpaceType.CashFlowDay:
                 default:
                     break;

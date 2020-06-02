@@ -73,6 +73,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject fastTrackPostTurnChoicesPrefab;
     public GameObject fastTrackCharityOptionsPrefab;
     public GameObject businessInvestmentOptionsPrefab;
+    public GameObject unforeseenRepairsOPtionsPrefab;
 
     private GameState currentState;
     private Player[] players;
