@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditorInternal;
 
 public class IncomeStatement
 {
@@ -50,6 +51,22 @@ public class IncomeStatement
             this.Price = price;
             this.NumberOfShares = numShares;
         }
+
+        public bool MatchSymbol(string symbol)
+        {
+            return this.Symbol.Equals(symbol);
+        }
+
+        public bool MatchPrice(int price)
+        {
+            return this.Price == price;
+        }
+
+        public bool MatchesStock(string symbol, int price)
+        {
+            return MatchSymbol(symbol) && MatchPrice(price);
+        }
+
     }
 
     public IncomeStatement(Professions.Profession profession)
@@ -87,88 +104,154 @@ public class IncomeStatement
 
     public void AddStock(string symbol, int price, int numShares)
     {
-        int foundIndex = -1;
-        int currentShares = 0;
-        for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
+        new StockAdder(symbol, price, numShares, this).AddStock();
+    }
+
+    private class StockAdder
+    {
+        readonly string symbol;
+        readonly int price;
+        readonly int numShares;
+        readonly IncomeStatement statement;
+        public StockAdder(string symbol, int price, int numShares, IncomeStatement statement)
         {
-            if (this.stockEntries[i].Symbol.Equals(symbol) && this.stockEntries[i].Price == price)
+            this.symbol = symbol;
+            this.price = price;
+            this.numShares = numShares;
+            this.statement = statement;
+        }
+
+        public void AddStock()
+        {
+            int foundIndex = GetStockIndex();
+            int currentShares = GetCurrentShares(foundIndex);
+            RemoveCurrentEntryIfFound(foundIndex);
+            AddStockEntry(currentShares);
+        }
+
+        int GetStockIndex()
+        {
+            int foundIndex = -1;
+            for (int i = 0; i < statement.stockEntries.Count && foundIndex == -1; i++)
             {
-                foundIndex = i;
-                currentShares = this.stockEntries[i].NumberOfShares;
+                if (statement.stockEntries[i].MatchesStock(symbol, price))
+                {
+                    foundIndex = i;
+                }
+            }
+            return foundIndex;
+        }
+
+        int GetCurrentShares(int stockIndex)
+        {
+            return stockIndex >= 0 ? statement.stockEntries[stockIndex].NumberOfShares : 0;
+        }
+
+        void RemoveCurrentEntryIfFound(int stockIndex)
+        {
+            if (stockIndex != -1)
+            {
+                statement.stockEntries.RemoveAt(stockIndex);
             }
         }
-        if (foundIndex != -1)
+
+        void AddStockEntry(int currentShares)
         {
-            this.stockEntries.RemoveAt(foundIndex);
+            statement.stockEntries.Add(new StockEntry(symbol, price, currentShares + numShares));
         }
-        this.stockEntries.Add(new StockEntry(symbol, price, currentShares + numShares));
+
     }
 
     public void SellStock(string symbol, int numShares)
     {
-        int remainingShares = numShares;
-        int foundIndex;
-        while (remainingShares > 0)
+        new StockSeller(symbol, numShares, this).SellShares();
+    }
+
+    private class StockSeller
+    {
+        readonly string symbol;
+        readonly IncomeStatement statement;
+        int remainingShares;
+        public StockSeller(string symbol, int numShares, IncomeStatement statement)
         {
-            /*
-             * step one: find a stock entry that is <= remaining shares
-             */
-            foundIndex = -1;
-            for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
+            this.symbol = symbol;
+            this.statement = statement;
+            this.remainingShares = numShares;
+        }
+
+        public void SellShares()
+        {
+            RemoveAllEntriesThatFitWithinRemainingShares();
+            RemoveLeftOverShares();
+        }
+
+        bool SharesLeftToSell()
+        {
+            return this.remainingShares > 0;
+        }
+
+        void RemoveAllEntriesThatFitWithinRemainingShares()
+        {
+            if (!SharesLeftToSell()) return;
+            int stockEntryIndex;
+            do
             {
-                StockEntry entry = stockEntries[i];
+                stockEntryIndex = FindEntryIndexWithLessOrEqualSharesThanRemainingShares();
+                RemoveEntryFromRemainingShares(stockEntryIndex);
+            } while (SharesLeftToSell() && stockEntryIndex != -1);
+        }
+
+        void RemoveEntryFromRemainingShares(int entryIndex)
+        {
+            if (entryIndex == -1) return;
+            StockEntry entry = statement.stockEntries[entryIndex];
+            remainingShares -= entry.NumberOfShares;
+            statement.stockEntries.RemoveAt(entryIndex);
+        }
+
+        int FindEntryIndexWithLessOrEqualSharesThanRemainingShares()
+        {
+            int foundIndex = -1;
+            for (int i = 0; i < statement.stockEntries.Count && foundIndex == -1; i++)
+            {
+                StockEntry entry = statement.stockEntries[i];
                 if (entry.Symbol.Equals(symbol) && entry.NumberOfShares <= remainingShares)
                 {
                     foundIndex = i;
                 }
             }
-            if (foundIndex != -1)
-            {
-                /* 
-                 * step two: if such a stock was found, subtract shares in that entry
-                 *           from remaining, remove entry from list and continue
-                 */
-                StockEntry entry = stockEntries[foundIndex];
-                remainingShares -= entry.NumberOfShares;
-                stockEntries.RemoveAt(foundIndex);
-            }
-            else
-            {
-                /*
-                 * step three: if no such stock was found, find a stock where
-                 *             the entry has more shares than the remaining
-                 */
-                foundIndex = -1;
-                for (int i = 0; i < this.stockEntries.Count && foundIndex == -1; i++)
-                {
-                    StockEntry entry = stockEntries[i];
-                    if (entry.Symbol.Equals(symbol) && entry.NumberOfShares > remainingShares)
-                    {
-                        foundIndex = i;
-                    }
-                }
-                if (foundIndex == -1)
-                {
-                    return; // this should NEVER happen
-                }
-                else
-                {
-                    /*
-                     * step four: calculate difference between
-                     *             number of shares and remaining shares, set remaining
-                     *             shares to zero, remove found stock, add new entry
-                     *             with the same symbol and price, but the number of entries
-                     *             is the difference
-                     */
-                    StockEntry entry = stockEntries[foundIndex];
-                    int diff = entry.NumberOfShares - remainingShares;
-                    remainingShares = 0;
-                    stockEntries.RemoveAt(foundIndex);
-                    this.AddStock(entry.Symbol, entry.Price, diff);
-                }
-
-            }
+            return foundIndex;
         }
+
+        void RemoveLeftOverShares()
+        {
+            int foundIndex = FindEntryIndexWithMoreSharesThanRemainingShares();
+            RemoveEntryWithMoreSharesThanRemaining(foundIndex);
+        }
+
+        int FindEntryIndexWithMoreSharesThanRemainingShares()
+        {
+            int foundIndex = -1;
+            for (int i = 0; i < statement.stockEntries.Count && foundIndex == -1; i++)
+            {
+                StockEntry entry = statement.stockEntries[i];
+                if (entry.Symbol.Equals(symbol) && entry.NumberOfShares > remainingShares)
+                {
+                    foundIndex = i;
+                }
+            }
+            return foundIndex;
+        }
+
+        void RemoveEntryWithMoreSharesThanRemaining(int entryIndex)
+        {
+            if (entryIndex == -1) return;
+            StockEntry entry = statement.stockEntries[entryIndex];
+            int sharesAfterRemoving = entry.NumberOfShares - remainingShares;
+            RemoveEntryFromRemainingShares(entryIndex);
+            statement.AddStock(entry.Symbol, entry.Price, sharesAfterRemoving);
+        }
+
     }
 
     public int NumShares(string symbol)
@@ -193,12 +276,12 @@ public class IncomeStatement
         int index = -1;
         for (int i = 0; i < this.realEstate.Count && index == -1; i++)
         {
-            if(this.realEstate[i].cardId == card.cardId)
+            if (this.realEstate[i].cardId == card.cardId)
             {
                 index = i;
             }
         }
-        if(index != -1)
+        if (index != -1)
         {
             this.realEstate.RemoveAt(index);
         }
@@ -237,7 +320,7 @@ public class IncomeStatement
         List<RealEstateCard> toAdd = new List<RealEstateCard>();
         for (int i = this.realEstate.Count - 1; i >= 0; i--)
         {
-            if(this.realEstate[i].propertyType == RealEstateType.Business && this.realEstate[i].cashFlow <= maxCashFlow)
+            if (this.realEstate[i].propertyType == RealEstateType.Business && this.realEstate[i].cashFlow <= maxCashFlow)
             {
                 toAdd.Add(new RealEstateCard(
                     this.realEstate[i].smallDeal,
