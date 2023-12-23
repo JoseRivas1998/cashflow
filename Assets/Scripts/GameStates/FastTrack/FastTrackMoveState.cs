@@ -51,7 +51,7 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.BadPartner:
                     return new BadPartnerState(mgm);
                 case FastTrackSpaceType.ForeignOilDeal:
-                    break;
+                    return new ForeignOilDealState(mgm);
                 case FastTrackSpaceType.SoftwareCoIPO:
                     break;
                 case FastTrackSpaceType.BioTecCoIPO:

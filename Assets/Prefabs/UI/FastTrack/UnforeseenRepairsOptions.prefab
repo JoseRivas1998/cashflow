@@ -216,7 +216,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lose Lowest Cash-flowing Asset
+  m_Text: 'Lose Lowest
+
+    Cash-flowing Asset'
 --- !u!1 &671683587973019848
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,6 +75,8 @@ public class MainGameManager : MonoBehaviour
     public GameObject businessInvestmentOptionsPrefab;
     public GameObject unforeseenRepairsOPtionsPrefab;
 
+    public GameObject foreignOilDealOptionsPrefab;
+
     private GameState currentState;
     private Player[] players;
     private Stack<Professions.Profession> professions;

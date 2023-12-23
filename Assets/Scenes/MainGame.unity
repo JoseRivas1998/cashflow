@@ -2931,6 +2931,8 @@ MonoBehaviour:
     type: 3}
   unforeseenRepairsOPtionsPrefab: {fileID: 671683589073324121, guid: 51792f15eda8bf348ba88afa121f6c24,
     type: 3}
+  foreignOilDealOptionsPrefab: {fileID: 5457217716302280850, guid: a619b4d42469ef149855238ba479730e,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
