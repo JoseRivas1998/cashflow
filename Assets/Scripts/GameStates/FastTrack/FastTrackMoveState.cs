@@ -34,7 +34,8 @@ public class FastTrackMoveState : GameState
         if (atDestination)
         {
             player.space = targetSpace;
-            switch (mgm.board.GetFastTrackSpaceType(player.space))
+            var spaceType = mgm.board.GetFastTrackSpaceType(player.space);
+            switch (spaceType)
             {
                 case FastTrackSpaceType.BusinessInvestments:
                     return new BusinessInvestmentState(mgm, (BusinessInvestment)mgm.board.GetFastTrackSpace(player.space));
@@ -53,9 +54,8 @@ public class FastTrackMoveState : GameState
                 case FastTrackSpaceType.ForeignOilDeal:
                     return new ForeignOilDealState(mgm);
                 case FastTrackSpaceType.SoftwareCoIPO:
-                    break;
                 case FastTrackSpaceType.BioTecCoIPO:
-                    break;
+                    return new FastTrackCashGambleState(mgm, spaceType);
                 case FastTrackSpaceType.UnforeseenRepairs:
                     return new UnforeseenRepairsState(mgm);
                 case FastTrackSpaceType.CashFlowDay:

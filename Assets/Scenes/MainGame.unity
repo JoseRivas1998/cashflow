@@ -2933,6 +2933,8 @@ MonoBehaviour:
     type: 3}
   foreignOilDealOptionsPrefab: {fileID: 5457217716302280850, guid: a619b4d42469ef149855238ba479730e,
     type: 3}
+  fastTrackGambleOptionsPrefab: {fileID: 6150175453415180071, guid: e9796992fef3299468478424daaff4c5,
+    type: 3}
 --- !u!1 &924259648
 GameObject:
   m_ObjectHideFlags: 0
